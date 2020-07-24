@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React from 'react';
+import React, { Component } from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -18,24 +18,28 @@ import {
 import {
   createStackNavigator,
   createSwitchNavigator,
-  createBottomTabNavigator
+  createBottomTabNavigator , 
+  createAppContainer
 } from "react-navigation"; 
 
 
-import { LoginScreen } from './src/scenes/LoginScreen';
+import LoginScreen  from './src/scenes/LoginScreen/index';
  
-  
+import { NavigationContainer } from '@react-navigation/native';
+
 const AppNavigator = createSwitchNavigator({
   Login: LoginScreen,
 });
-const App: () => React$Node = () => {
-  return (
-    <>
-      
-     <AppNavigator></AppNavigator>
-    </>
-  );
-};
+const App = createAppContainer(AppNavigator)
+// const App: () => React$Node = () => {
+//   return (
+//     <>
+//       <NavigationContainer>
+//      <AppNavigator></AppNavigator>
+//      </NavigationContainer>
+//     </>
+//   );
+// };
 
 const styles = StyleSheet.create({
   

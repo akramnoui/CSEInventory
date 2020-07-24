@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { View , StyleSheet ,Text , TextInput } from 'react-native';
 import {
     createStackNavigator,
     createSwitchNavigator,
     createBottomTabNavigator
   } from "react-navigation"; 
-class LoginScreen extends Component {
+class LoginScreen extends React.Component {
     state = {  }
     render() {
         return (
