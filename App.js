@@ -27,10 +27,14 @@ import LoginScreen  from './src/scenes/LoginScreen/index';
 import HomeScreen from './src/scenes/HomeScreen/index'
  
 import { NavigationContainer } from '@react-navigation/native';
+import { StackNavigator, DrawerNavigator } from 'react-navigation';
+import ProfileScreen  from './src/scenes/ProfileScreen/index';
+
 
 const AppNavigator = createSwitchNavigator({
   Login: LoginScreen,
   Home : HomeScreen , 
+  Profile : ProfileScreen 
 
 }, 
 {

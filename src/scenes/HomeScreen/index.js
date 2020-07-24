@@ -1,5 +1,5 @@
 import React from 'react';
-import { ScrollView , View  ,FlatList,  StyleSheet  , Text} from 'react-native';
+import { ScrollView , View  ,FlatList,  StyleSheet  , Text , TouchableOpacity} from 'react-native';
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { SearchBar, withTheme , } from 'react-native-elements';
 import Card from './Card';
@@ -96,11 +96,13 @@ class HomeScreen extends React.Component {
             <View style={styles.MainView}>
                 <View style={styles.Header}>
                     <Text style={styles.home}>Home</Text>
-                    <Ionicons style={styles.hamburger} name = "ios-options"
+                    <TouchableOpacity style={styles.hamburger} onPress={this.props.navigation.navigate("Profile")}  >
+                    <Ionicons name = "ios-options"
                     size = {38}
                     color = "black" >
 
                     </Ionicons>
+                    </TouchableOpacity>
 
                 </View>
                 <SearchBar
