@@ -33,8 +33,7 @@ import ProfileScreen  from './src/scenes/ProfileScreen/index';
 
 const AppNavigator = createSwitchNavigator({
   Login: LoginScreen,
-  Home : HomeScreen , 
-  Profile : ProfileScreen 
+  Home : ProfileScreen  , 
 
 }, 
 {
