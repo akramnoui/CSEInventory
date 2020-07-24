@@ -24,12 +24,20 @@ import {
 
 
 import LoginScreen  from './src/scenes/LoginScreen/index';
+import HomeScreen from './src/scenes/HomeScreen/index'
  
 import { NavigationContainer } from '@react-navigation/native';
 
 const AppNavigator = createSwitchNavigator({
   Login: LoginScreen,
-});
+  Home : HomeScreen , 
+
+}, 
+{
+  initialRouteName: 'Login',
+},
+
+);
 const App = createAppContainer(AppNavigator)
 // const App: () => React$Node = () => {
 //   return (
