@@ -15,22 +15,24 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
-
 import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+  createStackNavigator,
+  createSwitchNavigator,
+  createBottomTabNavigator
+} from "react-navigation"; 
 
+
+import { LoginScreen } from './src/scenes/LoginScreen';
+ 
+  
+const AppNavigator = createSwitchNavigator({
+  Login: LoginScreen,
+});
 const App: () => React$Node = () => {
   return (
     <>
       
-      <SafeAreaView style={styles.mainView}>
-       <Text style={styles.maintext} > Hello World!</Text>
-      </SafeAreaView>
+     <AppNavigator></AppNavigator>
     </>
   );
 };
