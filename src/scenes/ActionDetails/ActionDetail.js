@@ -32,7 +32,15 @@ class ActionDetail extends React.Component {
                 </View>
                
                 <View style={styles.image}>
-
+                <Image
+            
+            style={{height: "100%", width: "100%", resizeMode: 'cover'}}
+            source={{
+                uri:
+                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+                
+            }}
+        />
                 </View>
                 <View style={styles.ActionType}>
 
