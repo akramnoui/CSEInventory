@@ -40,6 +40,9 @@ const Stack = createStackNavigator();
 const DetailStack = createStackNavigator();
 const MaterialBottomTabs = createMaterialBottomTabNavigator();
 
+
+// ----------------this  code will be refactored into another file 
+
 export default class App extends React.Component {
   render() {
     // Drawer  implementation 

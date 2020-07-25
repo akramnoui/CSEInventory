@@ -2,6 +2,7 @@
 import React from 'react';
 import { View , SafeAreaView  , StyleSheet , Text , TouchableOpacity, Image} from 'react-native';
 import { Button } from 'react-native-elements'
+import Disponible from './Disponible'
 
 
 
@@ -15,7 +16,21 @@ class ItemPage extends React.Component {
             <SafeAreaView  style={styles.container}>
                <TopView></TopView>
                 <View   style={styles.bottomView}>
-                    
+                    <Disponible disponible="true" ></Disponible>
+                     <View style={{ height:55 , width:"100%" , flexDirection: "row" ,justifyContent:"space-evenly", marginTop: 30 }} >
+                            <TouchableOpacity
+                                style={styles.Button}
+                            
+                            >
+                                <Text style={{color: '#FFF'}}> Add Anomaly </Text>
+                            </TouchableOpacity>
+                            <TouchableOpacity
+                                style={styles.Button1}
+                            
+                            >
+                                <Text style={{color: '#FFF'}}> Book Item </Text>
+                            </TouchableOpacity>
+                    </View> 
                 </View>
             </SafeAreaView>
             
@@ -57,6 +72,27 @@ const TopView = () => {
 
 
 const styles = StyleSheet.create({
+    Button1:{
+        borderRadius: 5,
+        height: 50,
+        width: 150 ,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#3F3F3F',
+        fontWeight: 'bold',
+      
+
+    } , 
+    Button: {
+        borderRadius: 5,
+        height: 50,
+        width: 150 ,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#000',
+        fontWeight: 'bold',
+      
+      },
     bottomBtn:{
         
         
@@ -80,50 +116,12 @@ const styles = StyleSheet.create({
 
     
     } , 
-    userName:{
-        color:"white" , 
-        padding: 20 , 
-        fontSize: 25 , 
-        fontWeight: "bold"
-    } , 
-    avatarView:{
-        paddingTop: 40 , 
-        alignItems:"center" ,
-    }
-    , articles:{
-        color: "white" , 
-        fontWeight: "bold" , 
-        fontSize: 25 , zIndex: 10 , 
-        marginTop: -50 , 
-        marginLeft : 20
-    } , button:{
-        backgroundColor: "black" , alignSelf: "flex-start"
-        , marginLeft : 40, marginTop: 20
-       
-         , height: 45, 
-         width: 300
-    
-    } , 
-    number:{
-        height: 35 , width: 35 , 
-        borderRadius: 50 , 
-        backgroundColor: "white" , 
-        alignSelf: "flex-end", 
-        marginTop: - 50 , 
-        marginRight: 25  ,
+    bottomView:{
+        flexDirection: "column" , 
+        justifyContent: "flex-start" , 
         alignItems: "center" , 
-        justifyContent: "center" , 
-    } , 
-    nb:{
-        color:"black" , 
-        fontSize: 17 , 
-        fontWeight: "bold"
-        
-    } , bottomView:{
-        justifyContent: "center" , 
-        alignItems: "flex-start" , 
-         paddingLeft : 50 , 
-         paddingBottom: 80 , 
+        paddingTop: 36.5 , 
+      
           height: 400 , backgroundColor: "white"
     }
 
