@@ -1,20 +1,17 @@
 import React, {Component} from 'react';
 import {ScrollView, Text, StyleSheet} from 'react-native';
 import ArticleCard from './ArticleCard';
-import {SectionGrid} from 'react-native-super-grid';
+import {FlatGrid} from 'react-native-super-grid';
 
 export default class ArticlesList extends Component {
   render() {
     return (
-      <SectionGrid
+      <FlatGrid
         style={styles.gridView}
         itemDimension={120}
-        sections={this.props.items}
+        data={this.props.items}
         renderItem={({item}) => (
           <ArticleCard info={item} detail={this.props.detail} />
-        )}
-        renderSectionHeader={({section}) => (
-          <Text style={styles.sectionHeader}>{section.title}</Text>
         )}
       />
     );

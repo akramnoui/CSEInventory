@@ -33,54 +33,6 @@ export default class ArticlesView extends Component {
       filter: '',
       query: '',
       items: [
-        {
-          title: 'Numbers',
-          data: [
-            {
-              uri:
-                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-              title: 'della3 1',
-              description: 'loob loob loob',
-              occurence: 2,
-              state: 'Broken',
-            },
-            {
-              uri:
-                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-              title: 'della3 2',
-              description: 'loob loob loob',
-              occurence: 2,
-              state: 'Broken',
-            },
-            {
-              uri:
-                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-              title: 'della3 3',
-              description: 'loob loob loob',
-              occurence: 2,
-              state: 'Broken',
-            },
-            {
-              uri:
-                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-              title: 'della3 3',
-              description: 'loob loob loob',
-              occurence: 2,
-              state: 'Broken',
-            },
-            {
-              uri:
-                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-              title: 'della3 3',
-              description: 'loob loob loob',
-              occurence: 2,
-              state: 'Broken',
-            },
-          ],
-        },
-        {
-          title: 'Cards',
-          data: [
             {
               uri:
                 'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
@@ -113,11 +65,33 @@ export default class ArticlesView extends Component {
               occurence: 2,
               state: 'Broken',
             },
+            {
+              uri:
+                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+              title: 'della3 2',
+              description: 'loob loob loob',
+              occurence: 2,
+              state: 'Broken',
+            },
+            {
+              uri:
+                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+              title: 'della3 2',
+              description: 'loob loob loob',
+              occurence: 2,
+              state: 'Broken',
+            },
+            {
+              uri:
+                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+              title: 'della3 2',
+              description: 'loob loob loob',
+              occurence: 2,
+              state: 'Broken',
+            },
           ],
-        },
-      ],
-    };
-  }
+        }
+    }
 
   setQuery = (query) => {
     this.setState({query: query});
