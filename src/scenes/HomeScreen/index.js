@@ -3,6 +3,8 @@ import { ScrollView , View  ,FlatList,  StyleSheet  , Text , TouchableOpacity} f
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { SearchBar, withTheme , } from 'react-native-elements';
 import Card from './Card';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 
 
 
@@ -81,6 +83,8 @@ const Items =[
 const renderItem = ({item}) => (
     <Card objectName={item.objectName} user={item.user} itemName={item.item} status={item.status} imageSrc={item.imageSrc}   ></Card>
     );
+   
+
 class HomeScreen extends React.Component {
     state = {
         search: '',
@@ -92,6 +96,8 @@ class HomeScreen extends React.Component {
       _profile = () => {
         this.props.navigation.navigate("Profile");
       };
+      _openDrawer = () => this.props.navigation.openDrawer();
+
      
     render() {
         const { search } = this.state;
@@ -99,13 +105,17 @@ class HomeScreen extends React.Component {
             <View style={styles.MainView}>
                 <View style={styles.Header}>
                     <Text style={styles.home}>Home</Text>
-                    <TouchableOpacity style={styles.hamburger} onPress={this._profile}  >
-                    <Ionicons name = "ios-options"
-                    size = {38}
-                    color = "black" >
-
-                    </Ionicons>
-                    </TouchableOpacity>
+                   <TouchableOpacity
+                    onPress={this._openDrawer}
+                    style={{
+                      flexDirection: 'row',
+                      justifyContent: 'flex-start',
+                      flex: 0.8,
+                    }}>
+                    <Text>
+                      <Icon name="menu" size={24} color="black" />
+                    </Text>
+                  </TouchableOpacity>
 
                 </View>
                 <SearchBar
@@ -141,7 +151,7 @@ const styles = StyleSheet.create({
             flexDirection: "column" ,
             justifyContent: "flex-start" ,
             alignItems:"center" ,  
-            backgroundColor: "#E8E8E8" , 
+            backgroundColor: "#FFFFFF" , 
             paddingTop: 20
 
         }
@@ -154,8 +164,8 @@ const styles = StyleSheet.create({
         } , home: {
             fontSize: 20 , 
             fontWeight: "bold" , 
-            left: 20
-
+            left : 120 
+            
         } , 
         hamburger:{
             alignSelf: "flex-start"
@@ -169,7 +179,16 @@ const styles = StyleSheet.create({
             width: "85%" ,
             borderRadius: 20 , 
             height : 46 , 
-            paddingTop: - 5
+            paddingTop: - 5 , 
+            shadowOffset: {
+                width: 0,
+                height: 2,
+              },
+              shadowOpacity: 0.2,
+              shadowRadius: 4.5,
+              elevation: 7,
+                margin: 10
+          
      
  
             

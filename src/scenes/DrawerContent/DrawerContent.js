@@ -3,6 +3,13 @@ import React, { Component } from 'react';
 import {NavigationActions} from 'react-navigation';
 import { Text, View, StyleSheet, ImageBackground  , Image , FlatList , menu} from 'react-native'
 import { white } from 'ansi-colors';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
+import { Drawer  } from 'react-native-paper';
+import {
+  DrawerContentScrollView,
+  DrawerItem
+} from '@react-navigation/drawer';
 
 export default class drawerContentComponents extends Component {
 
@@ -21,10 +28,10 @@ export default class drawerContentComponents extends Component {
           backgroundColor: 'white',}}>
         <View
           style={{
-            flex: 0.4,
+            flex: 0.8,
             flexDirection: 'column',
             backgroundColor: '#000',
-            alignItems: 'stretch',
+  
             justifyContent: 'center',
           }}>
           <Image
@@ -80,7 +87,40 @@ export default class drawerContentComponents extends Component {
             </View>
           </View>
         </View>
-       
+        <Drawer.Section style={styles.drawerSection}>
+                        <DrawerItem 
+                           
+                            label="Profile"
+                        />
+                        <DrawerItem 
+                         
+                            label="Liste des Articles"
+                        />
+                        <DrawerItem 
+                           
+                            label="Signaler un degat"
+                        />
+                        <DrawerItem 
+                         
+                          
+                            label="Objet Perdu"
+                        />
+                        <DrawerItem 
+                            
+                            label="Support"
+                        />
+      </Drawer.Section>
+      <Drawer.Section style={styles.bottomDrawerSection}>
+                <DrawerItem 
+                    icon={({color, size}) => (
+                      <Ionicons name={'exit'} size={25} color={'red'} />
+                    )}
+                   
+                    label="Sign Out"
+
+                    onPress={() => {signOut()}}
+                />
+            </Drawer.Section>
       </View>
        
     )
@@ -88,5 +128,18 @@ export default class drawerContentComponents extends Component {
 }
 
 const styles = StyleSheet.create({
+  bottomDrawerSection: {
+    marginBottom: 0,
+    borderTopColor: '#f4f4f4',
+    borderTopWidth: 1
+},
+  drawerContent: {
+    flex: 1,
+  },
+ 
+  drawerSection: {
+    marginTop: 15,
+  },
+
     
 });

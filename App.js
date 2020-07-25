@@ -40,13 +40,15 @@ const MaterialBottomTabs = createMaterialBottomTabNavigator();
 
 export default class App extends React.Component {
   render() {
+    // Drawer  implementation 
     createHomeStack = () => (
       <DrawerNav.Navigator initialRouteName="Main" drawerContent={() => <DrawerContent />} > 
         <DrawerNav.Screen name="Main" children={createBottomTabs} />
         <DrawerNav.Screen name="Profile" component={ProfileScreen} />
+        
       </DrawerNav.Navigator>
     );
-
+      // bottom bar implementation
     createBottomTabs = () => (
       <MaterialBottomTabs.Navigator
         activeColor="#f0edf6"
@@ -59,7 +61,7 @@ export default class App extends React.Component {
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({focused, tintColor}) => (
-              <Ionicons name={'file-tray'} size={25} color={'white'} />
+              <Ionicons name={`file-tray${focused ? "" : "-outline"}`} size={25} color={`${focused ? "white" : "grey"}`} />
             ),
           }}
         />
@@ -69,7 +71,7 @@ export default class App extends React.Component {
           options={{
             tabBarLabel: 'Articles',
             tabBarIcon: ({focused, tintColor}) => (
-              <Ionicons name={'grid'} size={25} color={'white'} />
+              <Ionicons name={`grid${focused ? "" : "-outline"}`} size={25} color={`${focused ? "white" : "grey"}`} />
             ),
           }}
         />
@@ -77,6 +79,7 @@ export default class App extends React.Component {
     );
 
     return (
+      // main Stack
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName="Login"
@@ -91,14 +94,3 @@ export default class App extends React.Component {
   }
 }
 
-// const styles = StyleSheet.create({
-
-//   mainView: {
-//    flex: 1 ,
-//     justifyContent: "center" ,
-//     alignItems: "center"
-//   } ,
-//   maintext:{
-//     fontSize: 40
-//   }
-// });
