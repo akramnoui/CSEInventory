@@ -16,6 +16,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import ImagePicker from 'react-native-image-picker';
 import {IconButton} from 'react-native-paper';
 import {Dropdown} from 'react-native-material-dropdown';
+import {ScrollView} from 'react-native-gesture-handler';
 
 export default class AddAnomaly extends Component {
   constructor(props) {
@@ -109,9 +110,19 @@ export default class AddAnomaly extends Component {
     ];
 
     return (
-      <KeyboardAvoidingView behavior="height" style={{flex: 1}}>
-        <AppBar title="Add anomaly" />
+      <KeyboardAvoidingView behavior="height" style={{flex: 1, margin: 30}}>
         <SafeAreaView style={{flex: 1, justifyContent: 'flex-end'}}>
+          <IconButton
+            color="#000"
+            size={25}
+            icon="keyboard-backspace"
+            style={{
+              alignSelf: 'flex-start',
+            }}
+            onPress={() => {
+              this.props.navigation.goBack(null);
+            }}
+          />
           <View>
             <Image
               source={
@@ -128,7 +139,6 @@ export default class AddAnomaly extends Component {
                 alignSelf: 'stretch',
                 borderRadius: 10,
                 marginVertical: 5,
-                margin: 30,
               }}
             />
             <IconButton
@@ -153,7 +163,7 @@ export default class AddAnomaly extends Component {
           />
           <TextInput
             multiline
-            numberOfLines={6}
+            numberOfLines={4}
             style={styles.inputMulti}
             placeholder="Description"
             editable
@@ -163,7 +173,6 @@ export default class AddAnomaly extends Component {
             value={this.state.description}
           />
           <Dropdown
-            dropdownMargins={{min: 30, max: 30}}
             containerStyle={styles.dropDown}
             label="State"
             data={states}
@@ -171,6 +180,7 @@ export default class AddAnomaly extends Component {
               this.setState({objectState: value});
             }}
           />
+          <View style={{flex: 1}}></View>
           <TouchableOpacity
             style={styles.Button}
             onPress={() => {
@@ -192,7 +202,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#000',
     fontWeight: 'bold',
-    margin: 30,
   },
   input: {
     height: 40,
@@ -202,7 +211,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 5,
     backgroundColor: '#EEE',
-    margin: 30,
   },
   inputMulti: {
     textAlignVertical: 'top',
@@ -211,11 +219,9 @@ const styles = StyleSheet.create({
     color: '#000',
     marginVertical: 5,
     backgroundColor: '#EEE',
-    margin: 30,
   },
   dropDown: {
     borderRadius: 5,
     color: '#000',
-    marginHorizontal: 30,
   },
 });

@@ -16,6 +16,7 @@ import AppBar from './AppBar';
 import ArticlesList from './ArticlesList';
 import Drawer from 'react-native-drawer';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {FAB} from 'react-native-paper';
 
 const menu = [
   {title: 'Profile'},
@@ -118,83 +119,78 @@ export default class ArticlesView extends Component {
     };
   }
 
- 
- 
-
   setQuery = (query) => {
     this.setState({query: query});
 
     //Execute search request
-
   };
 
   setFilter = (filter) => {
     this.setState({filter: filter});
-    console.log(filter);
 
     //Execute filtering request
-
   };
-   _openDrawer = () => this.props.navigation.openDrawer();
-   _detail = () => this.props.navigation.push("Item")
-
+  _openDrawer = () => this.props.navigation.openDrawer();
+  _detail = () => this.props.navigation.push('Item');
 
   render() {
     return (
       <SafeAreaView style={styles.safeAreaStyle}>
         <View style={styles.mainContainer}>
-        
-            <View style={{flex: 1}}>
-              <View style={{flexDirection: 'row'}}>
-                <View style={styles.appBar}>
-                  <TouchableOpacity
-                    onPress={this._openDrawer}
-                    style={{
-                      flexDirection: 'row',
-                      justifyContent: 'flex-start',
-                      flex: 0.5,
-                    }}>
-                    <Text>
-                      <Icon name="menu" size={24} color="black" />
-                    </Text>
-                  </TouchableOpacity>
-                  <Text
-                    style={{
-                      flexDirection: 'row',
-                      justifyContent: 'flex-start',
-                    }}>
-                    Articles
+          <View style={{flex: 1}}>
+            <View style={{flexDirection: 'row'}}>
+              <View style={styles.appBar}>
+                <TouchableOpacity
+                  onPress={this._openDrawer}
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                    flex: 0.5,
+                  }}>
+                  <Text>
+                    <Icon name="menu" size={24} color="black" />
                   </Text>
-                </View>
+                </TouchableOpacity>
+                <Text
+                  style={{
+                    flexDirection: 'row',
+                    justifyContent: 'flex-start',
+                  }}>
+                  Articles
+                </Text>
               </View>
-              <InputField
-                ph="Search..."
-                changeHandler={this.setQuery.bind(this)}
-              />
-              <Filters changeHandler={this.setFilter.bind(this)} />
-              <ScrollView>
-                <ArticlesList items={this.state.items}  detail={this._detail}/>
-              </ScrollView>
             </View>
-
+            <InputField
+              ph="Search..."
+              changeHandler={this.setQuery.bind(this)}
+            />
+            <Filters changeHandler={this.setFilter.bind(this)} />
+            <ScrollView>
+              <ArticlesList items={this.state.items} detail={this._detail} />
+            </ScrollView>
+          </View>
         </View>
+
+        <FAB
+          style={styles.fab}
+          color="black"
+          medium
+          icon="plus"
+          theme={{colors: {accent: 'white'}}}
+          onPress={() => console.log('Pressed')}
+        />
       </SafeAreaView>
     );
   }
 }
 
-const drawerStyles = {
-  drawer: {
-    flex: 1.0,
-    backgroundColor: '#3B5998',
-  },
-  main: {
-    flex: 1.0,
-    backgroundColor: 'white',
-  },
-};
-
 const styles = {
+  fab: {
+    position: 'absolute',
+    margin: 16,
+    right: 0,
+    bottom: 0,
+  },
   mainContainer: {
     flex: 1.0,
     backgroundColor: 'white',
