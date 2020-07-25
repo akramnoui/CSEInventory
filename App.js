@@ -29,6 +29,8 @@ import HomeScreen from './src/scenes/HomeScreen/index'
 import { NavigationContainer } from '@react-navigation/native';
 import { StackNavigator, DrawerNavigator } from 'react-navigation';
 import ProfileScreen  from './src/scenes/ProfileScreen/index';
+import ArticlesView from './src/scenes/GoodsList/ArticlesView';
+import AddAnomaly from './src/scenes/AddAnomaly/AddAnomaly';
 
 
 const AppNavigator = createSwitchNavigator({
@@ -41,7 +43,7 @@ const AppNavigator = createSwitchNavigator({
 },
 
 );
-const App = createAppContainer(AppNavigator)
+//const App = createAppContainer(AppNavigator)
 // const App: () => React$Node = () => {
 //   return (
 //     <>
@@ -52,16 +54,30 @@ const App = createAppContainer(AppNavigator)
 //   );
 // };
 
+export default function App() {
+  return (
+      <ArticlesView />
+  );
+}
+
 const styles = StyleSheet.create({
-  
-  mainView: {
-   flex: 1 , 
-    justifyContent: "center" , 
-    alignItems: "center"
-  } , 
-  maintext:{
-    fontSize: 40
-  }
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 });
 
-export default App;
+
+// const styles = StyleSheet.create({
+// 
+// mainView: {
+//  flex: 1 , 
+//   justifyContent: "center" , 
+//   alignItems: "center"
+// } , 
+// maintext:{
+//   fontSize: 40
+// }
+// });

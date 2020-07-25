@@ -1,0 +1,249 @@
+import React, { Component } from "react";
+import {
+  StyleSheet,
+  Text,
+  FlatList,
+  View,
+  SafeAreaView,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+} from "react-native";
+import ArticleCard from "./ArticleCard";
+import InputField from "./InputField";
+import Filters from "./Filters";
+import AppBar from "./AppBar";
+import ArticlesList from "./ArticlesList";
+import Drawer from "react-native-drawer";
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
+const menu = [
+  { title: "Profile" },
+  { title: "Liste des Articles" },
+  { title: "Signaler un dégat" },
+  { title: "Objet perdu" },
+  { title: "Log out" },
+];
+
+export default class ArticlesView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filter:'',
+      query:'',
+      items:props.objects,
+    }
+  }
+
+  renderDrawer() {
+    //SlideMenu
+    return (
+      <View style={styles.menuContainer}>
+        <View
+          style={{
+            flex: 0.5,
+            flexDirection: "column",
+            backgroundColor: "#000",
+            alignItems: "stretch",
+            justifyContent: "center",
+          }}
+        >
+          <Image
+            source={{
+              uri:
+                "https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+            }}
+            style={{
+              height: 100,
+              width: 100,
+              resizeMode: "cover",
+              borderRadius: 50,
+              alignSelf: "center",
+              marginTop: 20,
+            }}
+          />
+          <Text
+            style={{
+              color: "#fff",
+              margin: 10,
+              fontWeight: "bold",
+              alignSelf: "center",
+            }}
+          >
+            John Doe
+          </Text>
+          <View
+            style={{
+              flex: 1,
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <View
+              style={{
+                flex: 1,
+                flexDirection: "row",
+                alignItems: "center",
+                justifyContent: "space-between",
+                color: "#fff",
+                margin: 20,
+              }}
+            >
+              <Text style={{ color: "#fff" }}>Article à rendre</Text>
+              <Text
+                style={{
+                  color: "#000",
+                  backgroundColor: "#fff",
+                  height: 20,
+                  width: 20,
+                  textAlign: "center",
+                  borderRadius: 10,
+                }}
+              >
+                2
+              </Text>
+            </View>
+          </View>
+        </View>
+        <FlatList
+          style={{ flex: 0.5 }}
+          data={menu}
+          extraData={this.state}
+          renderItem={({ item, index }) => {
+            return (
+              <TouchableOpacity style={styles.menuTitleContainer}>
+                <Text style={styles.menuTitle} key={index}>
+                  {item.title}
+                </Text>
+              </TouchableOpacity>
+            );
+          }}
+        />
+      </View>
+    );
+  }
+
+  openDrawer() {
+    this.drawer.open();
+  }
+
+  closeDrawer() {
+    this.drawer.close();
+  }
+
+  render() {
+    return (
+      <SafeAreaView style={styles.safeAreaStyle}>
+        <View style={styles.mainContainer}>
+          <Drawer
+            ref={(ref) => (this.drawer = ref)}
+            content={this.renderDrawer()}
+            type="static"
+            tapToClose={true}
+            openDrawerOffset={0.2}
+            styles={drawerStyles}
+          >
+            <View style={{ flex: 1 }}>
+              <View style={{ flexDirection: "row" }}>
+                <View style={styles.appBar}>
+                  <TouchableOpacity
+                    onPress={this.openDrawer.bind(this)}
+                    style={{
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                      flex: 0.5,
+                    }}
+                  >
+                    <Text>
+                      <Icon name="menu" size={24} color="black" />
+                    </Text>
+                  </TouchableOpacity>
+                  <Text
+                    style={{
+                      flexDirection: "row",
+                      justifyContent: "flex-start",
+                    }}
+                  >
+                    Articles
+                  </Text>
+                </View>
+              </View>
+              <InputField ph="Search..." />
+              <Filters />
+              <ScrollView>
+                <ArticlesList />
+              </ScrollView>
+            </View>
+          </Drawer>
+        </View>
+      </SafeAreaView>
+    );
+  }
+}
+
+const drawerStyles = {
+  drawer: {
+    flex: 1.0,
+    backgroundColor: "#3B5998",
+  },
+  main: {
+    flex: 1.0,
+    backgroundColor: "white",
+  },
+};
+
+const styles = {
+  mainContainer: {
+    flex: 1.0,
+    backgroundColor: "white",
+  },
+  safeAreaStyle: {
+    flex: 1.0,
+    backgroundColor: "#3B5998",
+  },
+  headerContainer: {
+    height: 44,
+    flexDirection: "row",
+    justifyContect: "center",
+    backgroundColor: "#3B5998",
+  },
+  headerTitle: {
+    flex: 1.0,
+    textAlign: "center",
+    alignSelf: "center",
+    color: "white",
+  },
+  menuButton: {
+    marginLeft: 8,
+    marginRight: 8,
+    alignSelf: "center",
+    tintColor: "white",
+  },
+  menuContainer: {
+    flex: 1.0,
+    backgroundColor: "#B7B7B7",
+  },
+  menuTitleContainer: {
+    alignItem: "center",
+    height: 60,
+    width: "100%",
+    flexDirection: "row",
+  },
+  menuTitle: {
+    width: "100%",
+    color: "white",
+    textAlign: "left",
+    fontSize: 17,
+    alignSelf: "center",
+    marginLeft: 25,
+  },
+  appBar: {
+    flexDirection: "row",
+    height: 60,
+    marginTop: 25,
+    flex: 1,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-around",
+  },
+};
