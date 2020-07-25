@@ -21,8 +21,10 @@ import {createStackNavigator} from '@react-navigation/stack';
 
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import ProfileScreen from './src/scenes/ProfileScreen/index';
-import DrawerContent from './src/scenes/DrawerContent/DrawerContent'
-import AddAnomaly from './src/scenes/AddAnomaly/AddAnomaly'
+import DrawerContent from './src/scenes/DrawerContent/DrawerContent';
+import AddAnomaly from './src/scenes/AddAnomaly/AddAnomaly';
+import AnomaliesView from './src/scenes/AnomalyList/AnomaliesView';
+
 import {
   SafeAreaView,
   StyleSheet,
@@ -34,6 +36,7 @@ import {
 } from 'react-native';
 import {Drawer} from 'react-native-paper';
 import ItemPage from './src/scenes/ItemPage/ItemPage';
+import ArticlesList from './src/scenes/GoodsList/ArticlesList';
 
 const DrawerNav = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -42,23 +45,22 @@ const MaterialBottomTabs = createMaterialBottomTabNavigator();
 
 export default class App extends React.Component {
   render() {
-    // Drawer  implementation 
+    // Drawer  implementation
     createHomeStack = () => (
-      <DrawerNav.Navigator initialRouteName="Main" drawerContent={() => <DrawerContent />} > 
+      <DrawerNav.Navigator
+        initialRouteName="Main"
+        drawerContent={() => <DrawerContent />}>
         <DrawerNav.Screen name="Main" children={createBottomTabs} />
         <DrawerNav.Screen name="Profile" component={ProfileScreen} />
       </DrawerNav.Navigator>
-   
     );
     createItemInfo = () => (
-      <DetailStack.Navigator initialRouteName="Articles"  headerMode='none'>
-        <DetailStack.Screen name="Item" component={ItemPage } />
-        <DetailStack.Screen name="Articles" component={ArticlesView}  />
+      <DetailStack.Navigator initialRouteName="Articles" headerMode="none">
+        <DetailStack.Screen name="Item" component={ItemPage} />
+        <DetailStack.Screen name="Articles" component={ArticlesView} />
       </DetailStack.Navigator>
-
-
-    )
-      // bottom bar implementation
+    );
+    // bottom bar implementation
     createBottomTabs = () => (
       <MaterialBottomTabs.Navigator
         activeColor="#f0edf6"
@@ -71,7 +73,11 @@ export default class App extends React.Component {
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({focused, tintColor}) => (
-              <Ionicons name={`file-tray${focused ? "" : "-outline"}`} size={25} color={`${focused ? "white" : "grey"}`} />
+              <Ionicons
+                name={`file-tray${focused ? '' : '-outline'}`}
+                size={25}
+                color={`${focused ? 'white' : 'grey'}`}
+              />
             ),
           }}
         />
@@ -81,17 +87,25 @@ export default class App extends React.Component {
           options={{
             tabBarLabel: 'Articles',
             tabBarIcon: ({focused, tintColor}) => (
-              <Ionicons name={`grid${focused ? "" : "-outline"}`} size={25} color={`${focused ? "white" : "grey"}`} />
+              <Ionicons
+                name={`grid${focused ? '' : '-outline'}`}
+                size={25}
+                color={`${focused ? 'white' : 'grey'}`}
+              />
             ),
           }}
         />
         <MaterialBottomTabs.Screen
-          name="AddAnomaly"
-          component={AddAnomaly}
+          name="AnomaliesView"
+          component={AnomaliesView}
           options={{
             tabBarLabel: 'Degats',
             tabBarIcon: ({focused, tintColor}) => (
-              <Ionicons name={`hammer${focused ? "" : "-outline"}`} size={25} color={`${focused ? "white" : "grey"}`} />
+              <Ionicons
+                name={`hammer${focused ? '' : '-outline'}`}
+                size={25}
+                color={`${focused ? 'white' : 'grey'}`}
+              />
             ),
           }}
         />
@@ -99,7 +113,7 @@ export default class App extends React.Component {
     );
 
     return (
-      // main Stack
+      //main Stack
       <NavigationContainer>
         <Stack.Navigator
           initialRouteName="Login"
@@ -113,4 +127,3 @@ export default class App extends React.Component {
     );
   }
 }
-
