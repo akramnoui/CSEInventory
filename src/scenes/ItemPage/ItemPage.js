@@ -1,23 +1,39 @@
 
 import React from 'react';
-import { View , SafeAreaView  , StyleSheet , Text , TouchableOpacity, Image} from 'react-native';
+import { View , SafeAreaView  , StyleSheet , Text , TouchableOpacity, Image } from 'react-native';
+import {FAB} from 'react-native-paper';
 import { Button } from 'react-native-elements'
 import Disponible from './Disponible'
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 
 
 
 
 class ItemPage extends React.Component {
+ _goBack = ()=> this.props.navigation.navigate('Home');
+
     state = {  }
     render() {
         return (
             
             <SafeAreaView  style={styles.container}>
+                 <FAB
+                    style={styles.fab}
+                    color="black"
+                    small
+                    icon="plus"
+                    theme={{colors: {accent: 'black'}}}
+                    onPress={this._goBack }
+                    />
                <TopView></TopView>
                 <View   style={styles.bottomView}>
+                <Text style={{fontSize: 27 , fontWeight:"bold" , position:"absolute" , marginTop: - 40 , alignSelf: "flex-start" , marginLeft: 20 , color:"white" , }}>
+                        Baniére hack It 3
+                    </Text>
                     <Disponible disponible="true" ></Disponible>
-                     <View style={{ height:55 , width:"100%" , flexDirection: "row" ,justifyContent:"space-evenly", marginTop: 30 }} >
+                   
+                     <View style={{ height:55 , width:"100%" , flexDirection: "row" ,justifyContent:"space-evenly", marginTop: 50 }} >
                             <TouchableOpacity
                                 style={styles.Button}
                             
@@ -72,6 +88,11 @@ const TopView = () => {
 
 
 const styles = StyleSheet.create({
+    fab:{
+        position: "absolute" , 
+        alignSelf: "flex-start" , 
+        margin: 10
+    } , 
     Button1:{
         borderRadius: 5,
         height: 50,

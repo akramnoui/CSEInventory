@@ -24,8 +24,8 @@ class ItemPage extends React.Component {
         );} return (
            
              <View   style={styles.container}>
-                 <Text>Indisponible</Text>
-                 <Ionicons name="close-circle" color="red" size={25}  ></Ionicons>
+                 <Text style={{fontSize: 20 , fontWeight: "200"}}>Indisponible</Text>
+                 <Ionicons name="close-circle" color="red" size={35}  ></Ionicons>
              </View>
         );
     }

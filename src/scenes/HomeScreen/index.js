@@ -23,7 +23,7 @@ const Items =[
         objectName: 'banniere' , 
         user : 'John Doe' ,
         item : 'Banniere' , 
-        status : "Prise" , 
+        status : "Booked" , 
         
         imageSrc: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg'
 
@@ -52,7 +52,7 @@ const Items =[
         objectName: 'banniere' , 
         user : 'John Doe' ,
         item : 'Banniere' , 
-        status : "Prise"
+        status : "Booked"
         , 
         imageSrc: 'https://unsplash.com/photos/nqEJ548Hqjs'
 
