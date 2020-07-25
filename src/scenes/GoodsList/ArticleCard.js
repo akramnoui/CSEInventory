@@ -4,7 +4,7 @@ import {Image, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 export default class ArticleCard extends Component {
   render() {
     return (
-      <TouchableOpacity style={styles.container}>
+      <TouchableOpacity style={styles.container} onPress={this.props.detail}>
         <View>
           <Image
             source={{uri: this.props.info.uri}}

@@ -136,6 +136,8 @@ export default class ArticlesView extends Component {
 
   };
    _openDrawer = () => this.props.navigation.openDrawer();
+   _detail = () => this.props.navigation.push("Item")
+
 
   render() {
     return (
@@ -171,7 +173,7 @@ export default class ArticlesView extends Component {
               />
               <Filters changeHandler={this.setFilter.bind(this)} />
               <ScrollView>
-                <ArticlesList items={this.state.items} />
+                <ArticlesList items={this.state.items}  detail={this._detail}/>
               </ScrollView>
             </View>
 

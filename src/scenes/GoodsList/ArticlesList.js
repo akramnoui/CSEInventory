@@ -10,7 +10,7 @@ export default class ArticlesList extends Component {
         style={styles.gridView}
         itemDimension={120}
         sections={this.props.items}
-        renderItem={({item}) => <ArticleCard info={item} />}
+        renderItem={({item}) => <ArticleCard info={item} detail={this.props.detail}/>}
         renderSectionHeader={({section}) => (
           <Text style={styles.sectionHeader}>{section.title}</Text>
         )}
