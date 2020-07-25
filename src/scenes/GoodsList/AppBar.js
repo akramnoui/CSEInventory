@@ -5,21 +5,21 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 export default class AppBar extends Component {
   render() {
     return (
-        <View style={styles.appBar}>
-          <TouchableOpacity
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'flex-start',
-              flex: 0.5,
-            }}>
-            <Text>
-              <Icon name="menu" size={24} color="black" />
-            </Text>
-          </TouchableOpacity>
-          <Text style={{flexDirection: 'row', justifyContent: 'flex-start'}}>
-            {this.props.title}
+      <View style={styles.appBar}>
+        <TouchableOpacity
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'flex-start',
+            flex: 0.5,
+          }}>
+          <Text>
+            <Icon name="menu" size={24} color="black" />
           </Text>
-        </View>
+        </TouchableOpacity>
+        <Text style={{flexDirection: 'row', justifyContent: 'flex-start'}}>
+          {this.props.title}
+        </Text>
+      </View>
     );
   }
 }

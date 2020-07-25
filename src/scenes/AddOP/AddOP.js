@@ -96,8 +96,18 @@ export default class AddOP extends Component {
   render() {
     return (
       <KeyboardAvoidingView behavior="height" style={{flex: 1}}>
-      <AppBar title="Add missing object" />
         <SafeAreaView style={{flex: 1, justifyContent: 'flex-end'}}>
+          <IconButton
+            color="#000"
+            size={25}
+            icon="keyboard-backspace"
+            style={{
+              alignSelf: 'flex-start',
+            }}
+            onPress={() => {
+              this.props.navigation.goBack(null);
+            }}
+          />
           <View>
             <Image
               source={
@@ -148,6 +158,7 @@ export default class AddOP extends Component {
             }}
             value={this.state.reportBody}
           />
+          <View style={{flex: 1}}></View>
           <TouchableOpacity
             style={styles.Button}
             onPress={() => {
@@ -189,5 +200,5 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     backgroundColor: '#EEE',
     margin: 30,
-  }
+  },
 });

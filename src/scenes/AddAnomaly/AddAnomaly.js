@@ -110,9 +110,19 @@ export default class AddAnomaly extends Component {
     ];
 
     return (
-      <KeyboardAvoidingView behavior="height" style={{flex: 1}}>
+      <KeyboardAvoidingView behavior="height" style={{flex: 1, margin: 30}}>
         <SafeAreaView style={{flex: 1, justifyContent: 'flex-end'}}>
-          <AppBar title="Add anomaly" />
+          <IconButton
+            color="#000"
+            size={25}
+            icon="keyboard-backspace"
+            style={{
+              alignSelf: 'flex-start',
+            }}
+            onPress={() => {
+              this.props.navigation.goBack(null);
+            }}
+          />
           <View>
             <Image
               source={
@@ -129,7 +139,6 @@ export default class AddAnomaly extends Component {
                 alignSelf: 'stretch',
                 borderRadius: 10,
                 marginVertical: 5,
-                margin: 30,
               }}
             />
             <IconButton
@@ -164,7 +173,6 @@ export default class AddAnomaly extends Component {
             value={this.state.description}
           />
           <Dropdown
-            dropdownMargins={{min: 30, max: 30}}
             containerStyle={styles.dropDown}
             label="State"
             data={states}
@@ -172,6 +180,7 @@ export default class AddAnomaly extends Component {
               this.setState({objectState: value});
             }}
           />
+          <View style={{flex: 1}}></View>
           <TouchableOpacity
             style={styles.Button}
             onPress={() => {
@@ -193,7 +202,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#000',
     fontWeight: 'bold',
-    margin: 30,
   },
   input: {
     height: 40,
@@ -203,7 +211,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 5,
     backgroundColor: '#EEE',
-    margin: 30,
   },
   inputMulti: {
     textAlignVertical: 'top',
@@ -212,11 +219,9 @@ const styles = StyleSheet.create({
     color: '#000',
     marginVertical: 5,
     backgroundColor: '#EEE',
-    margin: 30,
   },
   dropDown: {
     borderRadius: 5,
     color: '#000',
-    marginHorizontal: 30,
   },
 });
