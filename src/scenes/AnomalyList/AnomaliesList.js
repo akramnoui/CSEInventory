@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {ScrollView, Text, StyleSheet} from 'react-native';
-import ArticleCard from './ArticleCard';
+import AnomalyCard from './AnomalyCard';
 import {FlatGrid} from 'react-native-super-grid';
 
 export default class ArticlesList extends Component {
@@ -11,7 +11,7 @@ export default class ArticlesList extends Component {
         itemDimension={120}
         data={this.props.items}
         renderItem={({item}) => (
-          <ArticleCard info={item} detail={this.props.detail} />
+          <AnomalyCard info={item} detail={this.props.detail} />
         )}
       />
     );

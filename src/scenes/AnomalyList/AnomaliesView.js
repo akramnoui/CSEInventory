@@ -9,100 +9,85 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
-import ArticleCard from './ArticleCard';
 import InputField from './InputField';
 import Filters from './Filters';
 import AppBar from './AppBar';
-import ArticlesList from './ArticlesList';
+import AnomaliesList from './AnomaliesList';
 import Drawer from 'react-native-drawer';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {FAB} from 'react-native-paper';
 
-const menu = [
-  {title: 'Profile'},
-  {title: 'Liste des Articles'},
-  {title: 'Signaler un dégat'},
-  {title: 'Objet perdu'},
-  {title: 'Log out'},
-];
-
-export default class ArticlesView extends Component {
+export default class AnomaliesView extends Component {
   constructor(props) {
     super(props);
     this.state = {
       filter: '',
       query: '',
       items: [
-            {
-              uri:
-                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-              title: 'della3 1',
-              description: 'loob loob loob',
-              occurence: 2,
-              state: 'Broken',
-            },
-            {
-              uri:
-                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-              title: 'della3 2',
-              description: 'loob loob loob',
-              occurence: 2,
-              state: 'Broken',
-            },
-            {
-              uri:
-                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-              title: 'della3 2',
-              description: 'loob loob loob',
-              occurence: 2,
-              state: 'Broken',
-            },
-            {
-              uri:
-                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-              title: 'della3 2',
-              description: 'loob loob loob',
-              occurence: 2,
-              state: 'Broken',
-            },
-            {
-              uri:
-                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-              title: 'della3 2',
-              description: 'loob loob loob',
-              occurence: 2,
-              state: 'Broken',
-            },
-            {
-              uri:
-                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-              title: 'della3 2',
-              description: 'loob loob loob',
-              occurence: 2,
-              state: 'Broken',
-            },
-            {
-              uri:
-                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-              title: 'della3 2',
-              description: 'loob loob loob',
-              occurence: 2,
-              state: 'Broken',
-            },
-          ],
-        }
-    }
+        {
+          uri:
+            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+          title: 'della3 1',
+          description: 'loob loob loob',
+          occurence: 2,
+          state: 'Broken',
+        },
+        {
+          uri:
+            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+          title: 'della3 2',
+          description: 'loob loob loob',
+          occurence: 2,
+          state: 'Broken',
+        },
+        {
+          uri:
+            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+          title: 'della3 2',
+          description: 'loob loob loob',
+          occurence: 2,
+          state: 'Broken',
+        },
+        {
+          uri:
+            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+          title: 'della3 2',
+          description: 'loob loob loob',
+          occurence: 2,
+          state: 'Broken',
+        },
+        {
+          uri:
+            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+          title: 'della3 2',
+          description: 'loob loob loob',
+          occurence: 2,
+          state: 'Broken',
+        },
+        {
+          uri:
+            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+          title: 'della3 2',
+          description: 'loob loob loob',
+          occurence: 2,
+          state: 'Broken',
+        },
+        {
+          uri:
+            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+          title: 'della3 2',
+          description: 'loob loob loob',
+          occurence: 2,
+          state: 'Broken',
+        },
+      ],
+    };
+  }
 
   setQuery = (query) => {
     this.setState({query: query});
 
     //Execute search request
-  };
-
-  setFilter = (filter) => {
-    this.setState({filter: filter});
-
-    //Execute filtering request
   };
   _openDrawer = () => this.props.navigation.openDrawer();
   _detail = () => this.props.navigation.push('Item');
@@ -130,7 +115,7 @@ export default class ArticlesView extends Component {
                     flexDirection: 'row',
                     justifyContent: 'flex-start',
                   }}>
-                  Articles
+                  Anomalies
                 </Text>
               </View>
             </View>
@@ -138,9 +123,8 @@ export default class ArticlesView extends Component {
               ph="Search..."
               changeHandler={this.setQuery.bind(this)}
             />
-            <Filters changeHandler={this.setFilter.bind(this)} />
             <ScrollView>
-              <ArticlesList items={this.state.items} detail={this._detail} />
+              <AnomaliesList items={this.state.items} detail={this._detail} />
             </ScrollView>
           </View>
         </View>
@@ -151,7 +135,7 @@ export default class ArticlesView extends Component {
           medium
           icon="plus"
           theme={{colors: {accent: 'white'}}}
-          onPress={() => console.log('Pressed')}
+          onPress={() => {this.props.navigation.push('')}}
         />
       </SafeAreaView>
     );
