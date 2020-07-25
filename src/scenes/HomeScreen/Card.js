@@ -43,6 +43,14 @@ const styles = StyleSheet.create({
       flexDirection: "row" ,
       justifyContent: "flex-start" , 
       alignItems: "center" , 
+      shadowColor: '#000',
+      shadowOffset: {
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.29,
+    shadowRadius: 4.65,
+    elevation: 7,
       margin: 15
 
     } , 
@@ -64,8 +72,7 @@ const styles = StyleSheet.create({
      } , 
      status:{
          position: "relative" , 
-         right: 0 , 
-         fontWeight: "bold" , 
+         right: 0 ,  
          fontSize: 20 , 
          marginLeft: 50 , 
          color:"grey"

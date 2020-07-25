@@ -6,124 +6,90 @@
  * @flow strict-local
  */
 
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
-
-
-
-
-import LoginScreen  from './src/scenes/LoginScreen/index';
+import LoginScreen from './src/scenes/LoginScreen/index';
 import HomeScreen from './src/scenes/HomeScreen/index';
-import Ionicons from "react-native-vector-icons/Ionicons";
+import ArticlesView from './src/scenes/GoodsList/ArticlesView';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import {DrawerNavigator} from 'react-navigation';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import ProfileScreen from './src/scenes/ProfileScreen/index';
+import DrawerContent from './src/scenes/DrawerContent/DrawerContent'
 
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import ProfileScreen  from './src/scenes/ProfileScreen/index';
 import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
   View,
   Text,
-  StatusBar, Icon
+  StatusBar,
+  Icon,
 } from 'react-native';
+import {Drawer} from 'react-native-paper';
 
-
-// const Pages = createStackNavigator(
-//   {
-//     Home: HomeScreen,
-
-
-//   },
-
-//   );
-
-//   const MainTabs = createBottomTabNavigator(
-//     {
-//       Home: Pages,
-//       Profile: ProfileScreen,
-//     },
-
-//   );
-  // const AppNavigator = createSwitchNavigator({
-  //   Login: LoginScreen,
-  //   Main: MainTabs
-  // });
-
-
-
- const Stack =  createStackNavigator();
- const MaterialBottomTabs = createMaterialBottomTabNavigator();
-
-
+const DrawerNav = createDrawerNavigator();
+const Stack = createStackNavigator();
+const MaterialBottomTabs = createMaterialBottomTabNavigator();
 
 export default class App extends React.Component {
+  render() {
+    createHomeStack = () => (
+      <DrawerNav.Navigator initialRouteName="Main" drawerContent={() => <DrawerContent />} > 
+        <DrawerNav.Screen name="Main" children={createBottomTabs} />
+        <DrawerNav.Screen name="Profile" component={ProfileScreen} />
+      </DrawerNav.Navigator>
+    );
 
-  render(){
-      createHomeStack = () =>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Profile" component={ProfileScreen} />
+    createBottomTabs = () => (
+      <MaterialBottomTabs.Navigator
+        activeColor="#f0edf6"
+        inactiveColor="#707070"
+        barStyle={{backgroundColor: '#000000'}}>
+        <MaterialBottomTabs.Screen
+          name="Home"
+          style={{marginBottom: 16}}
+          component={HomeScreen}
+          options={{
+            tabBarLabel: 'Home',
+            tabBarIcon: ({focused, tintColor}) => (
+              <Ionicons name={'file-tray'} size={25} color={'white'} />
+            ),
+          }}
+        />
+        <MaterialBottomTabs.Screen
+          name="ArticlesView"
+          component={ArticlesView}
+          options={{
+            tabBarLabel: 'Articles',
+            tabBarIcon: ({focused, tintColor}) => (
+              <Ionicons name={'grid'} size={25} color={'white'} />
+            ),
+          }}
+        />
+      </MaterialBottomTabs.Navigator>
+    );
 
-      </Stack.Navigator>
-
-   createBottomTabs = () =>
-   <MaterialBottomTabs.Navigator initialRouteName="Home"
-    activeColor="#f0edf6"
-    inactiveColor="#707070"
-    barStyle={{ backgroundColor: '#000000' }}>
-
-    <MaterialBottomTabs.Screen
-      name="Home"
-      style={{ marginBottom: 16 }}
-      component={HomeScreen}
-      options={{
-        tabBarLabel: 'Home',
-        tabBarIcon: ({ focused, tintColor }) => (
-          <Ionicons
-            name={"file-tray"}
-            size={25}
-            color={"white"}
-          />
-        )
-
-      }}
-    />
-    <MaterialBottomTabs.Screen name="Profile" component={ProfileScreen}
-      options={{
-        tabBarLabel: 'Profile',
-        tabBarIcon: ({ focused, tintColor }) => (
-          <Ionicons
-            name={"grid"}
-            size={25}
-            color={"white"}
-          />
-        )
-
-      }}
-    />
-
-  </MaterialBottomTabs.Navigator>
-
-  return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login"  screenOptions={{
-        headerShown: false
-      }}>
-        <Stack.Screen name="Home" children={createBottomTabs}></Stack.Screen>
-        <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
-      </Stack.Navigator>
-    </NavigationContainer>
-
-  );
+    return (
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="Login"
+          screenOptions={{
+            headerShown: false,
+          }}>
+          <Stack.Screen name="Main" children={createHomeStack}></Stack.Screen>
+          <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
+        </Stack.Navigator>
+      </NavigationContainer>
+    );
+  }
 }
-}
-
-
 
 // const styles = StyleSheet.create({
 
