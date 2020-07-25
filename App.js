@@ -22,6 +22,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import ProfileScreen from './src/scenes/ProfileScreen/index';
 import DrawerContent from './src/scenes/DrawerContent/DrawerContent'
+import AddAnomaly from './src/scenes/AddAnomaly/AddAnomaly'
 
 import {
   SafeAreaView,
@@ -72,6 +73,16 @@ export default class App extends React.Component {
             tabBarLabel: 'Articles',
             tabBarIcon: ({focused, tintColor}) => (
               <Ionicons name={`grid${focused ? "" : "-outline"}`} size={25} color={`${focused ? "white" : "grey"}`} />
+            ),
+          }}
+        />
+        <MaterialBottomTabs.Screen
+          name="AddAnomaly"
+          component={AddAnomaly}
+          options={{
+            tabBarLabel: 'Degats',
+            tabBarIcon: ({focused, tintColor}) => (
+              <Ionicons name={`hammer${focused ? "" : "-outline"}`} size={25} color={`${focused ? "white" : "grey"}`} />
             ),
           }}
         />

@@ -35,7 +35,7 @@ class LoginScreen extends React.Component {
       };
     render() {
         return (
-            <KeyboardAvoidingView   behavior="Height" style={{flex : 1}}>
+            <KeyboardAvoidingView  behavior="height" style={{flex: 1}}>
               <TopView></TopView>
               <View  style={styles.Form}>
                     <TextInput
@@ -63,7 +63,7 @@ class LoginScreen extends React.Component {
                         </TouchableOpacity>
 
                         
-            </View>
+               </View>
                     
 
             </KeyboardAvoidingView    >
@@ -140,9 +140,18 @@ const styles = StyleSheet.create({
         height: 48 , 
         width: "85%" , 
         backgroundColor: "#000000" , 
-        marginTop: 100 ,
+        marginTop: 50 ,
         justifyContent: "center" , 
-        alignItems: "center"
+        alignItems: "center" , 
+        shadowOffset: {
+            width: 0,
+            height: 3,
+          },
+          shadowOpacity: 0.29,
+          shadowRadius: 4.65,
+          elevation: 4,
+            margin: 15
+      
 
         
 
