@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
       flexDirection: "row" ,
       justifyContent: "flex-start" , 
       alignItems: "center" , 
-      margin: 20
+      margin: 15
 
     } , 
     infos:{
@@ -66,9 +66,9 @@ const styles = StyleSheet.create({
          position: "relative" , 
          right: 0 , 
          fontWeight: "bold" , 
-         fontSize: 22 , 
+         fontSize: 20 , 
          marginLeft: 50 , 
-         color:"red"
+         color:"grey"
          
      }
 

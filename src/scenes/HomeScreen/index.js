@@ -89,6 +89,9 @@ class HomeScreen extends React.Component {
       updateSearch = (search) => {
         this.setState({ search });
       };
+      _profile = () => {
+        this.props.navigation.navigate("Profile");
+      };
      
     render() {
         const { search } = this.state;
@@ -96,7 +99,7 @@ class HomeScreen extends React.Component {
             <View style={styles.MainView}>
                 <View style={styles.Header}>
                     <Text style={styles.home}>Home</Text>
-                    <TouchableOpacity style={styles.hamburger} onPress={this.props.navigation.navigate("Profile")}  >
+                    <TouchableOpacity style={styles.hamburger} onPress={this._profile}  >
                     <Ionicons name = "ios-options"
                     size = {38}
                     color = "black" >
@@ -116,7 +119,7 @@ class HomeScreen extends React.Component {
                     
                     
                 />
-                <FlatList  data={Items} renderItem={renderItem}  keyExtractor={(item) => item.id} >
+                <FlatList style={styles.FlatList} data={Items} renderItem={renderItem}  keyExtractor={(item) => item.id} >
                     
                 </FlatList>
 
@@ -128,7 +131,10 @@ class HomeScreen extends React.Component {
 
 
 const styles = StyleSheet.create({
-
+        FlatList:{
+                    marginTop : 10 ,
+                
+        }, 
         MainView:{
             flex: 1 , 
             display: "flex" , 
@@ -159,11 +165,11 @@ const styles = StyleSheet.create({
             
         } , 
         SearchBar:{
-            marginTop: 20 ,  
+            marginTop: 15 ,  
             width: "85%" ,
             borderRadius: 20 , 
             height : 46 , 
-            paddingTop: 0
+            paddingTop: - 5
      
  
             

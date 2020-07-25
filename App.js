@@ -15,53 +15,102 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
-import {
-  createStackNavigator,
-  createSwitchNavigator,
-  createBottomTabNavigator , 
-  createAppContainer
-} from "react-navigation"; 
+
+
 
 
 import LoginScreen  from './src/scenes/LoginScreen/index';
-import HomeScreen from './src/scenes/HomeScreen/index'
+import HomeScreen from './src/scenes/HomeScreen/index';
+
  
 import { NavigationContainer } from '@react-navigation/native';
-import { StackNavigator, DrawerNavigator } from 'react-navigation';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import ProfileScreen  from './src/scenes/ProfileScreen/index';
 
 
-const AppNavigator = createSwitchNavigator({
-  Login: LoginScreen,
-  Home : ProfileScreen  , 
+// const Pages = createStackNavigator(
+//   {
+//     Home: HomeScreen,
+ 
 
-}, 
-{
-  initialRouteName: 'Login',
-},
+//   },
 
-);
-const App = createAppContainer(AppNavigator)
-// const App: () => React$Node = () => {
-//   return (
-//     <>
-//       <NavigationContainer>
-//      <AppNavigator></AppNavigator>
-//      </NavigationContainer>
-//     </>
 //   );
-// };
 
-const styles = StyleSheet.create({
+//   const MainTabs = createBottomTabNavigator(
+//     {
+//       Home: Pages,
+//       Profile: ProfileScreen,
+//     },
+   
+//   );
+  // const AppNavigator = createSwitchNavigator({
+  //   Login: LoginScreen,
+  //   Main: MainTabs
+  // });
+
+
+ 
+ const Stack =  createStackNavigator(); 
+ const MaterialBottomTabs = createMaterialBottomTabNavigator();
+
+
+export default class App extends React.Component {
+ 
+  render(){
+      createHomeStack = () =>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+      
+      </Stack.Navigator>
+
+createBottomTabs = () => 
+   <MaterialBottomTabs.Navigator>
+    <MaterialBottomTabs.Screen
+      name="Home"
+      style={{ marginBottom: 16 }}
+      component={HomeScreen}
+      options={{
+        tabBarLabel: 'Home',
+       
+      }}
+    />
+    <MaterialBottomTabs.Screen name="Profile" component={ProfileScreen}
+      options={{
+        tabBarLabel: 'Profile',
+        
+      }}
+    />
+    
+  </MaterialBottomTabs.Navigator>
   
-  mainView: {
-   flex: 1 , 
-    justifyContent: "center" , 
-    alignItems: "center"
-  } , 
-  maintext:{
-    fontSize: 40
-  }
-});
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login"  screenOptions={{
+        headerShown: false
+      }}>
+        <Stack.Screen name="Home" children={createBottomTabs}></Stack.Screen>
+        <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
+      </Stack.Navigator>
+    </NavigationContainer>
+    
+  );
+}
+}
 
-export default App;
+
+
+// const styles = StyleSheet.create({
+  
+//   mainView: {
+//    flex: 1 , 
+//     justifyContent: "center" , 
+//     alignItems: "center"
+//   } , 
+//   maintext:{
+//     fontSize: 40
+//   }
+// });
