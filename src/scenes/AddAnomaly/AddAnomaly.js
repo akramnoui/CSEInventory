@@ -16,6 +16,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import ImagePicker from 'react-native-image-picker';
 import {IconButton} from 'react-native-paper';
 import {Dropdown} from 'react-native-material-dropdown';
+import {ScrollView} from 'react-native-gesture-handler';
 
 export default class AddAnomaly extends Component {
   constructor(props) {
@@ -110,8 +111,8 @@ export default class AddAnomaly extends Component {
 
     return (
       <KeyboardAvoidingView behavior="height" style={{flex: 1}}>
-        <AppBar title="Add anomaly" />
         <SafeAreaView style={{flex: 1, justifyContent: 'flex-end'}}>
+          <AppBar title="Add anomaly" />
           <View>
             <Image
               source={
@@ -153,7 +154,7 @@ export default class AddAnomaly extends Component {
           />
           <TextInput
             multiline
-            numberOfLines={6}
+            numberOfLines={4}
             style={styles.inputMulti}
             placeholder="Description"
             editable

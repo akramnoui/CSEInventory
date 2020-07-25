@@ -130,7 +130,6 @@ export default class ArticlesView extends Component {
 
   setFilter = (filter) => {
     this.setState({filter: filter});
-    console.log(filter);
 
     //Execute filtering request
 

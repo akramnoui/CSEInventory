@@ -5,9 +5,6 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 export default class AppBar extends Component {
   render() {
     return (
-      <View style={{
-        position:"absolute",flexDirection: 'row',
-      backgroundColor:"#fff"}}>
         <View style={styles.appBar}>
           <TouchableOpacity
             style={{
@@ -23,7 +20,6 @@ export default class AppBar extends Component {
             {this.props.title}
           </Text>
         </View>
-      </View>
     );
   }
 }
@@ -32,7 +28,6 @@ const styles = StyleSheet.create({
   appBar: {
     flexDirection: 'row',
     height: 60,
-    marginTop: 20,
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
