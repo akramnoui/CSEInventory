@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component} from 'react';
 import {
   Text,
   TextInput,
@@ -6,16 +6,32 @@ import {
   StyleSheet,
   TouchableHighlight,
   TouchableOpacity,
-} from "react-native";
+} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default class InputField extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      query: '',
+    };
+  }
+
+  executeSearch = () => {
+    this.props.changeHandler(this.state.query);
+  };
 
   render() {
     return (
       <View style={styles.container}>
-        <TextInput style={styles.input} placeholder={this.props.ph} />
-        <TouchableOpacity>
+        <TextInput
+          style={styles.input}
+          onChangeText={(text) => {
+            this.setState({query: text});
+          }}
+          placeholder={this.props.ph}
+        />
+        <TouchableOpacity onPress={this.executeSearch.bind(this)}>
           <Text>
             <Icon name="search" size={24} color="white" />
           </Text>
@@ -31,15 +47,15 @@ const styles = StyleSheet.create({
     height: 40,
     padding: 10,
     marginRight: 15,
-    color: "white",
+    color: 'white',
   },
   container: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
     marginHorizontal: 30,
-    backgroundColor: "#222",
-    shadowColor: "#000",
+    backgroundColor: '#222',
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 3,

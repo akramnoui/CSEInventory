@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Image, StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import React, {Component} from 'react';
+import {Image, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 
 export default class ArticleCard extends Component {
   render() {
@@ -7,24 +7,20 @@ export default class ArticleCard extends Component {
       <TouchableOpacity style={styles.container}>
         <View>
           <Image
-            source={{
-              uri:
-                "https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
-            }}
-            style={{ height: 120, width: 163, resizeMode: "cover" }}
+            source={{uri: this.props.info.uri}}
+            style={{height: 120, width: 163, resizeMode: 'cover'}}
           />
           <View
             style={{
               paddingHorizontal: 10,
               paddingVertical: 3,
-              flexDirection: "column",
-            }}
-          >
+              flexDirection: 'column',
+            }}>
             <Text numberOfLines={1} style={styles.title}>
-              {this.props.title}
+              {this.props.info.title}
             </Text>
             <Text numberOfLines={2} style={styles.description}>
-              {this.props.desc}
+              {this.props.info.description}
             </Text>
           </View>
         </View>
@@ -37,8 +33,8 @@ const styles = StyleSheet.create({
   container: {
     height: 196,
     width: 163,
-    backgroundColor: "#FFF",
-    shadowColor: "#000",
+    backgroundColor: '#FFF',
+    shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 3,
@@ -49,13 +45,13 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 16,
-    fontWeight: "bold",
-    flexWrap: "wrap",
+    fontWeight: 'bold',
+    flexWrap: 'wrap',
     marginBottom: 3,
   },
   description: {
     fontSize: 14,
-    fontWeight: "normal",
-    flexWrap: "wrap",
+    fontWeight: 'normal',
+    flexWrap: 'wrap',
   },
 });

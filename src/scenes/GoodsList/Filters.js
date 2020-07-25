@@ -10,7 +10,7 @@ export default class Filters extends Component {
   }
 
   componentDidMount() {
-    this.setState({ value: "mobile" });
+    this.setState({ value: null });
   }
 
   state = {
@@ -19,6 +19,7 @@ export default class Filters extends Component {
 
   changeValue = (value) => {
     this.setState({ value: value });
+    this.props.changeHandler(value);
   };
 
   render() {
@@ -36,15 +37,15 @@ export default class Filters extends Component {
           value={this.state.value}
         >
           <ToggleButton
-            icon={() => <Icon name="search" size={24} color="black" />}
+            icon={() => <Icon name="move-to-inbox" size={24} color="black" />}
             value="mobile"
           />
           <ToggleButton
-            icon={() => <Icon name="search" size={24} color="black" />}
+            icon={() => <Icon name="home" size={24} color="black" />}
             value="immobile"
           />
           <ToggleButton
-            icon={() => <Icon name="search" size={24} color="black" />}
+            icon={() => <Icon name="mood-bad" size={24} color="black" />}
             value="abimé"
           />
         </ToggleButton.Group>

@@ -17,21 +17,20 @@ import ImagePicker from 'react-native-image-picker';
 import {IconButton} from 'react-native-paper';
 import {Dropdown} from 'react-native-material-dropdown';
 
-export default class AddAnomaly extends Component {
+export default class AddOP extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      anomalyPic: null,
-      title: '',
-      description: '',
-      objectState: '',
+      objectImage: null,
+      reportTitle: '',
+      reportBody: '',
     };
   }
 
   onPickImage = async () => {
     const options = {
       noData: true,
-      title: 'Take the anomaly picture',
+      title: 'Take the object picture',
       storageOptions: {
         skipBackup: true,
         path: 'images',
@@ -50,18 +49,18 @@ export default class AddAnomaly extends Component {
         const source = response;
 
         this.setState({
-          anomalyPic: source,
+          objectImage: source,
         });
       }
     });
   };
 
   onSubmit = (photo) => {
-    if (this.state.title == '' || this.state.description == '') {
+    if (this.state.reportTitle == '' || this.state.reportBody == '') {
       const alertMsg =
         ' You have forgot to fill in the : \n' +
-        (this.state.title == '' ? '- The title' : '') +
-        (this.state.description == '' ? '\n- The description' : '');
+        (this.state.reportTitle == '' ? '- The title' : '') +
+        (this.state.reportBody == '' ? '\n- The description' : '');
       alert(alertMsg);
       return;
     }
@@ -78,14 +77,10 @@ export default class AddAnomaly extends Component {
       });
     }
 
-    if (this.state.objectState != null) {
-      data.append('objectState', this.state.objectState);
-    }
+    data.append('reportBody', this.state.reportBody);
+    data.append('reportTitle', this.state.reportTitle);
 
-    data.append('reportBody', this.state.description);
-    data.append('reportTitle', this.state.title);
-
-    fetch('https://cse-inventory-api.herokuapp.com/reports/add', {
+    fetch('https://cse-inventory-api.herokuapp.com/lostobjects/add', {
       method: 'post',
       body: data,
     })
@@ -99,31 +94,22 @@ export default class AddAnomaly extends Component {
   };
 
   render() {
-    let states = [
-      {
-        value: 'Broken',
-      },
-      {
-        value: 'Lost',
-      },
-    ];
-
     return (
       <KeyboardAvoidingView behavior="height" style={{flex: 1}}>
-        <AppBar title="Add anomaly" />
+      <AppBar title="Add missing object" />
         <SafeAreaView style={{flex: 1, justifyContent: 'flex-end'}}>
           <View>
             <Image
               source={
-                this.state.anomalyPic != null
-                  ? {uri: this.state.anomalyPic.uri}
+                this.state.objectImage != null
+                  ? {uri: this.state.objectImage.uri}
                   : {
                       uri:
                         'https://www.solidbackgrounds.com/images/2560x1440/2560x1440-gray-solid-color-background.jpg',
                     }
               }
               style={{
-                height: 170,
+                height: 190,
                 resizeMode: 'cover',
                 alignSelf: 'stretch',
                 borderRadius: 10,
@@ -145,10 +131,10 @@ export default class AddAnomaly extends Component {
           </View>
           <TextInput
             style={styles.input}
-            value={this.state.title}
+            value={this.state.reportTitle}
             placeholder="Title..."
             onChangeText={(text) => {
-              this.setState({title: text});
+              this.setState({reportTitle: text});
             }}
           />
           <TextInput
@@ -158,25 +144,16 @@ export default class AddAnomaly extends Component {
             placeholder="Description"
             editable
             onChangeText={(text) => {
-              this.setState({description: text});
+              this.setState({reportBody: text});
             }}
-            value={this.state.description}
-          />
-          <Dropdown
-            dropdownMargins={{min: 30, max: 30}}
-            containerStyle={styles.dropDown}
-            label="State"
-            data={states}
-            onChangeText={(value) => {
-              this.setState({objectState: value});
-            }}
+            value={this.state.reportBody}
           />
           <TouchableOpacity
             style={styles.Button}
             onPress={() => {
-              this.onSubmit(this.state.anomalyPic);
+              this.onSubmit(this.state.objectImage);
             }}>
-            <Text style={{color: '#FFF'}}> Add Anomaly </Text>
+            <Text style={{color: '#FFF'}}> Add missing object </Text>
           </TouchableOpacity>
         </SafeAreaView>
       </KeyboardAvoidingView>
@@ -212,10 +189,5 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     backgroundColor: '#EEE',
     margin: 30,
-  },
-  dropDown: {
-    borderRadius: 5,
-    color: '#000',
-    marginHorizontal: 30,
-  },
+  }
 });

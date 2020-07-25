@@ -31,6 +31,7 @@ import { StackNavigator, DrawerNavigator } from 'react-navigation';
 import ProfileScreen  from './src/scenes/ProfileScreen/index';
 import ArticlesView from './src/scenes/GoodsList/ArticlesView';
 import AddAnomaly from './src/scenes/AddAnomaly/AddAnomaly';
+import AddOP from './src/scenes/AddOP/AddOP';
 
 
 const AppNavigator = createSwitchNavigator({
