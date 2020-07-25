@@ -23,6 +23,7 @@ import {createMaterialBottomTabNavigator} from '@react-navigation/material-botto
 import ProfileScreen from './src/scenes/ProfileScreen/index';
 import DrawerContent from './src/scenes/DrawerContent/DrawerContent'
 import AddAnomaly from './src/scenes/AddAnomaly/AddAnomaly'
+import ActionDetail from "./src/scenes/ActionDetails/ActionDetail"
 import {
   SafeAreaView,
   StyleSheet,
@@ -38,6 +39,7 @@ import ItemPage from './src/scenes/ItemPage/ItemPage';
 const DrawerNav = createDrawerNavigator();
 const Stack = createStackNavigator();
 const DetailStack = createStackNavigator();
+const ActionStack = createStackNavigator();
 const MaterialBottomTabs = createMaterialBottomTabNavigator();
 
 
@@ -52,7 +54,14 @@ export default class App extends React.Component {
         <DrawerNav.Screen name="Profile" component={ProfileScreen} />
       </DrawerNav.Navigator>
    
-    );
+    )
+    createActionInfo = () => 
+      <ActionStack.Navigator initialRouteName="Home"  headerMode='none'>
+        <ActionStack.Screen name="ActionDetail" component={ActionDetail } />
+        <ActionStack.Screen name="Home" component={HomeScreen}  />
+      </ActionStack.Navigator>
+
+    
     createItemInfo = () => (
       <DetailStack.Navigator initialRouteName="Articles"  headerMode='none'>
         <DetailStack.Screen name="Item" component={ItemPage } />
@@ -60,7 +69,8 @@ export default class App extends React.Component {
       </DetailStack.Navigator>
 
 
-    )
+    ) ; 
+   
       // bottom bar implementation
     createBottomTabs = () => (
       <MaterialBottomTabs.Navigator
@@ -70,7 +80,7 @@ export default class App extends React.Component {
         <MaterialBottomTabs.Screen
           name="Home"
           style={{marginBottom: 16}}
-          component={HomeScreen}
+          children={createActionInfo}
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({focused, tintColor}) => (

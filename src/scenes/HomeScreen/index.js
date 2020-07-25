@@ -80,9 +80,7 @@ const Items =[
 
 
 ]
-const renderItem = ({item}) => (
-    <Card objectName={item.objectName} user={item.user} itemName={item.item} status={item.status} imageSrc={item.imageSrc}   ></Card>
-    );
+
    
 
 class HomeScreen extends React.Component {
@@ -97,6 +95,10 @@ class HomeScreen extends React.Component {
         this.props.navigation.navigate("Profile");
       };
       _openDrawer = () => this.props.navigation.openDrawer();
+      _detail = () => this.props.navigation.push('ActionDetail')
+
+
+
 
      
     render() {
@@ -129,7 +131,11 @@ class HomeScreen extends React.Component {
                     
                     
                 />
-                <FlatList style={styles.FlatList} data={Items} renderItem={renderItem}  keyExtractor={(item) => item.id} >
+                <FlatList style={styles.FlatList} data={Items} 
+                renderItem={({item})  =>  <TouchableOpacity onPress={this._detail}>
+                                                 <Card objectName={item.objectName} user={item.user} itemName={item.item} status={item.status} imageSrc={item.imageSrc}    ></Card>
+                                          </TouchableOpacity>}
+                keyExtractor={(item) => item.id} >
                     
                 </FlatList>
 
