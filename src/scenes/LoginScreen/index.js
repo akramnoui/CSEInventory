@@ -35,7 +35,7 @@ class LoginScreen extends React.Component {
       };
     render() {
         return (
-            <KeyboardAvoidingView   behavior="padding" style={styles.MainView}>
+            <KeyboardAvoidingView   behavior="Height" style={{flex : 1}}>
               <TopView></TopView>
               <View  style={styles.Form}>
                     <TextInput
