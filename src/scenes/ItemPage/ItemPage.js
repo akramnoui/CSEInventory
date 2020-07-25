@@ -5,6 +5,8 @@ import {FAB} from 'react-native-paper';
 import { Button } from 'react-native-elements'
 import Disponible from './Disponible'
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {IconButton} from 'react-native-paper';
+
 
 
 
@@ -18,14 +20,18 @@ class ItemPage extends React.Component {
         return (
             
             <SafeAreaView  style={styles.container}>
-                 <FAB
-                    style={styles.fab}
-                    color="black"
-                    small
-                    icon="plus"
-                    theme={{colors: {accent: 'black'}}}
-                    onPress={this._goBack }
-                    />
+                 <IconButton
+            color="#FFFF"
+            size={35}
+            icon="keyboard-backspace"
+            style={{
+              alignSelf: 'flex-start',
+              position: "absolute" , zIndex: 10
+            }}
+            onPress={() => {
+              this.props.navigation.goBack(null);
+            }}
+          />
                <TopView></TopView>
                 <View   style={styles.bottomView}>
                 <Text style={{fontSize: 27 , fontWeight:"bold" , position:"absolute" , marginTop: - 40 , alignSelf: "flex-start" , marginLeft: 20 , color:"white" , }}>
