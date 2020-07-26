@@ -1,4 +1,4 @@
-<img src="Screenshots/AppLogo.png"  align="right" height="200" />
+<img src="Screenshots/AppLogo.png"  align="right" height="250" />
 
 # CSE Inventory
 
