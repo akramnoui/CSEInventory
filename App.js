@@ -42,6 +42,7 @@ import {Drawer} from 'react-native-paper';
 import ItemPage from './src/scenes/ItemPage/ItemPage';
 import ArticlesList from './src/scenes/GoodsList/ArticlesList';
 import AddOP from './src/scenes/AddOP/AddOP';
+import LostObject from './src/scenes/AnomalyList/LostObject'
 
 const DrawerNav = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -146,7 +147,7 @@ export default class App extends React.Component {
         />
         <MaterialBottomTabs.Screen
           name="MissingObjects"
-          children={createAnomalyScreen}
+          children={LostObject}
           options={{
             tabBarLabel: 'Objets perdus',
             tabBarIcon: ({focused, tintColor}) => (

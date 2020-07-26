@@ -17,7 +17,7 @@ import Drawer from 'react-native-drawer';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {FAB} from 'react-native-paper';
 
-export default class AnomaliesView extends Component {
+export default class LostObject extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,7 +27,7 @@ export default class AnomaliesView extends Component {
     };
   }
   async  componentDidMount(){
-    const response = await fetch('https://cse-inventory-api.herokuapp.com/reports/all')
+    const response = await fetch('https://cse-inventory-api.herokuapp.com/lostobjects/all')
   const results = await response.json()
   console.log(results)
   this.setState({
@@ -68,7 +68,7 @@ export default class AnomaliesView extends Component {
                     fontSize: 16,
                     color: '#3498DB',
                   }}>
-                  Anomalies
+                  Lost Objects
                 </Text>
               </View>
             </View>
