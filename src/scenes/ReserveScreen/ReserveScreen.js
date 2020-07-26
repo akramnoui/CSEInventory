@@ -21,11 +21,12 @@ export default class ReserveScreen extends Component {
       description: '',
       startDate: '',
       endDate: '',
-      elementPic : 'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+      elementPic:
+        'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
     };
   }
 
-  onSubmit = (photo) => {
+  onSubmit = () => {
     if (
       this.state.title == '' ||
       this.state.description == '' ||
@@ -56,6 +57,7 @@ export default class ReserveScreen extends Component {
       .then((res) => {
         console.log(res);
         alert('Added succesfully !');
+        this.props.navigation.navigate('Articles');
       })
       .catch((error) => {
         console.log('zerba3i');
@@ -81,8 +83,7 @@ export default class ReserveScreen extends Component {
             <View>
               <Image
                 source={{
-                  uri:
-                    this.state.elementPic
+                  uri: this.state.elementPic,
                 }}
                 style={{
                   resizeMode: 'cover',
@@ -104,12 +105,12 @@ export default class ReserveScreen extends Component {
                     right: 25,
                     color: 'black',
                     fontSize: 16,
-                    height:30,
-                    width:30,
-                    backgroundColor:"#fff",
-                    borderRadius:15,
-                    textAlign:"center",
-                    textAlignVertical:"center"
+                    height: 30,
+                    width: 30,
+                    backgroundColor: '#fff',
+                    borderRadius: 15,
+                    textAlign: 'center',
+                    textAlignVertical: 'center',
                   }}>
                   2
                 </Text>
@@ -155,7 +156,7 @@ export default class ReserveScreen extends Component {
             <TouchableOpacity
               style={styles.Button}
               onPress={() => {
-                this.onSubmit(this.state.anomalyPic);
+                this.onSubmit();
               }}>
               <Text style={{color: '#FFF'}}> Borrow ! </Text>
             </TouchableOpacity>

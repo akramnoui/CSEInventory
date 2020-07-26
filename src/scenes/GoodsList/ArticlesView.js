@@ -16,15 +16,6 @@ import AppBar from './AppBar';
 import ArticlesList from './ArticlesList';
 import Drawer from 'react-native-drawer';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import {FAB} from 'react-native-paper';
-
-const menu = [
-  {title: 'Profile'},
-  {title: 'Liste des Articles'},
-  {title: 'Signaler un dégat'},
-  {title: 'Objet perdu'},
-  {title: 'Log out'},
-];
 
 export default class ArticlesView extends Component {
   constructor(props) {
@@ -33,65 +24,65 @@ export default class ArticlesView extends Component {
       filter: '',
       query: '',
       items: [
-            {
-              uri:
-                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-              title: 'della3 1',
-              description: 'loob loob loob',
-              occurence: 2,
-              state: 'Broken',
-            },
-            {
-              uri:
-                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-              title: 'della3 2',
-              description: 'loob loob loob',
-              occurence: 2,
-              state: 'Broken',
-            },
-            {
-              uri:
-                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-              title: 'della3 2',
-              description: 'loob loob loob',
-              occurence: 2,
-              state: 'Broken',
-            },
-            {
-              uri:
-                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-              title: 'della3 2',
-              description: 'loob loob loob',
-              occurence: 2,
-              state: 'Broken',
-            },
-            {
-              uri:
-                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-              title: 'della3 2',
-              description: 'loob loob loob',
-              occurence: 2,
-              state: 'Broken',
-            },
-            {
-              uri:
-                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-              title: 'della3 2',
-              description: 'loob loob loob',
-              occurence: 2,
-              state: 'Broken',
-            },
-            {
-              uri:
-                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-              title: 'della3 2',
-              description: 'loob loob loob',
-              occurence: 2,
-              state: 'Broken',
-            },
-          ],
-        }
-    }
+        {
+          uri:
+            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+          title: 'della3 1',
+          description: 'loob loob loob',
+          occurence: 2,
+          state: 'Broken',
+        },
+        {
+          uri:
+            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+          title: 'della3 2',
+          description: 'loob loob loob',
+          occurence: 2,
+          state: 'Broken',
+        },
+        {
+          uri:
+            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+          title: 'della3 2',
+          description: 'loob loob loob',
+          occurence: 2,
+          state: 'Broken',
+        },
+        {
+          uri:
+            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+          title: 'della3 2',
+          description: 'loob loob loob',
+          occurence: 2,
+          state: 'Broken',
+        },
+        {
+          uri:
+            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+          title: 'della3 2',
+          description: 'loob loob loob',
+          occurence: 2,
+          state: 'Broken',
+        },
+        {
+          uri:
+            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+          title: 'della3 2',
+          description: 'loob loob loob',
+          occurence: 2,
+          state: 'Broken',
+        },
+        {
+          uri:
+            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+          title: 'della3 2',
+          description: 'loob loob loob',
+          occurence: 2,
+          state: 'Broken',
+        },
+      ],
+    };
+  }
 
   setQuery = (query) => {
     this.setState({query: query});
@@ -144,27 +135,12 @@ export default class ArticlesView extends Component {
             </ScrollView>
           </View>
         </View>
-
-        <FAB
-          style={styles.fab}
-          color="black"
-          medium
-          icon="plus"
-          theme={{colors: {accent: 'white'}}}
-          onPress={() => console.log('Pressed')}
-        />
       </SafeAreaView>
     );
   }
 }
 
 const styles = {
-  fab: {
-    position: 'absolute',
-    margin: 16,
-    right: 0,
-    bottom: 0,
-  },
   mainContainer: {
     flex: 1.0,
     backgroundColor: 'white',

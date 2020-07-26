@@ -135,9 +135,10 @@ export default class AnomaliesView extends Component {
           medium
           icon="plus"
           theme={{colors: {accent: 'white'}}}
-          onPress={() => {this.props.navigation.push('')}}
+          onPress={() => {
+            this.props.navigation.push('AddAnomaly');
+          }}
         />
-        
       </SafeAreaView>
     );
   }

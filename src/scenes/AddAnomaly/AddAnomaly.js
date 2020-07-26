@@ -93,6 +93,7 @@ export default class AddAnomaly extends Component {
       .then((res) => {
         console.log(res);
         alert('Added succesfully !');
+        this.props.navigation.navigate('AnomaliesView');
       })
       .catch((error) => {
         console.log('zerba3i');

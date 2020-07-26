@@ -22,6 +22,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import ProfileScreen from './src/scenes/ProfileScreen/index';
 import DrawerContent from './src/scenes/DrawerContent/DrawerContent';
+import ActionDetail from './src/scenes/ActionDetails/ActionDetail';
 import AddAnomaly from './src/scenes/AddAnomaly/AddAnomaly';
 import AnomaliesView from './src/scenes/AnomalyList/AnomaliesView';
 import ReserveScreen from './src/scenes/ReserveScreen/ReserveScreen';
@@ -42,7 +43,12 @@ import ArticlesList from './src/scenes/GoodsList/ArticlesList';
 const DrawerNav = createDrawerNavigator();
 const Stack = createStackNavigator();
 const DetailStack = createStackNavigator();
+const ActionStack = createStackNavigator();
+const AnomaliesStack = createStackNavigator();
+
 const MaterialBottomTabs = createMaterialBottomTabNavigator();
+
+// ----------------this  code will be refactored into another file
 
 export default class App extends React.Component {
   render() {
@@ -55,12 +61,29 @@ export default class App extends React.Component {
         <DrawerNav.Screen name="Profile" component={ProfileScreen} />
       </DrawerNav.Navigator>
     );
+    createActionInfo = () => (
+      <ActionStack.Navigator initialRouteName="Home" headerMode="none">
+        <ActionStack.Screen name="ActionDetail" component={ActionDetail} />
+        <ActionStack.Screen name="Home" component={HomeScreen} />
+      </ActionStack.Navigator>
+    );
+    createAnomalyScreen = () => (
+      <AnomaliesStack.Navigator
+        initialRouteName="AnomaliesView"
+        headerMode="none">
+        <AnomaliesStack.Screen name="AnomaliesView" component={AnomaliesView} />
+        <AnomaliesStack.Screen name="AddAnomaly" component={AddAnomaly} />
+      </AnomaliesStack.Navigator>
+    );
+
     createItemInfo = () => (
       <DetailStack.Navigator initialRouteName="Articles" headerMode="none">
+        <DetailStack.Screen name="Book" component={ReserveScreen} />
         <DetailStack.Screen name="Item" component={ItemPage} />
         <DetailStack.Screen name="Articles" component={ArticlesView} />
       </DetailStack.Navigator>
     );
+
     // bottom bar implementation
     createBottomTabs = () => (
       <MaterialBottomTabs.Navigator
@@ -70,7 +93,7 @@ export default class App extends React.Component {
         <MaterialBottomTabs.Screen
           name="Home"
           style={{marginBottom: 16}}
-          component={HomeScreen}
+          children={createActionInfo}
           options={{
             tabBarLabel: 'Home',
             tabBarIcon: ({focused, tintColor}) => (
@@ -98,7 +121,7 @@ export default class App extends React.Component {
         />
         <MaterialBottomTabs.Screen
           name="AnomaliesView"
-          component={AnomaliesView}
+          children={createAnomalyScreen}
           options={{
             tabBarLabel: 'Degats',
             tabBarIcon: ({focused, tintColor}) => (
@@ -114,17 +137,17 @@ export default class App extends React.Component {
     );
 
     return (
-     //main Stack
-     <NavigationContainer>
-       <Stack.Navigator
-         initialRouteName="Login"
-         screenOptions={{
-           headerShown: false,
-         }}>
-         <Stack.Screen name="Main" children={createHomeStack}></Stack.Screen>
-         <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
-       </Stack.Navigator>
-     </NavigationContainer>
+      //main Stack
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="Login"
+          screenOptions={{
+            headerShown: false,
+          }}>
+          <Stack.Screen name="Main" children={createHomeStack}></Stack.Screen>
+          <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
+        </Stack.Navigator>
+      </NavigationContainer>
     );
   }
 }
