@@ -8,7 +8,7 @@ export default class ArticlesList extends Component {
     return (
       <FlatGrid
         style={styles.gridView}
-        itemDimension={140}
+        itemDimension={160}
         data={this.props.items}
         renderItem={({item}) => (
           <ArticleCard info={item} detail={this.props.detail} />
@@ -23,5 +23,6 @@ export default class ArticlesList extends Component {
 const styles = StyleSheet.create({
   gridView: {
     marginHorizontal: 20,
+    marginTop:-20
   },
 });

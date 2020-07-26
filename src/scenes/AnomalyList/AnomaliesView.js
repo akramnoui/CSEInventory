@@ -9,7 +9,7 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
-import InputField from './InputField';
+import InputField from '../GoodsList/InputField';
 import Filters from './Filters';
 import AppBar from './AppBar';
 import AnomaliesList from './AnomaliesList';
@@ -107,13 +107,15 @@ export default class AnomaliesView extends Component {
                     flex: 0.5,
                   }}>
                   <Text>
-                    <Icon name="menu" size={24} color="black" />
+                    <Icon name="menu" size={24} color="#3498DB" />
                   </Text>
                 </TouchableOpacity>
                 <Text
                   style={{
                     flexDirection: 'row',
-                    justifyContent: 'flex-start',
+                    fontWeight: 'bold',
+                    fontSize: 16,
+                    color: '#3498DB',
                   }}>
                   Anomalies
                 </Text>
@@ -123,7 +125,7 @@ export default class AnomaliesView extends Component {
               ph="Search..."
               changeHandler={this.setQuery.bind(this)}
             />
-            <ScrollView>
+            <ScrollView style={{marginTop:10}}>
               <AnomaliesList items={this.state.items} detail={this._detail} />
             </ScrollView>
           </View>
@@ -131,7 +133,7 @@ export default class AnomaliesView extends Component {
 
         <FAB
           style={styles.fab}
-          color="black"
+          color="#102236"
           medium
           icon="plus"
           theme={{colors: {accent: 'white'}}}
@@ -153,7 +155,7 @@ const styles = {
   },
   mainContainer: {
     flex: 1.0,
-    backgroundColor: 'white',
+    backgroundColor: '#E8F1F5',
   },
   safeAreaStyle: {
     flex: 1.0,
@@ -197,11 +199,13 @@ const styles = {
   },
   appBar: {
     flexDirection: 'row',
-    height: 60,
-    marginTop: 25,
+    height: 40,
+    marginTop: 15,
+    marginHorizontal: 30,
+    marginBottom:10,
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
   },
 };
