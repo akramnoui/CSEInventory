@@ -2,7 +2,7 @@
 
 # CSE Inventory
 
->A mobile app that allows you to keep track of the club's inventory and edfine a workflow for usage of the club's Belongings
+>A mobile app that allows you to keep track of the club's inventory and define a workflow for using the club's Belongings
 
 
 ## Authors
