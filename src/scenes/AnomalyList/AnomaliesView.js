@@ -125,7 +125,7 @@ export default class AnomaliesView extends Component {
               ph="Search..."
               changeHandler={this.setQuery.bind(this)}
             />
-            <ScrollView style={{marginTop:10}}>
+            <ScrollView style={{marginTop: 10}}>
               <AnomaliesList items={this.state.items} detail={this._detail} />
             </ScrollView>
           </View>
@@ -202,7 +202,7 @@ const styles = {
     height: 40,
     marginTop: 15,
     marginHorizontal: 30,
-    marginBottom:10,
+    marginBottom: 10,
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
