@@ -10,6 +10,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.11.0",
     "@react-native-community/cli-platform-android": "^4.10.1",
     "@react-native-community/masked-view": "^0.1.10",
     "@react-navigation/bottom-tabs": "^5.7.2",
@@ -18,6 +19,7 @@
     "@react-navigation/native": "^5.7.1",
     "@react-navigation/stack": "^5.7.1",
     "moment": "^2.27.0",
+    "querystring": "^0.2.0",
     "react": "16.13.1",
     "react-native": "0.63.2",
     "react-native-calendars": "^1.300.0",
