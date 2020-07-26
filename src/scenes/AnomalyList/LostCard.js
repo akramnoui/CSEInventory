@@ -2,12 +2,15 @@ import React, {Component} from 'react';
 import {Image, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 
 export default class LostCard extends Component {
+  componentDidMount(){
+    console.log(  'heeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeey ' + this.props.info.reportTitle)
+  }
   render() {
     return (
       <TouchableOpacity style={styles.container} onPress={this.props.detail}>
         <View>
           <Image
-            source={{uri: this.props.info.reportImage}}
+            source={{uri: this.props.info.objectImage}}
             style={{
               height: 126,
               width: 300,

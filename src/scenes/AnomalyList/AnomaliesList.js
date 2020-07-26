@@ -4,6 +4,7 @@ import AnomalyCard from './AnomalyCard';
 import {FlatGrid} from 'react-native-super-grid';
 
 export default class AnomaliesList extends Component {
+  
   render() {
     return (
       <FlatGrid

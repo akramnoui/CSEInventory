@@ -2,12 +2,15 @@ import React, {Component} from 'react';
 import {Image, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 
 export default class AnomalyCard extends Component {
+  componentDidMount(){
+    console.log(this.props.info.reportImage)
+  }
   render() {
     return (
       <TouchableOpacity style={styles.container} onPress={this.props.detail}>
         <View>
           <Image
-            source={{uri: this.props.info.objectImage}}
+            source={{uri: this.props.info.reportImage}}
             style={{
               height: 126,
               width: 300,
