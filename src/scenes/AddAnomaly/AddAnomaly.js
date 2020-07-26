@@ -111,19 +111,39 @@ export default class AddAnomaly extends Component {
     ];
 
     return (
-      <KeyboardAvoidingView behavior="height" style={{flex: 1, margin: 30}}>
-        <SafeAreaView style={{flex: 1, justifyContent: 'flex-end'}}>
-          <IconButton
-            color="#000"
-            size={25}
-            icon="keyboard-backspace"
-            style={{
-              alignSelf: 'flex-start',
-            }}
-            onPress={() => {
-              this.props.navigation.goBack(null);
-            }}
-          />
+      <KeyboardAvoidingView behavior="height" style={{flex: 1}}>
+        <SafeAreaView
+          style={{
+            flex: 1,
+            justifyContent: 'flex-end',
+            backgroundColor: '#E8F1F5',
+            paddingTop: 5,
+            padding: 30,
+          }}>
+          <View style={{flexDirection: 'row'}}>
+            <View style={styles.appBar}>
+              <TouchableOpacity
+                onPress={() => {
+                  this.props.navigation.goBack(null);
+                }}
+                style={{
+                  flexDirection: 'row',
+                }}>
+                <Text>
+                  <Icon name="keyboard-backspace" size={24} color="#3498DB" />
+                </Text>
+              </TouchableOpacity>
+              <Text
+                style={{
+                  flexDirection: 'row',
+                  fontWeight: 'bold',
+                  fontSize: 16,
+                  color: '#3498DB',
+                }}>
+                Add anomaly
+              </Text>
+            </View>
+          </View>
           <View>
             <Image
               source={
@@ -201,7 +221,7 @@ const styles = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#000',
+    backgroundColor: '#3498DB',
     fontWeight: 'bold',
   },
   input: {
@@ -211,7 +231,7 @@ const styles = StyleSheet.create({
     color: '#000',
     marginTop: 10,
     marginBottom: 5,
-    backgroundColor: '#EEE',
+    backgroundColor: '#FFF',
   },
   inputMulti: {
     textAlignVertical: 'top',
@@ -219,10 +239,22 @@ const styles = StyleSheet.create({
     padding: 10,
     color: '#000',
     marginVertical: 5,
-    backgroundColor: '#EEE',
+    backgroundColor: '#FFF',
   },
   dropDown: {
     borderRadius: 5,
     color: '#000',
+    paddingLeft: 10,
+    marginBottom: 10,
+  },
+  appBar: {
+    flexDirection: 'row',
+    height: 40,
+    marginTop: 15,
+    marginBottom: 10,
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });

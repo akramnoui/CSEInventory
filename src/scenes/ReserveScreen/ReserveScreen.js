@@ -12,6 +12,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import DateRangePicker from './DateRangePicker';
 import {IconButton} from 'react-native-paper';
 import {ScrollView} from 'react-native-gesture-handler';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default class ReserveScreen extends Component {
   constructor(props) {
@@ -66,20 +67,35 @@ export default class ReserveScreen extends Component {
 
   render() {
     return (
-      <SafeAreaView style={{flex: 1}}>
-        <IconButton
-          color="#000"
-          size={25}
-          icon="keyboard-backspace"
-          style={{
-            alignSelf: 'flex-start',
-          }}
-          onPress={() => {
-            this.props.navigation.goBack(null);
-          }}
-        />
+      <SafeAreaView style={{flex: 1, backgroundColor: '#E8F1F5'}}>
+        <View style={{flexDirection: 'row'}}>
+          <View style={styles.appBar}>
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.goBack(null);
+              }}
+              style={{
+                flexDirection: 'row',
+              }}>
+              <Text>
+                <Icon name="keyboard-backspace" size={24} color="#3498DB" />
+              </Text>
+            </TouchableOpacity>
+            <Text
+              style={{
+                flexDirection: 'row',
+                fontWeight: 'bold',
+                fontSize: 16,
+                color: '#3498DB',
+              }}>
+              Articles
+            </Text>
+          </View>
+        </View>
         <ScrollView style={{flex: 1}}>
-          <KeyboardAvoidingView behavior="height" style={{padding: 30}}>
+          <KeyboardAvoidingView
+            behavior="height"
+            style={{paddingTop: 5, padding: 30}}>
             <View>
               <Image
                 source={{
@@ -150,7 +166,7 @@ export default class ReserveScreen extends Component {
               onSuccess={(s, e) => {
                 this.setState({startDate: s, endDate: e});
               }}
-              theme={{markColor: 'black', markTextColor: 'white'}}
+              theme={{markColor: '#3498DB', markTextColor: 'white'}}
             />
 
             <TouchableOpacity
@@ -182,7 +198,7 @@ const styles = StyleSheet.create({
     color: '#000',
     marginTop: 10,
     marginBottom: 5,
-    backgroundColor: '#EEE',
+    backgroundColor: '#FFF',
   },
   inputMulti: {
     textAlignVertical: 'top',
@@ -190,15 +206,27 @@ const styles = StyleSheet.create({
     padding: 10,
     color: '#000',
     marginVertical: 5,
-    backgroundColor: '#EEE',
+    marginBottom: 10,
+    backgroundColor: '#FFF',
   },
   Button: {
     borderRadius: 5,
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#000',
+    backgroundColor: '#3498DB',
     fontWeight: 'bold',
     marginTop: 20,
+  },
+  appBar: {
+    flexDirection: 'row',
+    height: 40,
+    marginTop: 15,
+    marginHorizontal: 30,
+    marginBottom: 10,
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });

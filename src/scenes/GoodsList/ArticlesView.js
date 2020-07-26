@@ -191,7 +191,7 @@ const styles = {
     height: 40,
     marginTop: 15,
     marginHorizontal: 30,
-    marginBottom:10,
+    marginBottom: 10,
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',

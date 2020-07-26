@@ -23,6 +23,6 @@ export default class AnomaliesList extends Component {
 const styles = StyleSheet.create({
   gridView: {
     marginHorizontal: 20,
-    marginTop:-20
+    marginTop: -20,
   },
 });

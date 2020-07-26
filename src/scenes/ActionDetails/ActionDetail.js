@@ -18,20 +18,31 @@ class ActionDetail extends React.Component {
   render() {
     return (
       <SafeAreaView style={styles.mainContainer}>
-        <View style={styles.Header}>
-          <Text style={{fontSize: 18}}>Action Detail</Text>
-          <TouchableOpacity
-            //onPress={this._openDrawer}
-            onPress={() => {this.props.navigation.navigate('Home')}}
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'flex-start',
-              flex: 0.8,
-            }}>
-            <Text>
-              <Icon name="keyboard-backspace" size={24} color="black" />
+        <View style={{flexDirection: 'row'}}>
+          <View style={styles.appBar}>
+            <TouchableOpacity
+              onPress={() => {
+                this.props.navigation.goBack('null');
+              }}
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'flex-start',
+                flex: 0.5,
+              }}>
+              <Text>
+                <Icon name="keyboard-backspace" size={24} color="#3498DB" />
+              </Text>
+            </TouchableOpacity>
+            <Text
+              style={{
+                flexDirection: 'row',
+                fontWeight: 'bold',
+                fontSize: 16,
+                color: '#3498DB',
+              }}>
+              Anomalies
             </Text>
-          </TouchableOpacity>
+          </View>
         </View>
 
         <View style={styles.image}>
@@ -47,6 +58,7 @@ class ActionDetail extends React.Component {
           <Chip
             icon="information"
             onPress={() => console.log('Pressed')}
+            mode="outlined"
             style={{height: 34}}>
             Example Chip
           </Chip>
@@ -98,10 +110,9 @@ const styles = StyleSheet.create({
   mainContainer: {
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    paddingTop: 20,
     alignItems: 'center',
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#E8F1F5',
   },
   Header: {
     display: 'flex',
@@ -117,9 +128,9 @@ const styles = StyleSheet.create({
   },
   container: {
     height: 60,
-    width: 300,
+    width: 320,
     marginBottom: 10,
-    backgroundColor: '#F8F8F8',
+    backgroundColor: '#E8F1F5',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'flex-start',
@@ -145,6 +156,17 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginLeft: 50,
     color: 'grey',
+  },
+  appBar: {
+    flexDirection: 'row',
+    height: 40,
+    marginTop: 15,
+    marginHorizontal: 30,
+    marginBottom: 10,
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });
 
