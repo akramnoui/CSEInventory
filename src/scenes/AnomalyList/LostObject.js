@@ -16,6 +16,8 @@ import AnomaliesList from './AnomaliesList';
 import Drawer from 'react-native-drawer';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {FAB} from 'react-native-paper';
+import LostCard from './AnomalyCard';
+import {FlatGrid} from 'react-native-super-grid';
 
 export default class LostObject extends Component {
   constructor(props) {
@@ -27,19 +29,15 @@ export default class LostObject extends Component {
     };
   }
   async  componentDidMount(){
-    const response = await fetch('https://cse-inventory-api.herokuapp.com/lostobjects/all')
-  const results = await response.json()
-  console.log(results)
-  this.setState({
-    items: results.allReports
+   const response = await fetch('https://cse-inventory-api.herokuapp.com/lostobjects/all')
+ const results = await response.json()
+ console.log(results)
+   this.setState({
+     items: results
   })
-  }
+   }
 
-  setQuery = (query) => {
-    this.setState({query: query});
 
-    //Execute search request
-  };
   _openDrawer = () => this.props.navigation.openDrawer();
   _detail = () => this.props.navigation.push('Item');
 
@@ -74,10 +72,18 @@ export default class LostObject extends Component {
             </View>
             <InputField
               ph="Search..."
-              changeHandler={this.setQuery.bind(this)}
             />
             <ScrollView style={{marginTop: 10}}>
-              <AnomaliesList items={this.state.items} detail={this._detail} />
+                    <FlatGrid
+                style={styles.gridView}
+                itemDimension={160}
+                data={this.state.items}
+                renderItem={({item}) => (
+                  <LostCard info={item} detail={this.state.detail} />
+                )}
+                itemContainerStyle={{alignItems: 'center'}}
+                spacing={20}
+              />
             </ScrollView>
           </View>
         </View>

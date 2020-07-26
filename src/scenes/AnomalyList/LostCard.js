@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {Image, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 
-export default class AnomalyCard extends Component {
+export default class LostCard extends Component {
   render() {
     return (
       <TouchableOpacity style={styles.container} onPress={this.props.detail}>
         <View>
           <Image
-            source={{uri: this.props.info.objectImage}}
+            source={{uri: this.props.info.reportImage}}
             style={{
               height: 126,
               width: 300,
@@ -27,7 +27,7 @@ export default class AnomalyCard extends Component {
               {this.props.info.reportTitle}
             </Text>
             <Text numberOfLines={2} style={styles.description}>
-             
+               10 am in the spot
             </Text>
           </View>
         </View>

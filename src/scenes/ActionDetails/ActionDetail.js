@@ -62,15 +62,15 @@ class ActionDetail extends React.Component {
             onPress={() => console.log('Pressed')}
             mode="outlined"
             style={{height: 34}}>
-            Example Chip
+             Broken Item
           </Chip>
           <Text style={{fontSize: 12}}> 21/10/2019 to 20/05/2019</Text>
         </View>
 
         <Actioner />
         <View style={styles.description}>
-          <Text style={{fontSize: 25}}>Object Title</Text>
-          <Text>lorem Ipsum doloeq maor festi dzq qsrgfvs</Text>
+          <Text style={{fontSize: 25}}>Banner Broken </Text>
+          <Text>This banner was broken during the event </Text>
         </View>
       </SafeAreaView>
     );
@@ -89,7 +89,7 @@ const Actioner = () => (
     />
     <View style={styles.infos}>
       <Text style={styles.NameText}>John Doe</Text>
-      <Text style={styles.itemText}>DD/MM/YYYY</Text>
+      <Text style={styles.itemText}>23/04/2020</Text>
     </View>
   </SafeAreaView>
 );

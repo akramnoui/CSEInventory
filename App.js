@@ -147,7 +147,7 @@ export default class App extends React.Component {
         />
         <MaterialBottomTabs.Screen
           name="MissingObjects"
-          children={LostObject}
+          component={LostObject}
           options={{
             tabBarLabel: 'Objets perdus',
             tabBarIcon: ({focused, tintColor}) => (
