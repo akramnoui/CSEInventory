@@ -137,6 +137,7 @@ export default class AnomaliesView extends Component {
           theme={{colors: {accent: 'white'}}}
           onPress={() => {this.props.navigation.push('')}}
         />
+        
       </SafeAreaView>
     );
   }

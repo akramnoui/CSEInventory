@@ -24,6 +24,7 @@ import ProfileScreen from './src/scenes/ProfileScreen/index';
 import DrawerContent from './src/scenes/DrawerContent/DrawerContent';
 import AddAnomaly from './src/scenes/AddAnomaly/AddAnomaly';
 import AnomaliesView from './src/scenes/AnomalyList/AnomaliesView';
+import ReserveScreen from './src/scenes/ReserveScreen/ReserveScreen';
 
 import {
   SafeAreaView,
@@ -113,17 +114,17 @@ export default class App extends React.Component {
     );
 
     return (
-      //main Stack
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="Login"
-          screenOptions={{
-            headerShown: false,
-          }}>
-          <Stack.Screen name="Main" children={createHomeStack}></Stack.Screen>
-          <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
-        </Stack.Navigator>
-      </NavigationContainer>
+     //main Stack
+     <NavigationContainer>
+       <Stack.Navigator
+         initialRouteName="Login"
+         screenOptions={{
+           headerShown: false,
+         }}>
+         <Stack.Screen name="Main" children={createHomeStack}></Stack.Screen>
+         <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
+       </Stack.Navigator>
+     </NavigationContainer>
     );
   }
 }
