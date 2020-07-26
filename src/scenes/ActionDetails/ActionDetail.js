@@ -36,7 +36,9 @@ class ActionDetail extends React.Component {
 
         <View style={styles.image}>
           <Image
-            style={{height: '100%', width: '100%', resizeMode: 'cover'}}
+            style={{height: '100%', width: '100%', borderRadius: 10,
+            resizeMode: 'cover'}}
+            
             source={{
               uri:
                 'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
@@ -84,7 +86,7 @@ const styles = StyleSheet.create({
   description: {
     flexDirection: 'column',
     alignItems: 'flex-start',
-    marginTop: 15,
+    margin: 20,
   },
   ActionType: {
     height: 55,
@@ -114,11 +116,12 @@ const styles = StyleSheet.create({
     width: '80%',
     height: 180,
     backgroundColor: 'grey',
+    borderRadius: 100 ,
   },
   container: {
     height: 60,
     width: 300,
-    marginBottom: 10,
+    margin: 15,
     backgroundColor: '#F8F8F8',
     display: 'flex',
     flexDirection: 'row',
