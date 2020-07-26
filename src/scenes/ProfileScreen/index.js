@@ -72,7 +72,9 @@ class ProfileScreen extends React.Component {
               <Text style={styles.userName}>John Doe</Text>
             </View>
             <View style={{flexDirection: 'row'}}>
-              <Text style={{color:'#fff', fontSize:16}}>Article à rendre</Text>
+              <Text style={{color: '#fff', fontSize: 16}}>
+                Article à rendre
+              </Text>
             </View>
           </View>
           <ScrollView style={{flex: 1}}>
@@ -106,12 +108,12 @@ const styles = StyleSheet.create({
   },
 
   topView: {
-    height: 301,
     width: '100%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-start',
     flex: 1,
+    marginBottom: 30,
   },
   userName: {
     color: 'white',
