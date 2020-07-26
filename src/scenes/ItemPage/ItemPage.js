@@ -14,9 +14,22 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 import {IconButton} from 'react-native-paper';
 
 class ItemPage extends React.Component {
-  _goBack = () => this.props.navigation.navigate('Home');
+  constructor(props) {
+    super(props);
+    this.state = {
+      item: '',
+    };
+  }
+  componentDidMount(){
+    console.log(this.props.route.params.display)
+     this.setState({
+       item: this.props.route.params.display
+     })
+     console.log(this.state.item)
+  }
 
-  state = {};
+
+  _goBack = () => this.props.navigation.navigate('Home');
   render() {
     return (
       <SafeAreaView style={styles.container}>
@@ -33,7 +46,16 @@ class ItemPage extends React.Component {
             this.props.navigation.goBack(null);
           }}
         />
-        <TopView></TopView>
+         <View style={styles.topView}>
+        <View style={styles.ItemImage}>
+          <Image
+            style={{height: "100%", width: "100%", resizeMode: 'cover'}}
+            source={{uri: this.state.item.objectImage}}
+          />
+        </View>
+
+      <Text style={styles.articles}>Baniére Hack it 3</Text>
+    </View>
         <View style={styles.bottomView}>
           <Text
             style={{
@@ -45,9 +67,9 @@ class ItemPage extends React.Component {
               marginLeft: 20,
               color: 'white',
             }}>
-            Baniére hack It 3
+            {this.state.item.objectName}
           </Text>
-          <Disponible disponible="true"></Disponible>
+          <Disponible disponible="false"></Disponible>
 
           <View
             style={{
@@ -80,10 +102,7 @@ const TopView = () => {
       <View style={styles.ItemImage}>
         <Image
           style={{height: '100%', width: '100%', resizeMode: 'cover'}}
-          source={{
-            uri:
-              'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-          }}
+          source={{uri: this.props.image}}
         />
       </View>
 

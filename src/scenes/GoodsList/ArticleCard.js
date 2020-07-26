@@ -7,7 +7,7 @@ export default class ArticleCard extends Component {
       <TouchableOpacity style={styles.container} onPress={this.props.detail}>
         <View>
           <Image
-            source={{uri: this.props.info.uri}}
+            source={{uri: this.props.info.objectImage}}
             style={{
               height: 126,
               width: 300,
@@ -24,10 +24,10 @@ export default class ArticleCard extends Component {
               justifyContent: 'center',
             }}>
             <Text numberOfLines={1} style={styles.title}>
-              {this.props.info.title}
+              {this.props.info.objectName}
             </Text>
             <Text numberOfLines={2} style={styles.description}>
-              {this.props.info.description}
+              {this.props.info.objectState}
             </Text>
           </View>
         </View>

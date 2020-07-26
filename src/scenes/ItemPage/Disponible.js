@@ -12,7 +12,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 class ItemPage extends React.Component {
     state = {  }
     render() {
-         if (this.props.disponible ) {return (
+         if (this.props.disponible ==  true) {return (
             
           
                 <View   style={styles.container}>

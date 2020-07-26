@@ -36,6 +36,7 @@ class LoginScreen extends React.Component {
   };
   _login = () => {
     this.props.navigation.navigate('Main');
+    console.log('heeeeeeeeeey');
   };
   render() {
     return (

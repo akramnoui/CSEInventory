@@ -8,6 +8,7 @@
     "start": "react-native start",
     "test": "jest",
     "lint": "eslint ."
+
   },
   "dependencies": {
     "@react-native-community/cli-platform-android": "^4.10.1",
@@ -19,6 +20,7 @@
     "@react-navigation/stack": "^5.7.1",
     "moment": "^2.27.0",
     "react": "16.13.1",
+    "react-devtools": "^4.8.2",
     "react-native": "0.63.2",
     "react-native-calendars": "^1.300.0",
     "react-native-cli": "^2.0.1",

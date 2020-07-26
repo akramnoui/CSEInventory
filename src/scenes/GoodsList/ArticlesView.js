@@ -16,6 +16,8 @@ import AppBar from './AppBar';
 import ArticlesList from './ArticlesList';
 import Drawer from 'react-native-drawer';
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import {FlatGrid} from 'react-native-super-grid';
+
 
 export default class ArticlesView extends Component {
   constructor(props) {
@@ -23,66 +25,16 @@ export default class ArticlesView extends Component {
     this.state = {
       filter: '',
       query: '',
-      items: [
-        {
-          uri:
-            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-          title: 'Object Name 1',
-          description:
-            'loob lcccccccccccccccccccccccccccccccccccccccccccccccccccccccccsssssssssoob loob',
-          occurence: 2,
-          state: 'Broken',
-        },
-        {
-          uri:
-            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-          title: 'Object Name 2',
-          description: 'loob loob loob',
-          occurence: 2,
-          state: 'Broken',
-        },
-        {
-          uri:
-            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-          title: 'Object Name 2',
-          description: 'loob loob loob',
-          occurence: 2,
-          state: 'Broken',
-        },
-        {
-          uri:
-            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-          title: 'Object Name 2',
-          description: 'loob loob loob',
-          occurence: 2,
-          state: 'Broken',
-        },
-        {
-          uri:
-            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-          title: 'Object Name 2',
-          description: 'loob loob loob',
-          occurence: 2,
-          state: 'Broken',
-        },
-        {
-          uri:
-            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-          title: 'Object Name 2',
-          description: 'loob loob loob',
-          occurence: 2,
-          state: 'Broken',
-        },
-        {
-          uri:
-            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-          title: 'Object Name 2',
-          description: 'loob loob loob',
-          occurence: 2,
-          state: 'Broken',
-        },
-      ],
+      items: [] , 
     };
+  }
+  async  componentDidMount(){
+    const response = await fetch('https://cse-inventory-api.herokuapp.com/items/all')
+  const results = await response.json()
+  console.log(results)
+  this.setState({
+    items: results 
+  })
   }
 
   setQuery = (query) => {
@@ -132,7 +84,16 @@ export default class ArticlesView extends Component {
             />
             <Filters changeHandler={this.setFilter.bind(this)} />
             <ScrollView>
-              <ArticlesList items={this.state.items} detail={this._detail} />
+                    <FlatGrid
+                style={styles.gridView}
+                itemDimension={160}
+                data={this.state.items}
+                renderItem={({item}) => (
+                  <ArticleCard info={item} detail={() => this.props.navigation.push('Item' , {display: item })} />
+                )}
+                itemContainerStyle={{alignItems: 'center'}}
+                spacing={30}
+              />
             </ScrollView>
           </View>
         </View>
@@ -142,6 +103,10 @@ export default class ArticlesView extends Component {
 }
 
 const styles = {
+  gridView: {
+    marginHorizontal: 20,
+    marginTop:-20
+  }, 
   mainContainer: {
     flex: 1.0,
     backgroundColor: '#E8F1F5',

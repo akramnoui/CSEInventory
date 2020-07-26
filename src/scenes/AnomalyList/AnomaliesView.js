@@ -23,65 +23,16 @@ export default class AnomaliesView extends Component {
     this.state = {
       filter: '',
       query: '',
-      items: [
-        {
-          uri:
-            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-          title: 'della3 1',
-          description: 'loob loob loob',
-          occurence: 2,
-          state: 'Broken',
-        },
-        {
-          uri:
-            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-          title: 'della3 2',
-          description: 'loob loob loob',
-          occurence: 2,
-          state: 'Broken',
-        },
-        {
-          uri:
-            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-          title: 'della3 2',
-          description: 'loob loob loob',
-          occurence: 2,
-          state: 'Broken',
-        },
-        {
-          uri:
-            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-          title: 'della3 2',
-          description: 'loob loob loob',
-          occurence: 2,
-          state: 'Broken',
-        },
-        {
-          uri:
-            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-          title: 'della3 2',
-          description: 'loob loob loob',
-          occurence: 2,
-          state: 'Broken',
-        },
-        {
-          uri:
-            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-          title: 'della3 2',
-          description: 'loob loob loob',
-          occurence: 2,
-          state: 'Broken',
-        },
-        {
-          uri:
-            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-          title: 'della3 2',
-          description: 'loob loob loob',
-          occurence: 2,
-          state: 'Broken',
-        },
-      ],
+      items: []
     };
+  }
+  async  componentDidMount(){
+    const response = await fetch('https://cse-inventory-api.herokuapp.com/items/all')
+  const results = await response.json()
+  console.log(results)
+  this.setState({
+    items: results 
+  })
   }
 
   setQuery = (query) => {

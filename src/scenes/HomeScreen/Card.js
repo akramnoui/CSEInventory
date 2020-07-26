@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     right: 0,
     fontSize: 16,
     marginRight: 15,
-    color: '#0009',
+    color: 'red',
     textAlign: 'right',
     flex: 1,
   },

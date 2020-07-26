@@ -74,9 +74,25 @@ const Items = [
 ];
 
 class HomeScreen extends React.Component {
-  state = {
-    search: '',
-  };
+
+constructor(props){
+  super(props);
+  this.state={};
+}
+
+
+  async   componentWillMount(){
+    const response = await fetch('https://cse-inventory-api.herokuapp.com/reservations/all')
+  const results = await response.json()
+  console.log(results)
+  this.setState({
+    items: results.allReservations  ,
+    search: ''
+  })
+  console.log( );
+  }
+
+  
 
   updateSearch = (search) => {
     this.setState({search});
@@ -88,7 +104,6 @@ class HomeScreen extends React.Component {
   _detail = () => this.props.navigation.push('ActionDetail');
 
   render() {
-    const {search} = this.state;
     return (
       <View style={styles.MainView}>
         <View style={{flexDirection: 'row'}}>
@@ -119,18 +134,17 @@ class HomeScreen extends React.Component {
         />
         <FlatList
           style={styles.FlatList}
-          data={Items}
+          data={this.state.items}
           renderItem={({item}) => (
             <TouchableOpacity onPress={this._detail}>
               <Card
-                objectName={item.objectName}
-                user={item.user}
-                itemName={item.item}
-                status={item.status}
-                imageSrc={item.imageSrc}></Card>
+                objectName={item.reservationTitle}
+                user={`${item.reservationBy.userFirstName} ${item.reservationBy.userLastName}` }
+                status={"Booked"}
+                imageSrc={item.objectsNeeded[0].objectImage}></Card>
             </TouchableOpacity>
           )}
-          keyExtractor={(item) => item.id}></FlatList>
+          keyExtractor={(item) => item.reservationTitle}></FlatList>
       </View>
     );
   }
