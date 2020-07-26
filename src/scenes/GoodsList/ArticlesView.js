@@ -27,7 +27,16 @@ export default class ArticlesView extends Component {
         {
           uri:
             'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-          title: 'della3 1',
+          title: 'Object Name 1',
+          description:
+            'loob lcccccccccccccccccccccccccccccccccccccccccccccccccccccccccsssssssssoob loob',
+          occurence: 2,
+          state: 'Broken',
+        },
+        {
+          uri:
+            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
+          title: 'Object Name 2',
           description: 'loob loob loob',
           occurence: 2,
           state: 'Broken',
@@ -35,7 +44,7 @@ export default class ArticlesView extends Component {
         {
           uri:
             'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-          title: 'della3 2',
+          title: 'Object Name 2',
           description: 'loob loob loob',
           occurence: 2,
           state: 'Broken',
@@ -43,7 +52,7 @@ export default class ArticlesView extends Component {
         {
           uri:
             'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-          title: 'della3 2',
+          title: 'Object Name 2',
           description: 'loob loob loob',
           occurence: 2,
           state: 'Broken',
@@ -51,7 +60,7 @@ export default class ArticlesView extends Component {
         {
           uri:
             'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-          title: 'della3 2',
+          title: 'Object Name 2',
           description: 'loob loob loob',
           occurence: 2,
           state: 'Broken',
@@ -59,7 +68,7 @@ export default class ArticlesView extends Component {
         {
           uri:
             'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-          title: 'della3 2',
+          title: 'Object Name 2',
           description: 'loob loob loob',
           occurence: 2,
           state: 'Broken',
@@ -67,15 +76,7 @@ export default class ArticlesView extends Component {
         {
           uri:
             'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-          title: 'della3 2',
-          description: 'loob loob loob',
-          occurence: 2,
-          state: 'Broken',
-        },
-        {
-          uri:
-            'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-          title: 'della3 2',
+          title: 'Object Name 2',
           description: 'loob loob loob',
           occurence: 2,
           state: 'Broken',
@@ -109,17 +110,17 @@ export default class ArticlesView extends Component {
                   onPress={this._openDrawer}
                   style={{
                     flexDirection: 'row',
-                    justifyContent: 'flex-start',
-                    flex: 0.5,
                   }}>
                   <Text>
-                    <Icon name="menu" size={24} color="black" />
+                    <Icon name="menu" size={24} color="#3498DB" />
                   </Text>
                 </TouchableOpacity>
                 <Text
                   style={{
                     flexDirection: 'row',
-                    justifyContent: 'flex-start',
+                    fontWeight: 'bold',
+                    fontSize: 16,
+                    color: '#3498DB',
                   }}>
                   Articles
                 </Text>
@@ -143,11 +144,11 @@ export default class ArticlesView extends Component {
 const styles = {
   mainContainer: {
     flex: 1.0,
-    backgroundColor: 'white',
+    backgroundColor: '#E8F1F5',
   },
   safeAreaStyle: {
     flex: 1.0,
-    backgroundColor: '#3B5998',
+    backgroundColor: '#E8F1F5',
   },
   headerContainer: {
     height: 44,
@@ -187,11 +188,13 @@ const styles = {
   },
   appBar: {
     flexDirection: 'row',
-    height: 60,
-    marginTop: 25,
+    height: 40,
+    marginTop: 15,
+    marginHorizontal: 30,
+    marginBottom:10,
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
   },
 };

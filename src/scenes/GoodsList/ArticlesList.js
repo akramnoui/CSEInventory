@@ -8,24 +8,20 @@ export default class ArticlesList extends Component {
     return (
       <FlatGrid
         style={styles.gridView}
-        itemDimension={120}
+        itemDimension={140}
         data={this.props.items}
         renderItem={({item}) => (
           <ArticleCard info={item} detail={this.props.detail} />
         )}
+        itemContainerStyle={{alignItems: 'center'}}
+        spacing={30}
       />
     );
   }
 }
 
 const styles = StyleSheet.create({
-  sectionHeader: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    padding: 10,
-    marginLeft: 20,
-  },
   gridView: {
-    marginTop: 20,
+    marginHorizontal: 20,
   },
 });

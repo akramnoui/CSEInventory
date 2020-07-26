@@ -39,7 +39,9 @@ class LoginScreen extends React.Component {
   };
   render() {
     return (
-      <KeyboardAvoidingView behavior="height" style={{flex: 1, backgroundColor:"#000"}}>
+      <KeyboardAvoidingView
+        behavior="height"
+        style={{flex: 1, backgroundColor: '#000'}}>
         <TopView></TopView>
         <View style={styles.Form}>
           <TextInput
@@ -76,9 +78,9 @@ const TopView = () => (
           flex: 1,
           flexDirection: 'column',
           alignItems: 'center',
-          justifyContent:"flex-start"
+          justifyContent: 'flex-start',
         }}>
-        <Text style={styles.mainTitle}>Main Title</Text>
+        <Text style={styles.mainTitle}>CSE Inventory</Text>
         <Text style={styles.description}>
           Lorem dolor sit amet consectetur adipisicing elit, sed do.
         </Text>
@@ -94,7 +96,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    resizeMode: "cover",
+    resizeMode: 'cover',
   },
   MainView: {
     height: 10,
@@ -111,16 +113,16 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    resizeMode:"cover",
+    resizeMode: 'cover',
     height: 244,
   },
   Form: {
     paddingTop: 48,
     display: 'flex',
     alignItems: 'center',
-    justifyContent:"flex-end",
-    flex:1,
-    marginVertical:30
+    justifyContent: 'flex-end',
+    flex: 1,
+    marginVertical: 30,
   },
   TextInput: {
     borderWidth: 1,
@@ -128,23 +130,24 @@ const styles = StyleSheet.create({
     width: '85%',
     height: 50,
     marginBottom: 32,
-    borderRadius:5,
-    padding:16,
-    color:"#5AFFFF"
+    borderRadius: 5,
+    padding: 16,
+    color: '#5AFFFF',
   },
   mainTitle: {
     color: 'white',
     fontSize: 25,
     padding: 10,
-    flex:1,
+    flex: 1,
     textAlignVertical: 'bottom',
+    fontFamily: 'Gotham',
   },
   description: {
     color: 'white',
     fontSize: 10,
-    flex:1,
+    flex: 1,
     textAlignVertical: 'bottom',
-    marginBottom:10
+    marginBottom: 10,
   },
   LoginButton: {
     height: 48,
@@ -160,6 +163,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.29,
     shadowRadius: 4.65,
     elevation: 4,
+    borderRadius: 5,
   },
 });
 

@@ -36,6 +36,7 @@ import {
   Text,
   StatusBar,
   Icon,
+  ImageBackground,
 } from 'react-native';
 import {Drawer} from 'react-native-paper';
 import ItemPage from './src/scenes/ItemPage/ItemPage';
@@ -90,7 +91,12 @@ export default class App extends React.Component {
       <MaterialBottomTabs.Navigator
         activeColor="#f0edf6"
         inactiveColor="#707070"
-        barStyle={{backgroundColor: '#000000'}}>
+        barStyle={{
+          backgroundColor: '#102236',
+          marginHorizontal: 10,
+          marginBottom: 15,
+          marginTop: 0,
+        }}>
         <MaterialBottomTabs.Screen
           name="Home"
           style={{marginBottom: 16}}
@@ -101,7 +107,7 @@ export default class App extends React.Component {
               <Ionicons
                 name={`file-tray${focused ? '' : '-outline'}`}
                 size={25}
-                color={`${focused ? 'white' : 'grey'}`}
+                color={`${focused ? '#ECDF0B' : '#ECDF0B99'}`}
               />
             ),
           }}
@@ -115,7 +121,7 @@ export default class App extends React.Component {
               <Ionicons
                 name={`grid${focused ? '' : '-outline'}`}
                 size={25}
-                color={`${focused ? 'white' : 'grey'}`}
+                color={`${focused ? '#ECDF0B' : '#ECDF0B99'}`}
               />
             ),
           }}
@@ -129,7 +135,21 @@ export default class App extends React.Component {
               <Ionicons
                 name={`hammer${focused ? '' : '-outline'}`}
                 size={25}
-                color={`${focused ? 'white' : 'grey'}`}
+                color={`${focused ? '#ECDF0B' : '#ECDF0B99'}`}
+              />
+            ),
+          }}
+        />
+        <MaterialBottomTabs.Screen
+          name="MissingObjects"
+          children={createAnomalyScreen}
+          options={{
+            tabBarLabel: 'Objets perdus',
+            tabBarIcon: ({focused, tintColor}) => (
+              <Ionicons
+                name={`${focused ? 'checkbox-sharp' : 'checkbox-outline'}`}
+                size={25}
+                color={`${focused ? '#ECDF0B' : '#ECDF0B99'}`}
               />
             ),
           }}
@@ -139,16 +159,16 @@ export default class App extends React.Component {
 
     return (
       //main Stack
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="Login"
-          screenOptions={{
-            headerShown: false,
-          }}>
-          <Stack.Screen name="Main" children={createHomeStack}></Stack.Screen>
-          <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
-        </Stack.Navigator>
-      </NavigationContainer>
+       <NavigationContainer>
+         <Stack.Navigator
+           initialRouteName="Login"
+           screenOptions={{
+             headerShown: false,
+           }}>
+           <Stack.Screen name="Main" children={createHomeStack}></Stack.Screen>
+           <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
+         </Stack.Navigator>
+       </NavigationContainer>
     );
   }
 }

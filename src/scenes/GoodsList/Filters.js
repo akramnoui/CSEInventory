@@ -32,7 +32,7 @@ export default class Filters extends Component {
           justifyContent: 'center',
           marginBottom: 5,
         }}>
-        <Text style={{flex: 0.5, textTransform: 'capitalize'}}>
+        <Text style={{flex: 0.5, textTransform: 'capitalize', color:"#102236"}}>
           {this.state.value}
         </Text>
         <ToggleButton.Group
@@ -41,15 +41,15 @@ export default class Filters extends Component {
           }}
           value={this.state.value}>
           <ToggleButton
-            icon={() => <Icon name="move-to-inbox" size={24} color="black" />}
+            icon={() => <Icon name="move-to-inbox" size={24} color="#102236" />}
             value="mobile"
           />
           <ToggleButton
-            icon={() => <Icon name="home" size={24} color="black" />}
+            icon={() => <Icon name="home" size={24} color="#102236" />}
             value="immobile"
           />
           <ToggleButton
-            icon={() => <Icon name="mood-bad" size={24} color="black" />}
+            icon={() => <Icon name="mood-bad" size={24} color="#102236" />}
             value="abimé"
           />
         </ToggleButton.Group>

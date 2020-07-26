@@ -30,10 +30,11 @@ export default class InputField extends Component {
             this.setState({query: text});
           }}
           placeholder={this.props.ph}
+          placeholderTextColor="#3498DB44"
         />
         <TouchableOpacity onPress={this.executeSearch.bind(this)}>
           <Text>
-            <Icon name="search" size={24} color="white" />
+            <Icon name="search" size={24} color="#3498DB" />
           </Text>
         </TouchableOpacity>
       </View>
@@ -47,24 +48,16 @@ const styles = StyleSheet.create({
     height: 40,
     padding: 10,
     marginRight: 15,
-    color: 'white',
+    color: '#3498DB',
   },
   container: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: 30,
-    backgroundColor: '#222',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 3,
-    },
-    shadowOpacity: 0.29,
-    shadowRadius: 4.65,
-    elevation: 7,
-    padding: 10,
-    borderRadius: 5,
+    backgroundColor: '#fff',
+    padding: 3,
+    borderRadius: 4,
     marginVertical: 0,
   },
 });
