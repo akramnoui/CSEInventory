@@ -41,7 +41,7 @@ import {
 import {Drawer} from 'react-native-paper';
 import ItemPage from './src/scenes/ItemPage/ItemPage';
 import ArticlesList from './src/scenes/GoodsList/ArticlesList';
-import AddOP from './src/scenes/AddOP/AddOP'
+import AddOP from './src/scenes/AddOP/AddOP';
 
 const DrawerNav = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -61,7 +61,7 @@ export default class App extends React.Component {
         initialRouteName="Main"
         drawerContent={(props) => <DrawerContent {...props} />}>
         <DrawerNav.Screen name="Home" children={createBottomTabs} />
-        <DrawerNav.Screen name="Report a missing object" component={AddOP}/>
+        <DrawerNav.Screen name="Report a missing object" component={AddOP} />
         <DrawerNav.Screen name="Report an anomaly" component={AddAnomaly} />
         <DrawerNav.Screen name="Profile" component={ProfileScreen} />
       </DrawerNav.Navigator>
@@ -69,6 +69,7 @@ export default class App extends React.Component {
     createActionInfo = () => (
       <ActionStack.Navigator initialRouteName="Home" headerMode="none">
         <ActionStack.Screen name="ActionDetail" component={ActionDetail} />
+        <ActionStack.Screen name="Profile" component={ProfileScreen} />
         <ActionStack.Screen name="Home" component={HomeScreen} />
       </ActionStack.Navigator>
     );
@@ -162,16 +163,16 @@ export default class App extends React.Component {
 
     return (
       //main Stack
-       <NavigationContainer>
-         <Stack.Navigator
-           initialRouteName="Login"
-           screenOptions={{
-             headerShown: false,
-           }}>
-           <Stack.Screen name="Main" children={createHomeStack}></Stack.Screen>
-           <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
-         </Stack.Navigator>
-       </NavigationContainer>
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="Login"
+          screenOptions={{
+            headerShown: false,
+          }}>
+          <Stack.Screen name="Main" children={createHomeStack}></Stack.Screen>
+          <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
+        </Stack.Navigator>
+      </NavigationContainer>
     );
   }
 }
