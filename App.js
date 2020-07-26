@@ -20,6 +20,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+
 import ProfileScreen from './src/scenes/ProfileScreen/index';
 import DrawerContent from './src/scenes/DrawerContent/DrawerContent';
 import ActionDetail from './src/scenes/ActionDetails/ActionDetail';
