@@ -96,18 +96,38 @@ export default class AddOP extends Component {
   render() {
     return (
       <KeyboardAvoidingView behavior="height" style={{flex: 1}}>
-        <SafeAreaView style={{flex: 1, justifyContent: 'flex-end'}}>
-          <IconButton
-            color="#000"
-            size={25}
-            icon="keyboard-backspace"
-            style={{
-              alignSelf: 'flex-start',
-            }}
-            onPress={() => {
-              this.props.navigation.goBack(null);
-            }}
-          />
+        <SafeAreaView
+          style={{
+            flex: 1,
+            justifyContent: 'flex-end',
+            backgroundColor: '#E8F1F5',
+            paddingTop: 5,
+            padding: 30,
+          }}>
+          <View style={{flexDirection: 'row'}}>
+            <View style={styles.appBar}>
+              <TouchableOpacity
+                onPress={() => {
+                  this.props.navigation.goBack(null);
+                }}
+                style={{
+                  flexDirection: 'row',
+                }}>
+                <Text>
+                  <Icon name="keyboard-backspace" size={24} color="#3498DB" />
+                </Text>
+              </TouchableOpacity>
+              <Text
+                style={{
+                  flexDirection: 'row',
+                  fontWeight: 'bold',
+                  fontSize: 16,
+                  color: '#3498DB',
+                }}>
+                Add Missing Object
+              </Text>
+            </View>
+          </View>
           <View>
             <Image
               source={
@@ -124,7 +144,6 @@ export default class AddOP extends Component {
                 alignSelf: 'stretch',
                 borderRadius: 10,
                 marginVertical: 5,
-                margin: 30,
               }}
             />
             <IconButton
@@ -178,9 +197,8 @@ const styles = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#000',
+    backgroundColor: '#3498DB',
     fontWeight: 'bold',
-    margin: 30,
   },
   input: {
     height: 40,
@@ -190,7 +208,6 @@ const styles = StyleSheet.create({
     marginTop: 10,
     marginBottom: 5,
     backgroundColor: '#EEE',
-    margin: 30,
   },
   inputMulti: {
     textAlignVertical: 'top',
@@ -199,6 +216,15 @@ const styles = StyleSheet.create({
     color: '#000',
     marginVertical: 5,
     backgroundColor: '#EEE',
-    margin: 30,
+  },
+  appBar: {
+    flexDirection: 'row',
+    height: 40,
+    marginTop: 15,
+    marginBottom: 10,
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
 });

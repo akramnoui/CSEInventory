@@ -13,11 +13,27 @@ import {
   createSwitchNavigator,
   createBottomTabNavigator,
 } from 'react-navigation';
+import qs from 'querystring';
+import AsyncStorage from '@react-native-community/async-storage';
+
 class LoginScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      password: '',
+      isFormValid: false,
+      token: null,
+    };
+    this.storeToken = this.storeToken.bind(this);
+    this.getToken = this.getToken.bind(this);
+  }
+
   state = {
     name: '',
     password: '',
     isFormValid: false,
+    token: null,
   };
 
   getHandler = (key) => (val) => {
@@ -34,9 +50,59 @@ class LoginScreen extends React.Component {
   handlePhoneChange = (password) => {
     this.setState({password});
   };
+
+  storeToken = async (value) => {
+    try {
+      await AsyncStorage.setItem('token', value);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
+  getToken = async () => {
+    try {
+      const response = await AsyncStorage.getItem('token');
+      this.setState({token: response});
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   _login = () => {
-    this.props.navigation.navigate('Main');
-    console.log('heeeeeeeeeey');
+    if (this.state.name == '' || this.state.name == '') {
+      alert('Fill in the form !');
+      return;
+    }
+
+    const user = {
+      email: this.state.name,
+      password: this.state.password,
+    };
+
+    fetch('https://cse-inventory-api.herokuapp.com/users/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+      },
+      body: qs.stringify(user),
+    })
+      .then((response) => response.json()) // returns promise
+      .then((responseJson) => {
+        if (responseJson.token == undefined) {
+          alert('Wrong credentials');
+          return;
+        }
+        this.storeToken(responseJson.token);
+        this.getToken();
+        console.log(this.state.token);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+
+    if (this.state.token != null) {
+      this.props.navigation.navigate('Main');
+    }
   };
   render() {
     return (
