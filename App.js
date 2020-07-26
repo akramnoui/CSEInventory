@@ -23,7 +23,6 @@ import {createMaterialBottomTabNavigator} from '@react-navigation/material-botto
 import ProfileScreen from './src/scenes/ProfileScreen/index';
 import DrawerContent from './src/scenes/DrawerContent/DrawerContent'
 import ActionDetail from "./src/scenes/ActionDetails/ActionDetail"
-import DrawerContent from './src/scenes/DrawerContent/DrawerContent';
 import AddAnomaly from './src/scenes/AddAnomaly/AddAnomaly';
 import AnomaliesView from './src/scenes/AnomalyList/AnomaliesView';
 
@@ -45,6 +44,8 @@ const DrawerNav = createDrawerNavigator();
 const Stack = createStackNavigator();
 const DetailStack = createStackNavigator();
 const ActionStack = createStackNavigator();
+const AnomaliesStack = createStackNavigator();
+
 const MaterialBottomTabs = createMaterialBottomTabNavigator();
 
 
@@ -67,6 +68,11 @@ export default class App extends React.Component {
         <ActionStack.Screen name="ActionDetail" component={ActionDetail } />
         <ActionStack.Screen name="Home" component={HomeScreen}  />
       </ActionStack.Navigator>
+      createAnomalyScreen = () => 
+      <AnomaliesStack.Navigator initialRouteName="AnomaliesView"  headerMode='none'>
+        <AnomaliesStack.Screen name="AnomaliesView" component={AnomaliesView } />
+        <AnomaliesStack.Screen name="AddAnomaly" component={AddAnomaly}  />
+      </AnomaliesStack.Navigator>
 
     
     createItemInfo = () => (
@@ -115,7 +121,7 @@ export default class App extends React.Component {
         />
         <MaterialBottomTabs.Screen
           name="AnomaliesView"
-          component={AnomaliesView}
+          children={createAnomalyScreen}
           options={{
             tabBarLabel: 'Degats',
             tabBarIcon: ({focused, tintColor}) => (
