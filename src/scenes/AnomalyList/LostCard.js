@@ -3,7 +3,7 @@ import {Image, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 
 export default class LostCard extends Component {
   componentDidMount(){
-    console.log(  'heeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeey ' + this.props.info.reportTitle)
+    console.log(  'heey ' + this.props.info.reportTitle)
   }
   render() {
     return (

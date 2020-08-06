@@ -29,12 +29,14 @@ export default class LostObject extends Component {
     };
   }
   async  componentDidMount(){
-   const response = await fetch('https://cse-inventory-api.herokuapp.com/lostobjects/all')
- const results = await response.json()
- console.log(results)
-   this.setState({
-     items: results
-  })
+    
+      const response = await fetch('https://cse-inventory-api.herokuapp.com/lostobjects/all')
+      const results = await response.json()
+      console.log(results)
+      this.setState({
+        items: results
+      })
+
    }
 
 
