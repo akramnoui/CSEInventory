@@ -70,7 +70,7 @@ const TopView = () => {
   return (
     <View style={styles.MainView}>
       <Image
-        source={require('../../assets/login/forgottenPaasword.png')}></Image>
+        source={require('../../assets/login/newPassword.png')}></Image>
     </View>
   );
 };
