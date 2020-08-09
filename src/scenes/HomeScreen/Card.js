@@ -1,4 +1,4 @@
-import {View, SafeAreaView, StyleSheet, Text} from 'react-native';
+import {View, SafeAreaView, StyleSheet, Text , Image} from 'react-native';
 import {Avatar, ThemeConsumer} from 'react-native-elements';
 
 import React from 'react';
@@ -9,9 +9,11 @@ class Card extends React.Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <View style={{flex: 2, flexDirection: 'row'}}>
+        <View style={{flex: 1, flexDirection: 'column'  , justifyContent: 'flex-start'  ,  backgroundColor:'grey'}}>
+
+        <View style={{flexDirection: 'row' , margin: 13}}>
           <Avatar
-            size="medium"
+            size="small"
             containerStyle={styles.Avatar}
             rounded
             source={{uri: this.props.imageSrc}}
@@ -20,18 +22,36 @@ class Card extends React.Component {
             <Text style={styles.NameText}>{this.props.user}</Text>
             <Text style={styles.itemText}>{this.props.objectName}</Text>
           </View>
-        </View>
+          </View>
+          <Text style={styles.status}>{this.props.status}</Text>
+          
 
-        <Text style={styles.status}>{this.props.status}</Text>
+        </View>
+        <View style={styles.objectImage}>
+        <Image
+            source={{uri: this.props.imageSrc}}
+            style={{
+              height: 167,
+              width: 167,
+              resizeMode: 'cover',
+              
+            }}
+          />
+        </View>
       </SafeAreaView>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  objectImage: {
+    height: 167,
+    width: 167,
+  } , 
+
   container: {
-    height: 73,
-    width: 300,
+    height: 172,
+    width: 330,
     backgroundColor: '#F8F8F8',
     display: 'flex',
     flexDirection: 'row',
@@ -46,23 +66,20 @@ const styles = StyleSheet.create({
     display: 'flex',
   },
   Avatar: {
-    marginLeft: 15,
-    marginRight: 20,
+    marginLeft: 3,
+    marginRight: 15,
   },
   NameText: {
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 11,
   },
   itemText: {
-    marginLeft: 3,
   },
   status: {
-    position: 'relative',
-    right: 0,
-    fontSize: 16,
-    marginRight: 15,
-    color: 'red',
-    textAlign: 'right',
+    marginTop: 5 ,
+    marginLeft: 25 , 
+    fontSize: 20,
+    color: '#FFFFFF',
     flex: 1,
   },
 });
