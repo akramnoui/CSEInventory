@@ -20,7 +20,7 @@ const NewPassword = (props) => {
       console.log('password changed');
       // Perform request to backend
       // alert that password has successfully changed
-      Alert.alert(`Password Changed Successfuly`, 'You can newPasswordTitle with your new password');
+      Alert.alert(`Password Changed Successfuly`, 'You can Login with your new password');
       // redirect to newPasswordTitle page
       props.navigation.navigate('Login')
     }
