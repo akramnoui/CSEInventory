@@ -3,9 +3,10 @@ import {
   View,
   StyleSheet,
   Text,
+  Image,
   TextInput,
   TouchableOpacity,
-  KeyboardAvoidingView,
+  ScrollView,
   ImageBackground,
 } from 'react-native';
 import {
@@ -37,13 +38,18 @@ class LoginScreen extends React.Component {
   _login = () => {
     this.props.navigation.navigate('Main');
   };
+  _forgotPassword = () => {
+    this.props.navigation.navigate('ForgotPassword')
+  } 
   render() {
     return (
-      <KeyboardAvoidingView
-        behavior="height"
-        style={{flex: 1, backgroundColor: '#000'}}>
-        <TopView></TopView>
+      <ScrollView behavior="height" style={{backgroundColor: '#000'}}>
+        <TopView />
         <View style={styles.Form}>
+          <View style={styles.formText}>
+            <Text style={styles.login}> Login </Text>
+            <Text style={styles.loginP}> Please sing in to continue </Text>
+          </View>
           <TextInput
             placeholderTextColor="#5AFFFF"
             onChangeText={this.getHandler('name')}
@@ -59,63 +65,57 @@ class LoginScreen extends React.Component {
             secureTextEntry={true}
             placeholder="Password"
           />
+          <TouchableOpacity onPress={this._forgotPassword}>
+            <Text style={styles.forgotPassword}> Forgot Password? </Text>
+          </TouchableOpacity>
           <TouchableOpacity style={styles.LoginButton} onPress={this._login}>
-            <Text style={{color: 'white'}}>log in</Text>
+            <Text style={styles.loginText}>LOG IN</Text>
           </TouchableOpacity>
         </View>
-      </KeyboardAvoidingView>
+      </ScrollView>
     );
   }
 }
 
-const TopView = () => (
-  <View style={styles.topView}>
-    <ImageBackground
-      source={require('../../assets/login/bgTopView.png')}
-      style={styles.image}>
-      <View
-        style={{
-          flex: 1,
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'flex-start',
-        }}>
-        <Text style={styles.mainTitle}>CSE Inventory</Text>
-        <Text style={styles.description}>
-          Lorem dolor sit amet consectetur adipisicing elit, sed do.
-        </Text>
-      </View>
-    </ImageBackground>
-  </View>
-);
+const TopView = () => {
+  return (
+    <View style={styles.MainView}>
+      <Image source={require('../../assets/login/bgTopView.png')}></Image>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
-  image: {
-    display: 'flex',
+  formText: {
+    padding: 20,
+    alignSelf: 'flex-start',
+    alignItems: 'flex-start',
+  },
+  login: {
+    fontFamily: 'Gotham',
+    padding: 5,
+    color: '#FFFFFF',
+    fontSize: 27,
+  },
+  loginP: {
+    padding: 5,
+    color: '#FFFFFF',
+    fontSize: 14,
+  },
+  forgotPassword: {
+    color: '#5AFFFF',
+    alignSelf: 'flex-end',
+  },
+  
+  MainView: {
+    marginTop: 70,
+    height: 100,
     flex: 1,
-    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
-    resizeMode: 'cover',
-  },
-  MainView: {
-    height: 10,
-    flex: 1,
-    backgroundColor: '#ffff',
-  },
-  button: {
-    alignItems: 'center',
-    backgroundColor: '#DDDDDD',
-    padding: 10,
+    backgroundColor: '#000000',
   },
 
-  topView: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    resizeMode: 'cover',
-    height: 244,
-  },
   Form: {
     paddingTop: 48,
     display: 'flex',
@@ -129,30 +129,16 @@ const styles = StyleSheet.create({
     borderColor: '#5AFFFF',
     width: '85%',
     height: 50,
-    marginBottom: 32,
+    marginBottom: 25,
     borderRadius: 5,
     padding: 16,
     color: '#5AFFFF',
   },
-  mainTitle: {
-    color: 'white',
-    fontSize: 25,
-    padding: 10,
-    flex: 1,
-    textAlignVertical: 'bottom',
-    fontFamily: 'Gotham',
-  },
-  description: {
-    color: 'white',
-    fontSize: 10,
-    flex: 1,
-    textAlignVertical: 'bottom',
-    marginBottom: 10,
-  },
+ 
   LoginButton: {
     height: 48,
     width: '85%',
-    backgroundColor: '#3498DB',
+    backgroundColor: '#5AFFFF',
     marginTop: 50,
     justifyContent: 'center',
     alignItems: 'center',
@@ -163,7 +149,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.29,
     shadowRadius: 4.65,
     elevation: 4,
-    borderRadius: 5,
+    borderRadius: 50,
+  },
+  loginText: {
+    color: '#000000',
+    fontSize: 17,
+    fontWeight: 'bold',
   },
 });
 

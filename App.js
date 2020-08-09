@@ -7,7 +7,8 @@
  */
 
 import React, {Component} from 'react';
-
+import ForgotPassword from './src/scenes/LoginScreen/forgotPassword';
+import NewPassword from './src/scenes/LoginScreen/newPassword';
 import LoginScreen from './src/scenes/LoginScreen/index';
 import HomeScreen from './src/scenes/HomeScreen/index';
 import ArticlesView from './src/scenes/GoodsList/ArticlesView';
@@ -42,7 +43,7 @@ import {Drawer} from 'react-native-paper';
 import ItemPage from './src/scenes/ItemPage/ItemPage';
 import ArticlesList from './src/scenes/GoodsList/ArticlesList';
 import AddOP from './src/scenes/AddOP/AddOP';
-import LostObject from './src/scenes/AnomalyList/LostObject'
+import LostObject from './src/scenes/AnomalyList/LostObject';
 
 const DrawerNav = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -56,6 +57,8 @@ const MaterialBottomTabs = createMaterialBottomTabNavigator();
 
 export default class App extends React.Component {
   render() {
+
+
     // Drawer  implementation
     createHomeStack = () => (
       <DrawerNav.Navigator
@@ -172,6 +175,8 @@ export default class App extends React.Component {
           }}>
           <Stack.Screen name="Main" children={createHomeStack}></Stack.Screen>
           <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
+          <Stack.Screen name="ForgotPassword" component={ForgotPassword}></Stack.Screen>
+          <Stack.Screen name="NewPassword" component={NewPassword}></Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     );
