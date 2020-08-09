@@ -2,14 +2,15 @@ import {View, SafeAreaView, StyleSheet, Text , Image} from 'react-native';
 import {Avatar, ThemeConsumer} from 'react-native-elements';
 
 import React from 'react';
-import {color} from 'react-native-reanimated';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
 
 class Card extends React.Component {
   state = {};
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <View style={{flex: 1, flexDirection: 'column'  , justifyContent: 'flex-start'  ,  backgroundColor:'grey'}}>
+        <View style={{ flexDirection: 'column'  , justifyContent: 'flex-start'   }}>
 
         <View style={{flexDirection: 'row' , margin: 13}}>
           <Avatar
@@ -24,6 +25,16 @@ class Card extends React.Component {
           </View>
           </View>
           <Text style={styles.status}>{this.props.status}</Text>
+          <View style={styles.date}> 
+          <Icon   name="arrow-forward" size={26} color="#FFFF" />
+          <Text style={{color:'white' ,marginLeft: 3 , }}> {this.props.startsAt}</Text>
+          </View>
+          <View style={styles.date2}> 
+          <Icon   name="arrow-back" size={26} color="#FFFF" />
+          <Text style={{color:'white' ,marginLeft: 3 , }}> {this.props.startsAt}</Text>
+          </View>
+         
+
           
 
         </View>
@@ -31,8 +42,9 @@ class Card extends React.Component {
         <Image
             source={{uri: this.props.imageSrc}}
             style={{
-              height: 167,
-              width: 167,
+              height: '100%',
+              width: '100%',
+              marginLeft: 9 , 
               resizeMode: 'cover',
               
             }}
@@ -44,22 +56,41 @@ class Card extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  date:{
+    marginTop: 10 , 
+    paddingLeft: 10 , 
+    flexDirection: "row" , 
+    justifyContent: "flex-start" ,
+    alignItems:"center" ,
+    } , 
+    date2:{
+      marginTop: 5 , 
+      paddingLeft: 10 , 
+      flexDirection: "row" , 
+      justifyContent: "flex-start" ,
+      alignItems:"center" ,
+      } , 
+  
+
   objectImage: {
-    height: 167,
-    width: 167,
+    height: '100%',
+    width: 168,
+    borderRadius: 20 , 
   } , 
 
   container: {
+    borderWidth: 1 , 
+    borderColor: '#E8F3FF' , 
     height: 172,
+    overflow: 'hidden' , 
     width: 330,
     backgroundColor: '#F8F8F8',
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
+    backgroundColor:'black' , 
     marginVertical: 10,
     marginHorizontal: 10,
-    borderRadius: 5,
+    borderRadius: 10,
     elevation: 0.5,
   },
   infos: {
@@ -70,17 +101,20 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   NameText: {
+    color: 'white' , 
     fontWeight: 'bold',
-    fontSize: 11,
+    fontSize: 11.5,
   },
   itemText: {
+    color: 'white' , 
+
   },
   status: {
     marginTop: 5 ,
     marginLeft: 25 , 
     fontSize: 20,
     color: '#FFFFFF',
-    flex: 1,
+
   },
 });
 export default Card;

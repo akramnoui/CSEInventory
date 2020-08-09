@@ -30,11 +30,11 @@ export default class InputField extends Component {
             this.setState({query: text});
           }}
           placeholder={this.props.ph}
-          placeholderTextColor="#3498DB44"
+          placeholderTextColor="grey"
         />
         <TouchableOpacity onPress={this.executeSearch.bind(this)}>
           <Text>
-            <Icon name="search" size={24} color="#3498DB" />
+            <Icon name="search" size={24} color="black" />
           </Text>
         </TouchableOpacity>
       </View>

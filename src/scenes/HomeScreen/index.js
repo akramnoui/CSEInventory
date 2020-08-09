@@ -12,6 +12,8 @@ import {SearchBar, withTheme} from 'react-native-elements';
 import Card from './Card';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import InputField from '../GoodsList/InputField';
+import HomeFilters from './HomeFilters';
+
 
 const Items = [
   {
@@ -79,7 +81,11 @@ constructor(props){
   super(props);
   this.state={};
 }
+setFilter = (filter) => {
+  this.setState({filter: filter});
 
+  //Execute filtering request
+};
 
   async   componentWillMount(){
     try {
@@ -92,7 +98,7 @@ constructor(props){
       })
     }
     catch(err) {
-      console.log( 'heeeey' );
+      console.log( 'request error' );
 
     }
   
@@ -112,7 +118,7 @@ constructor(props){
   render() {
     return (
       <View style={styles.MainView}>
-        <View style={{flexDirection: 'row'}}>
+        <View style={{flexDirection: 'row' ,  backgroundColor: '#E8F1F5' , marginBottom: 20 , height: 57 }}>
           <View style={styles.appBar}>
             <TouchableOpacity
               onPress={this._openDrawer}
@@ -138,6 +144,8 @@ constructor(props){
           ph="Search..."
           changeHandler={this.updateSearch.bind(this)}
         />
+        <HomeFilters changeHandler={this.setFilter.bind(this)} />
+
         <FlatList
           style={styles.FlatList}
           data={this.state.items}
@@ -146,6 +154,7 @@ constructor(props){
               <Card
                 objectName={item.reservationTitle}
                 user={`${item.reservationBy.userFirstName} ${item.reservationBy.userLastName}` }
+                startsAt={item.startsAt}
                 status={"Booked"}
                 imageSrc={item.objectsNeeded[0].objectImage}></Card>
             </TouchableOpacity>
@@ -159,6 +168,7 @@ constructor(props){
 const styles = StyleSheet.create({
   FlatList: {
     marginTop: 10,
+    backgroundColor: 'black'
   },
   MainView: {
     flex: 1,
@@ -166,7 +176,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#E8F1F5',
+    backgroundColor: 'black' , 
   },
   Header: {
     display: 'flex',
