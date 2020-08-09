@@ -82,14 +82,20 @@ constructor(props){
 
 
   async   componentWillMount(){
-    const response = await fetch('https://cse-inventory-api.herokuapp.com/reservations/all')
-  const results = await response.json()
-  console.log(results)
-  this.setState({
-    items: results.allReservations  ,
-    search: ''
-  })
-  console.log( );
+    try {
+      const response = await fetch('https://cse-inventory-api.herokuapp.com/reservations/all')
+      const results = await response.json()
+      console.log(results)
+      this.setState({
+        items: results.allReservations  ,
+        search: ''
+      })
+    }
+    catch(err) {
+      console.log( 'heeeey' );
+
+    }
+  
   }
 
   
