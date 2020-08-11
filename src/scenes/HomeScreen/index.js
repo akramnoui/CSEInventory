@@ -91,7 +91,7 @@ setFilter = (filter) => {
     try {
       const response = await fetch('https://cse-inventory-api.herokuapp.com/reservations/all')
       const results = await response.json()
-      console.log(results)
+      // console.log(results)
       this.setState({
         items: results.allReservations  ,
         search: ''
@@ -150,7 +150,7 @@ setFilter = (filter) => {
           style={styles.FlatList}
           data={this.state.items}
           renderItem={({item}) => (
-            <TouchableOpacity onPress={this._detail}>
+            <TouchableOpacity onPress={() => this.props.navigation.push('ActionDetail' , {display: item })} >
               <Card
                 objectName={item.reservationTitle}
                 user={`${item.reservationBy.userFirstName} ${item.reservationBy.userLastName}` }

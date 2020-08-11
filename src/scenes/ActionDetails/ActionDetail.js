@@ -12,8 +12,23 @@ import {Chip} from 'react-native-paper';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 class ActionDetail extends React.Component {
-  state = {};
+  state = {}; constructor(props) {
+    super(props);
+    this.state = {
+      item: '',
+    };
+  }
+  componentWillMount(){
+    console.log( this.props.route.params.display)
+     this.setState({
+       item: this.props.route.params.display , 
+       itemImage:  this.props.route.params.display.objectsNeeded[0].objectImage 
+       ,  ActionBy:  this.props.route.params.display.reservationBy
+     })
+  }
+
   _openDrawer = () => this.props.navigation.openDrawer();
+
 
   render() {
     return (
@@ -50,10 +65,7 @@ class ActionDetail extends React.Component {
             style={{height: '100%', width: '100%', borderRadius: 10,
             resizeMode: 'cover'}}
             
-            source={{
-              uri:
-                'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
-            }}
+            source={{uri:this.state.itemImage}}
           />
         </View>
         <View style={styles.ActionType}>
@@ -64,19 +76,19 @@ class ActionDetail extends React.Component {
             style={{height: 34}}>
              Broken Item
           </Chip>
-          <Text style={{fontSize: 12}}> 21/10/2019 to 20/05/2019</Text>
+          <Text style={{fontSize: 12}}> {this.state.item.startsAt} -  {this.state.item.endsAt}</Text>
         </View>
 
-        <Actioner />
+        <Actioner Action={this.state.ActionBy} />
         <View style={styles.description}>
-          <Text style={{fontSize: 25}}>Banner Broken </Text>
-          <Text>This banner was broken during the event </Text>
+          <Text style={{fontSize: 25}}>{this.state.item.reservationTitle} </Text>
+          <Text>{this.state.item.reservationBody}  </Text>
         </View>
       </SafeAreaView>
     );
   }
 }
-const Actioner = () => (
+const Actioner = (props) => (
   <SafeAreaView style={styles.container}>
     <Avatar
       size="medium"
@@ -88,7 +100,7 @@ const Actioner = () => (
       }}
     />
     <View style={styles.infos}>
-      <Text style={styles.NameText}>John Doe</Text>
+      <Text style={styles.NameText}>{`${props.Action.userFirstName} ${props.Action.userLastName}` }</Text>
       <Text style={styles.itemText}>23/04/2020</Text>
     </View>
   </SafeAreaView>
@@ -96,9 +108,12 @@ const Actioner = () => (
 
 const styles = StyleSheet.create({
   description: {
+    width : '100%' , 
     flexDirection: 'column',
     alignItems: 'flex-start',
-    margin: 20,
+    justifyContent:'flex-start' , 
+     margin: 20,
+    paddingLeft: 50 , 
   },
   ActionType: {
     height: 55,
