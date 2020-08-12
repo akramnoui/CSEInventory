@@ -29,16 +29,7 @@ import AddAnomaly from './src/scenes/AddAnomaly/AddAnomaly';
 import AnomaliesView from './src/scenes/AnomalyList/AnomaliesView';
 import ReserveScreen from './src/scenes/ReserveScreen/ReserveScreen';
 
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  Icon,
-  ImageBackground,
-} from 'react-native';
+import {Platform} from 'react-native';
 import {Drawer} from 'react-native-paper';
 import ItemPage from './src/scenes/ItemPage/ItemPage';
 import ArticlesList from './src/scenes/GoodsList/ArticlesList';
@@ -57,8 +48,6 @@ const MaterialBottomTabs = createMaterialBottomTabNavigator();
 
 export default class App extends React.Component {
   render() {
-
-
     // Drawer  implementation
     createHomeStack = () => (
       <DrawerNav.Navigator
@@ -175,10 +164,16 @@ export default class App extends React.Component {
           }}>
           <Stack.Screen name="Main" children={createHomeStack}></Stack.Screen>
           <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
-          <Stack.Screen name="ForgotPassword" component={ForgotPassword}></Stack.Screen>
-          <Stack.Screen name="NewPassword" component={NewPassword}></Stack.Screen>
+          <Stack.Screen
+            name="ForgotPassword"
+            component={ForgotPassword}></Stack.Screen>
+          <Stack.Screen
+            name="NewPassword"
+            component={NewPassword}></Stack.Screen>
         </Stack.Navigator>
       </NavigationContainer>
     );
   }
 }
+
+
