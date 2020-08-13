@@ -9,8 +9,7 @@ export default class ArticleCard extends Component {
           <Image
             source={{uri: this.props.info.objectImage}}
             style={{
-              height: 126,
-              width: 300,
+              height: '70%',
               resizeMode: 'cover',
               borderTopRightRadius: 4,
               borderTopLeftRadius: 4,
@@ -24,7 +23,7 @@ export default class ArticleCard extends Component {
               justifyContent: 'center',
             }}>
             <Text numberOfLines={1} style={styles.title}>
-              {this.props.info.objectName}
+             {this.props.info.objectName}
             </Text>
             <Text numberOfLines={2} style={styles.description}>
               {this.props.info.objectState}
@@ -38,8 +37,8 @@ export default class ArticleCard extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: 206,
-    width: 300,
+    height: 250,
+    width: '90%',
     backgroundColor: '#FFF',
     shadowColor: '#000',
     shadowOffset: {

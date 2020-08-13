@@ -32,7 +32,6 @@ import ReserveScreen from './src/scenes/ReserveScreen/ReserveScreen';
 import {Platform} from 'react-native';
 import {Drawer} from 'react-native-paper';
 import ItemPage from './src/scenes/ItemPage/ItemPage';
-import ArticlesList from './src/scenes/GoodsList/ArticlesList';
 import AddOP from './src/scenes/AddOP/AddOP';
 import LostObject from './src/scenes/AnomalyList/LostObject';
 

@@ -64,7 +64,7 @@ export default class ArticlesView extends Component {
                     flexDirection: 'row',
                   }}>
                   <Text>
-                    <Icon name="menu" size={24} color="#3498DB" />
+                    <Icon name="menu" size={24} color="#5AFFFF" />
                   </Text>
                 </TouchableOpacity>
                 <Text
@@ -72,7 +72,7 @@ export default class ArticlesView extends Component {
                     flexDirection: 'row',
                     fontWeight: 'bold',
                     fontSize: 16,
-                    color: '#3498DB',
+                    color: '#5AFFFF',
                   }}>
                   Articles
                 </Text>
@@ -86,13 +86,13 @@ export default class ArticlesView extends Component {
             <ScrollView>
                     <FlatGrid
                 style={styles.gridView}
-                itemDimension={160}
+                itemDimension={170}
                 data={this.state.items}
                 renderItem={({item}) => (
                   <ArticleCard info={item} detail={() => this.props.navigation.push('Item' , {display: item })} />
                 )}
-                itemContainerStyle={{alignItems: 'center'}}
-                spacing={30}
+                itemContainerStyle={{alignItems: 'center', justifyContent:'center'}}
+                spacing={15}
               />
             </ScrollView>
           </View>
@@ -104,16 +104,14 @@ export default class ArticlesView extends Component {
 
 const styles = {
   gridView: {
-    marginHorizontal: 20,
-    marginTop:-20
+    marginTop: 20,
   }, 
   mainContainer: {
     flex: 1.0,
-    backgroundColor: '#E8F1F5',
+    backgroundColor: '#070809',
   },
   safeAreaStyle: {
     flex: 1.0,
-    backgroundColor: '#E8F1F5',
   },
   headerContainer: {
     height: 44,
