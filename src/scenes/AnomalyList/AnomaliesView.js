@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Image,
+  ActivityIndicator,
   ScrollView,
 } from 'react-native';
 import InputField from '../GoodsList/InputField';
@@ -21,18 +22,24 @@ export default class AnomaliesView extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: true,
       filter: '',
       query: '',
-      items: []
+      items: [],
     };
   }
-  async  componentDidMount(){
-    const response = await fetch('https://cse-inventory-api.herokuapp.com/reports/all')
-  const results = await response.json()
-  console.log(results)
-  this.setState({
-    items: results.allReports
-  })
+  async componentDidMount() {
+    const response = await fetch(
+      'https://cse-inventory-api.herokuapp.com/reports/all',
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState({items: json.allReports});
+      })
+      .catch((error) => console.error(error))
+      .finally(() => {
+        this.setState({isLoading: false});
+      });
   }
 
   setQuery = (query) => {
@@ -76,9 +83,17 @@ export default class AnomaliesView extends Component {
               ph="Search..."
               changeHandler={this.setQuery.bind(this)}
             /> */}
-            <ScrollView style={{marginTop: 30}}>
-              <AnomaliesList items={this.state.items} detail={this._detail} />
-            </ScrollView>
+            {this.state.isLoading ? (
+              <ActivityIndicator
+                style={{marginTop: 20}}
+                size="large"
+                color="#5AFFFF"
+              />
+            ) : (
+              <ScrollView style={{marginTop: 30}}>
+                <AnomaliesList items={this.state.items} detail={this._detail} />
+              </ScrollView>
+            )}
           </View>
         </View>
 

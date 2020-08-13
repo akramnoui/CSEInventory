@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Image,
+  ActivityIndicator,
   ScrollView,
 } from 'react-native';
 import ArticleCard from './ArticleCard';
@@ -18,23 +19,28 @@ import Drawer from 'react-native-drawer';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {FlatGrid} from 'react-native-super-grid';
 
-
 export default class ArticlesView extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: true,
       filter: '',
       query: '',
-      items: [] , 
+      items: [],
     };
   }
-  async  componentDidMount(){
-    const response = await fetch('https://cse-inventory-api.herokuapp.com/items/all')
-  const results = await response.json()
-  console.log(results)
-  this.setState({
-    items: results 
-  })
+  async componentDidMount() {
+    const response = await fetch(
+      'https://cse-inventory-api.herokuapp.com/items/all',
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState({items: json});
+      })
+      .catch((error) => console.error(error))
+      .finally(() => {
+        this.setState({isLoading: false});
+      });
   }
 
   setQuery = (query) => {
@@ -83,18 +89,34 @@ export default class ArticlesView extends Component {
               changeHandler={this.setQuery.bind(this)}
             />
             <Filters changeHandler={this.setFilter.bind(this)} />
-            <ScrollView>
-                    <FlatGrid
-                style={styles.gridView}
-                itemDimension={170}
-                data={this.state.items}
-                renderItem={({item}) => (
-                  <ArticleCard info={item} detail={() => this.props.navigation.push('Item' , {display: item })} />
-                )}
-                itemContainerStyle={{alignItems: 'center', justifyContent:'center'}}
-                spacing={15}
+            {this.state.isLoading ? (
+              <ActivityIndicator
+                style={{marginTop: 20}}
+                size="large"
+                color="#5AFFFF"
               />
-            </ScrollView>
+            ) : (
+              <ScrollView>
+                <FlatGrid
+                  style={styles.gridView}
+                  itemDimension={170}
+                  data={this.state.items}
+                  renderItem={({item}) => (
+                    <ArticleCard
+                      info={item}
+                      detail={() =>
+                        this.props.navigation.push('Item', {display: item})
+                      }
+                    />
+                  )}
+                  itemContainerStyle={{
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                  spacing={15}
+                />
+              </ScrollView>
+            )}
           </View>
         </View>
       </SafeAreaView>
@@ -105,7 +127,7 @@ export default class ArticlesView extends Component {
 const styles = {
   gridView: {
     marginTop: 20,
-  }, 
+  },
   mainContainer: {
     flex: 1.0,
     backgroundColor: '#070809',
