@@ -58,7 +58,7 @@ export default class Filters extends Component {
             value="Booked"
           />
           <ToggleButton
-            icon={() => <Icon name="broken-image" size={24} 
+            icon={() => <Icon name="alarm-on" size={24} 
             color={this.state.value == 'Damaged' ? '#5AFFFF' : '#FFFFFF'} />}
             value="Damaged"
           />

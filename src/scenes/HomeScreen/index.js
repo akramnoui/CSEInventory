@@ -118,7 +118,7 @@ setFilter = (filter) => {
   render() {
     return (
       <View style={styles.MainView}>
-        <View style={{flexDirection: 'row' ,  backgroundColor: '#E8F1F5' , marginBottom: 20 , height: 57 }}>
+        <View style={{flexDirection: 'row' ,  backgroundColor: '#070809' , marginBottom: 20 , height: 57 }}>
           <View style={styles.appBar}>
             <TouchableOpacity
               onPress={this._openDrawer}
@@ -126,7 +126,7 @@ setFilter = (filter) => {
                 flexDirection: 'row',
               }}>
               <Text>
-                <Icon name="menu" size={24} color="#3498DB" />
+                <Icon name="menu" size={24} color="#5AFFFF" />
               </Text>
             </TouchableOpacity>
             <Text
@@ -134,7 +134,7 @@ setFilter = (filter) => {
                 flexDirection: 'row',
                 fontWeight: 'bold',
                 fontSize: 16,
-                color: '#3498DB',
+                color: '#5AFFFF',
               }}>
               Home
             </Text>
@@ -176,7 +176,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: 'black' , 
+    backgroundColor: '#070809' , 
   },
   Header: {
     display: 'flex',
@@ -188,7 +188,7 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     left: 120,
-    color: '#3498DB',
+ 
   },
   hamburger: {
     alignSelf: 'flex-start',
@@ -205,6 +205,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+   
   },
 });
 
