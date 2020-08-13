@@ -58,7 +58,7 @@ export default class AnomaliesView extends Component {
                     flex: 0.5,
                   }}>
                   <Text>
-                    <Icon name="menu" size={24} color="#3498DB" />
+                    <Icon name="menu" size={24} color="#5AFFFF" />
                   </Text>
                 </TouchableOpacity>
                 <Text
@@ -66,17 +66,17 @@ export default class AnomaliesView extends Component {
                     flexDirection: 'row',
                     fontWeight: 'bold',
                     fontSize: 16,
-                    color: '#3498DB',
+                    color: '#5AFFFF',
                   }}>
                   Anomalies
                 </Text>
               </View>
             </View>
-            <InputField
+            {/* <InputField
               ph="Search..."
               changeHandler={this.setQuery.bind(this)}
-            />
-            <ScrollView style={{marginTop: 10}}>
+            /> */}
+            <ScrollView style={{marginTop: 30}}>
               <AnomaliesList items={this.state.items} detail={this._detail} />
             </ScrollView>
           </View>
@@ -85,9 +85,8 @@ export default class AnomaliesView extends Component {
         <FAB
           style={styles.fab}
           color="#102236"
-          medium
           icon="plus"
-          theme={{colors: {accent: 'white'}}}
+          theme={{colors: {accent: '#5AFFFF'}}}
           onPress={() => {
             this.props.navigation.push('AddAnomaly');
           }}
@@ -100,13 +99,13 @@ export default class AnomaliesView extends Component {
 const styles = {
   fab: {
     position: 'absolute',
-    margin: 16,
+    margin: 20,
     right: 0,
     bottom: 0,
   },
   mainContainer: {
     flex: 1.0,
-    backgroundColor: '#E8F1F5',
+    backgroundColor: '#070809',
   },
   safeAreaStyle: {
     flex: 1.0,
