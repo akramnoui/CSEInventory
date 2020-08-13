@@ -85,13 +85,10 @@ export default class App extends React.Component {
     // bottom bar implementation
     createBottomTabs = () => (
       <MaterialBottomTabs.Navigator
-        activeColor="#f0edf6"
-        inactiveColor="#707070"
+        activeColor="#000000"
+        inactiveColor="#111111"
         barStyle={{
-          backgroundColor: '#102236',
-          marginHorizontal: 10,
-          marginBottom: 15,
-          marginTop: 0,
+          backgroundColor: '#5AFFFF',
         }}>
         <MaterialBottomTabs.Screen
           name="Home"
@@ -103,7 +100,7 @@ export default class App extends React.Component {
               <Ionicons
                 name={`file-tray${focused ? '' : '-outline'}`}
                 size={25}
-                color={`${focused ? '#ECDF0B' : '#ECDF0B99'}`}
+                color={`${focused ? '#000000' : '#111111'}`}
               />
             ),
           }}
@@ -117,7 +114,7 @@ export default class App extends React.Component {
               <Ionicons
                 name={`grid${focused ? '' : '-outline'}`}
                 size={25}
-                color={`${focused ? '#ECDF0B' : '#ECDF0B99'}`}
+                color={`${focused ? '#000000' : '#111111'}`}
               />
             ),
           }}
@@ -126,12 +123,12 @@ export default class App extends React.Component {
           name="AnomaliesView"
           children={createAnomalyScreen}
           options={{
-            tabBarLabel: 'Degats',
+            tabBarLabel: 'Damages',
             tabBarIcon: ({focused, tintColor}) => (
               <Ionicons
                 name={`hammer${focused ? '' : '-outline'}`}
                 size={25}
-                color={`${focused ? '#ECDF0B' : '#ECDF0B99'}`}
+                color={`${focused ? '#000000' : '#111111'}`}
               />
             ),
           }}
@@ -140,12 +137,12 @@ export default class App extends React.Component {
           name="MissingObjects"
           component={LostObject}
           options={{
-            tabBarLabel: 'Objets perdus',
+            tabBarLabel: 'Lost Objects',
             tabBarIcon: ({focused, tintColor}) => (
               <Ionicons
                 name={`${focused ? 'checkbox-sharp' : 'checkbox-outline'}`}
                 size={25}
-                color={`${focused ? '#ECDF0B' : '#ECDF0B99'}`}
+                color={`${focused ? '#000000' : '#111111'}`}
               />
             ),
           }}
