@@ -27,13 +27,14 @@ import DrawerContent from './src/scenes/DrawerContent/DrawerContent';
 import ActionDetail from './src/scenes/ActionDetails/ActionDetail';
 import AddAnomaly from './src/scenes/AddAnomaly/AddAnomaly';
 import AnomaliesView from './src/scenes/AnomalyList/AnomaliesView';
-import ReserveScreen from './src/scenes/ReserveScreen/ReserveScreen';
+import ReserveScreen from './src/scenes/ReserveScreen/index';
 
 import {Platform} from 'react-native';
 import {Drawer} from 'react-native-paper';
 import ItemPage from './src/scenes/ItemPage/ItemPage';
 import AddOP from './src/scenes/AddOP/AddOP';
 import LostObject from './src/scenes/AnomalyList/LostObject';
+import OnboardingScreen from './src/scenes/OnBoarding/OnboardingScreen.js'
 
 const DrawerNav = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -47,6 +48,10 @@ const MaterialBottomTabs = createMaterialBottomTabNavigator();
 
 export default class App extends React.Component {
   render() {
+<<<<<<< HEAD
+
+=======
+>>>>>>> efab004c61698903f0e205ffed58f535883cba84
     // Drawer  implementation
     createHomeStack = () => (
       <DrawerNav.Navigator
