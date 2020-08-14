@@ -44,6 +44,7 @@ import ItemPage from './src/scenes/ItemPage/ItemPage';
 import ArticlesList from './src/scenes/GoodsList/ArticlesList';
 import AddOP from './src/scenes/AddOP/AddOP';
 import LostObject from './src/scenes/AnomalyList/LostObject';
+import OnboardingScreen from './src/scenes/OnBoarding/OnboardingScreen.js'
 
 const DrawerNav = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -57,7 +58,6 @@ const MaterialBottomTabs = createMaterialBottomTabNavigator();
 
 export default class App extends React.Component {
   render() {
-
 
     // Drawer  implementation
     createHomeStack = () => (
@@ -167,18 +167,20 @@ export default class App extends React.Component {
 
     return (
       //main Stack
-      <NavigationContainer>
-        <Stack.Navigator
-          initialRouteName="Login"
-          screenOptions={{
-            headerShown: false,
-          }}>
-          <Stack.Screen name="Main" children={createHomeStack}></Stack.Screen>
-          <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
-          <Stack.Screen name="ForgotPassword" component={ForgotPassword}></Stack.Screen>
-          <Stack.Screen name="NewPassword" component={NewPassword}></Stack.Screen>
-        </Stack.Navigator>
-      </NavigationContainer>
+    //<NavigationContainer>
+    //  <Stack.Navigator
+    //    initialRouteName="Login"
+    //    screenOptions={{
+    //      headerShown: false,
+    //    }}>
+    //    <Stack.Screen name="Main" children={createHomeStack}></Stack.Screen>
+    //    <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
+    //    <Stack.Screen name="ForgotPassword" component={ForgotPassword}></Stack.Screen>
+    //    <Stack.Screen name="NewPassword" component={NewPassword}></Stack.Screen>
+    //    <Stack.Screen name="OnboardingScreen" component={OnboardingScreen}></Stack.Screen>
+    //  </Stack.Navigator>
+    //</NavigationContainer>
+      <ReserveScreen />
     );
   }
 }
