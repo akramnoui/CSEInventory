@@ -9,6 +9,7 @@ import {
   TextInput,
   TouchableHighlight,
   KeyboardAvoidingView,
+  ScrollView
 } from 'react-native';
 import AppBar from '../GoodsList/AppBar';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -16,7 +17,7 @@ import {SafeAreaView} from 'react-native-safe-area-context';
 import ImagePicker from 'react-native-image-picker';
 import {IconButton} from 'react-native-paper';
 import {Dropdown} from 'react-native-material-dropdown';
-import {ScrollView} from 'react-native-gesture-handler';
+
 
 export default class AddAnomaly extends Component {
   constructor(props) {
@@ -82,7 +83,6 @@ export default class AddAnomaly extends Component {
     if (this.state.objectState != null) {
       data.append('objectState', this.state.objectState);
     }
-
     data.append('reportBody', this.state.description);
     data.append('reportTitle', this.state.title);
 
@@ -111,12 +111,14 @@ export default class AddAnomaly extends Component {
     ];
 
     return (
-      <KeyboardAvoidingView behavior="height" style={{flex: 1}}>
+      <KeyboardAvoidingView
+        behavior="height"
+        style={{backgroundColor: '#000000', flex: 1}}>
         <SafeAreaView
           style={{
             flex: 1,
             justifyContent: 'flex-end',
-            backgroundColor: '#E8F1F5',
+            backgroundColor: '#000000',
             paddingTop: 5,
             padding: 30,
           }}>
@@ -130,7 +132,7 @@ export default class AddAnomaly extends Component {
                   flexDirection: 'row',
                 }}>
                 <Text>
-                  <Icon name="keyboard-backspace" size={24} color="#3498DB" />
+                  <Icon name="keyboard-backspace" size={24} color="#5AFFFF" />
                 </Text>
               </TouchableOpacity>
               <Text
@@ -138,9 +140,9 @@ export default class AddAnomaly extends Component {
                   flexDirection: 'row',
                   fontWeight: 'bold',
                   fontSize: 16,
-                  color: '#3498DB',
+                  color: '#5AFFFF',
                 }}>
-                Add anomaly
+                Add Anomaly
               </Text>
             </View>
           </View>
@@ -184,7 +186,7 @@ export default class AddAnomaly extends Component {
           />
           <TextInput
             multiline
-            numberOfLines={4}
+            numberOfLines={5}
             style={styles.inputMulti}
             placeholder="Description"
             editable
@@ -195,7 +197,7 @@ export default class AddAnomaly extends Component {
           />
           <Dropdown
             containerStyle={styles.dropDown}
-            label="State"
+            placeholder="State"
             data={states}
             onChangeText={(value) => {
               this.setState({objectState: value});
@@ -207,7 +209,7 @@ export default class AddAnomaly extends Component {
             onPress={() => {
               this.onSubmit(this.state.anomalyPic);
             }}>
-            <Text style={{color: '#FFF'}}> Add Anomaly </Text>
+            <Text style={{color: '#000000'}}> Add Anomaly </Text>
           </TouchableOpacity>
         </SafeAreaView>
       </KeyboardAvoidingView>
@@ -221,11 +223,11 @@ const styles = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#3498DB',
+    backgroundColor: '#5AFFFF',
     fontWeight: 'bold',
   },
   input: {
-    height: 40,
+    height: 50,
     borderRadius: 5,
     padding: 10,
     color: '#000',
@@ -237,15 +239,19 @@ const styles = StyleSheet.create({
     textAlignVertical: 'top',
     borderRadius: 5,
     padding: 10,
-    color: '#000',
+    color: '#000000',
     marginVertical: 5,
     backgroundColor: '#FFF',
   },
   dropDown: {
+    height: 50,
     borderRadius: 5,
     color: '#000',
-    paddingLeft: 10,
-    marginBottom: 10,
+    marginTop: 10,
+    marginBottom: 5,
+    backgroundColor: '#FFF',
+    justifyContent:'flex-end',
+    paddingLeft: 10,    
   },
   appBar: {
     flexDirection: 'row',
