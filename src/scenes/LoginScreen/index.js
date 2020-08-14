@@ -44,7 +44,7 @@ class LoginScreen extends React.Component {
     this.setState({password});
   };
   _login = () => {
-    this.props.navigation.navigate('Main');
+    this.props.navigation.navigate('OnboardingScreen');
   };
   _forgotPassword = () => {
     this.props.navigation.navigate('ForgotPassword');
