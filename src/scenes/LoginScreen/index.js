@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {
   View,
   StyleSheet,
@@ -7,13 +7,21 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
-  ImageBackground,
 } from 'react-native';
-import {
-  createStackNavigator,
-  createSwitchNavigator,
-  createBottomTabNavigator,
-} from 'react-navigation';
+
+import PushNotification from 'react-native-push-notification';
+import {pushNotificationConfig} from '../../NotificationSystem';
+// Notifications will be in another file
+PushNotification.configure(pushNotificationConfig);
+const PushNotificationFunc = () => {
+  // Perform a request to backend every 24 hours with setInterval
+  // if there is any reminders, push them 
+  PushNotification.localNotification({
+    message: 'You have an item to return',
+    title: 'Reminder',
+  });
+};
+
 class LoginScreen extends React.Component {
   state = {
     name: '',
@@ -39,8 +47,8 @@ class LoginScreen extends React.Component {
     this.props.navigation.navigate('OnboardingScreen');
   };
   _forgotPassword = () => {
-    this.props.navigation.navigate('ForgotPassword')
-  } 
+    this.props.navigation.navigate('ForgotPassword');
+  };
   render() {
     return (
       <ScrollView behavior="height" style={{backgroundColor: '#000'}}>
@@ -68,7 +76,9 @@ class LoginScreen extends React.Component {
           <TouchableOpacity onPress={this._forgotPassword}>
             <Text style={styles.forgotPassword}> Forgot Password? </Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.LoginButton} onPress={this._login}>
+          <TouchableOpacity
+            style={styles.LoginButton}
+            onPress={this._login}>
             <Text style={styles.loginText}>LOG IN</Text>
           </TouchableOpacity>
         </View>
@@ -106,7 +116,7 @@ const styles = StyleSheet.create({
     color: '#5AFFFF',
     alignSelf: 'flex-end',
   },
-  
+
   MainView: {
     marginTop: 70,
     height: 100,
@@ -134,7 +144,7 @@ const styles = StyleSheet.create({
     padding: 16,
     color: '#5AFFFF',
   },
- 
+
   LoginButton: {
     height: 48,
     width: '85%',

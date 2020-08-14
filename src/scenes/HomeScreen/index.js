@@ -6,6 +6,7 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
+  ActivityIndicator,
 } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import {SearchBar, withTheme} from 'react-native-elements';
@@ -13,7 +14,6 @@ import Card from './Card';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import InputField from '../GoodsList/InputField';
 import HomeFilters from './HomeFilters';
-
 
 const Items = [
   {
@@ -76,35 +76,31 @@ const Items = [
 ];
 
 class HomeScreen extends React.Component {
-
-constructor(props){
-  super(props);
-  this.state={};
-}
-setFilter = (filter) => {
-  this.setState({filter: filter});
-
-  //Execute filtering request
-};
-
-  async   componentWillMount(){
-    try {
-      const response = await fetch('https://cse-inventory-api.herokuapp.com/reservations/all')
-      const results = await response.json()
-      // console.log(results)
-      this.setState({
-        items: results.allReservations  ,
-        search: ''
-      })
-    }
-    catch(err) {
-      console.log( 'request error' );
-
-    }
-  
+  constructor(props) {
+    super(props);
+    this.state = {
+      isLoading: true,
+    };
   }
+  setFilter = (filter) => {
+    this.setState({filter: filter});
 
-  
+    //Execute filtering request
+  };
+
+  async componentWillMount() {
+    const response = await fetch(
+      'https://cse-inventory-api.herokuapp.com/reservations/all',
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState({items: json.allReservations});
+      })
+      .catch((error) => console.error(error))
+      .finally(() => {
+        this.setState({isLoading: false});
+      });
+  }
 
   updateSearch = (search) => {
     this.setState({search});
@@ -118,7 +114,13 @@ setFilter = (filter) => {
   render() {
     return (
       <View style={styles.MainView}>
-        <View style={{flexDirection: 'row' ,  backgroundColor: '#E8F1F5' , marginBottom: 20 , height: 57 }}>
+        <View
+          style={{
+            flexDirection: 'row',
+            backgroundColor: '#070809',
+            marginBottom: 20,
+            height: 57,
+          }}>
           <View style={styles.appBar}>
             <TouchableOpacity
               onPress={this._openDrawer}
@@ -126,7 +128,7 @@ setFilter = (filter) => {
                 flexDirection: 'row',
               }}>
               <Text>
-                <Icon name="menu" size={24} color="#3498DB" />
+                <Icon name="menu" size={24} color="#5AFFFF" />
               </Text>
             </TouchableOpacity>
             <Text
@@ -134,7 +136,7 @@ setFilter = (filter) => {
                 flexDirection: 'row',
                 fontWeight: 'bold',
                 fontSize: 16,
-                color: '#3498DB',
+                color: '#5AFFFF',
               }}>
               Home
             </Text>
@@ -145,21 +147,31 @@ setFilter = (filter) => {
           changeHandler={this.updateSearch.bind(this)}
         />
         <HomeFilters changeHandler={this.setFilter.bind(this)} />
-
-        <FlatList
-          style={styles.FlatList}
-          data={this.state.items}
-          renderItem={({item}) => (
-            <TouchableOpacity onPress={() => this.props.navigation.push('ActionDetail' , {display: item })} >
-              <Card
-                objectName={item.reservationTitle}
-                user={`${item.reservationBy.userFirstName} ${item.reservationBy.userLastName}` }
-                startsAt={item.startsAt}
-                status={"Booked"}
-                imageSrc={item.objectsNeeded[0].objectImage}></Card>
-            </TouchableOpacity>
-          )}
-          keyExtractor={(item) => item.reservationTitle}></FlatList>
+        {this.state.isLoading ? (
+          <ActivityIndicator
+            style={{marginTop: 20}}
+            size="large"
+            color="#5AFFFF"
+          />
+        ) : (
+          <FlatList
+            style={styles.FlatList}
+            data={this.state.items}
+            renderItem={({item}) => (
+              <TouchableOpacity
+                onPress={() =>
+                  this.props.navigation.push('ActionDetail', {display: item})
+                }>
+                <Card
+                  objectName={item.reservationTitle}
+                  user={`${item.reservationBy.userFirstName} ${item.reservationBy.userLastName}`}
+                  startsAt={item.startsAt}
+                  status={'Booked'}
+                  imageSrc={item.objectsNeeded[0].objectImage}></Card>
+              </TouchableOpacity>
+            )}
+            keyExtractor={(item) => item.reservationTitle}></FlatList>
+        )}
       </View>
     );
   }
@@ -168,7 +180,7 @@ setFilter = (filter) => {
 const styles = StyleSheet.create({
   FlatList: {
     marginTop: 10,
-    backgroundColor: 'black'
+    backgroundColor: 'black',
   },
   MainView: {
     flex: 1,
@@ -176,7 +188,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: 'black' , 
+    backgroundColor: '#070809',
   },
   Header: {
     display: 'flex',
@@ -188,7 +200,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     left: 120,
-    color: '#3498DB',
   },
   hamburger: {
     alignSelf: 'flex-start',

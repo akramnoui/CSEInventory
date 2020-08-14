@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "453189002844",
+    "firebase_url": "https://cse-inventory-api.firebaseio.com",
+    "project_id": "cse-inventory-api",
+    "storage_bucket": "cse-inventory-api.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:453189002844:android:701c96ec5892afdf0d2899",
+        "android_client_info": {
+          "package_name": "com.cseinventory"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "453189002844-5nvd1asrjkh1c6tgtefbpcrao5p2cilv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDc_ds16Auqhnvg2td97MHBBL0jDrDofqg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "453189002844-5nvd1asrjkh1c6tgtefbpcrao5p2cilv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

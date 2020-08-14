@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Image,
+  ActivityIndicator,
   ScrollView,
 } from 'react-native';
 import InputField from '../GoodsList/InputField';
@@ -21,18 +22,24 @@ export default class AnomaliesView extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: true,
       filter: '',
       query: '',
-      items: []
+      items: [],
     };
   }
-  async  componentDidMount(){
-    const response = await fetch('https://cse-inventory-api.herokuapp.com/reports/all')
-  const results = await response.json()
-  console.log(results)
-  this.setState({
-    items: results.allReports
-  })
+  async componentDidMount() {
+    const response = await fetch(
+      'https://cse-inventory-api.herokuapp.com/reports/all',
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState({items: json.allReports});
+      })
+      .catch((error) => console.error(error))
+      .finally(() => {
+        this.setState({isLoading: false});
+      });
   }
 
   setQuery = (query) => {
@@ -58,7 +65,7 @@ export default class AnomaliesView extends Component {
                     flex: 0.5,
                   }}>
                   <Text>
-                    <Icon name="menu" size={24} color="#3498DB" />
+                    <Icon name="menu" size={24} color="#5AFFFF" />
                   </Text>
                 </TouchableOpacity>
                 <Text
@@ -66,28 +73,35 @@ export default class AnomaliesView extends Component {
                     flexDirection: 'row',
                     fontWeight: 'bold',
                     fontSize: 16,
-                    color: '#3498DB',
+                    color: '#5AFFFF',
                   }}>
                   Anomalies
                 </Text>
               </View>
             </View>
-            <InputField
+            {/* <InputField
               ph="Search..."
               changeHandler={this.setQuery.bind(this)}
-            />
-            <ScrollView style={{marginTop: 10}}>
-              <AnomaliesList items={this.state.items} detail={this._detail} />
-            </ScrollView>
+            /> */}
+            {this.state.isLoading ? (
+              <ActivityIndicator
+                style={{marginTop: 20}}
+                size="large"
+                color="#5AFFFF"
+              />
+            ) : (
+              <ScrollView style={{marginTop: 30}}>
+                <AnomaliesList items={this.state.items} detail={this._detail} />
+              </ScrollView>
+            )}
           </View>
         </View>
 
         <FAB
           style={styles.fab}
           color="#102236"
-          medium
           icon="plus"
-          theme={{colors: {accent: 'white'}}}
+          theme={{colors: {accent: '#5AFFFF'}}}
           onPress={() => {
             this.props.navigation.push('AddAnomaly');
           }}
@@ -100,13 +114,13 @@ export default class AnomaliesView extends Component {
 const styles = {
   fab: {
     position: 'absolute',
-    margin: 16,
+    margin: 20,
     right: 0,
     bottom: 0,
   },
   mainContainer: {
     flex: 1.0,
-    backgroundColor: '#E8F1F5',
+    backgroundColor: '#070809',
   },
   safeAreaStyle: {
     flex: 1.0,

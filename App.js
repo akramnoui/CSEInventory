@@ -29,19 +29,9 @@ import AddAnomaly from './src/scenes/AddAnomaly/AddAnomaly';
 import AnomaliesView from './src/scenes/AnomalyList/AnomaliesView';
 import ReserveScreen from './src/scenes/ReserveScreen/index';
 
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-  Icon,
-  ImageBackground,
-} from 'react-native';
+import {Platform} from 'react-native';
 import {Drawer} from 'react-native-paper';
 import ItemPage from './src/scenes/ItemPage/ItemPage';
-import ArticlesList from './src/scenes/GoodsList/ArticlesList';
 import AddOP from './src/scenes/AddOP/AddOP';
 import LostObject from './src/scenes/AnomalyList/LostObject';
 import OnboardingScreen from './src/scenes/OnBoarding/OnboardingScreen.js'
@@ -58,7 +48,10 @@ const MaterialBottomTabs = createMaterialBottomTabNavigator();
 
 export default class App extends React.Component {
   render() {
+<<<<<<< HEAD
 
+=======
+>>>>>>> efab004c61698903f0e205ffed58f535883cba84
     // Drawer  implementation
     createHomeStack = () => (
       <DrawerNav.Navigator
@@ -97,13 +90,10 @@ export default class App extends React.Component {
     // bottom bar implementation
     createBottomTabs = () => (
       <MaterialBottomTabs.Navigator
-        activeColor="#f0edf6"
-        inactiveColor="#707070"
+        activeColor="#000000"
+        inactiveColor="#111111"
         barStyle={{
-          backgroundColor: '#102236',
-          marginHorizontal: 10,
-          marginBottom: 15,
-          marginTop: 0,
+          backgroundColor: '#5AFFFF',
         }}>
         <MaterialBottomTabs.Screen
           name="Home"
@@ -115,7 +105,7 @@ export default class App extends React.Component {
               <Ionicons
                 name={`file-tray${focused ? '' : '-outline'}`}
                 size={25}
-                color={`${focused ? '#ECDF0B' : '#ECDF0B99'}`}
+                color={`${focused ? '#000000' : '#111111'}`}
               />
             ),
           }}
@@ -129,7 +119,7 @@ export default class App extends React.Component {
               <Ionicons
                 name={`grid${focused ? '' : '-outline'}`}
                 size={25}
-                color={`${focused ? '#ECDF0B' : '#ECDF0B99'}`}
+                color={`${focused ? '#000000' : '#111111'}`}
               />
             ),
           }}
@@ -138,12 +128,12 @@ export default class App extends React.Component {
           name="AnomaliesView"
           children={createAnomalyScreen}
           options={{
-            tabBarLabel: 'Degats',
+            tabBarLabel: 'Damages',
             tabBarIcon: ({focused, tintColor}) => (
               <Ionicons
                 name={`hammer${focused ? '' : '-outline'}`}
                 size={25}
-                color={`${focused ? '#ECDF0B' : '#ECDF0B99'}`}
+                color={`${focused ? '#000000' : '#111111'}`}
               />
             ),
           }}
@@ -152,12 +142,12 @@ export default class App extends React.Component {
           name="MissingObjects"
           component={LostObject}
           options={{
-            tabBarLabel: 'Objets perdus',
+            tabBarLabel: 'Lost Objects',
             tabBarIcon: ({focused, tintColor}) => (
               <Ionicons
                 name={`${focused ? 'checkbox-sharp' : 'checkbox-outline'}`}
                 size={25}
-                color={`${focused ? '#ECDF0B' : '#ECDF0B99'}`}
+                color={`${focused ? '#000000' : '#111111'}`}
               />
             ),
           }}
@@ -167,20 +157,24 @@ export default class App extends React.Component {
 
     return (
       //main Stack
-    //<NavigationContainer>
-    //  <Stack.Navigator
-    //    initialRouteName="Login"
-    //    screenOptions={{
-    //      headerShown: false,
-    //    }}>
-    //    <Stack.Screen name="Main" children={createHomeStack}></Stack.Screen>
-    //    <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
-    //    <Stack.Screen name="ForgotPassword" component={ForgotPassword}></Stack.Screen>
-    //    <Stack.Screen name="NewPassword" component={NewPassword}></Stack.Screen>
-    //    <Stack.Screen name="OnboardingScreen" component={OnboardingScreen}></Stack.Screen>
-    //  </Stack.Navigator>
-    //</NavigationContainer>
-      <ReserveScreen />
+      <NavigationContainer>
+        <Stack.Navigator
+          initialRouteName="Login"
+          screenOptions={{
+            headerShown: false,
+          }}>
+          <Stack.Screen name="Main" children={createHomeStack}></Stack.Screen>
+          <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
+          <Stack.Screen
+            name="ForgotPassword"
+            component={ForgotPassword}></Stack.Screen>
+          <Stack.Screen
+            name="NewPassword"
+            component={NewPassword}></Stack.Screen>
+        </Stack.Navigator>
+      </NavigationContainer>
     );
   }
 }
+
+

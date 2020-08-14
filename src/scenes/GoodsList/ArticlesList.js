@@ -8,13 +8,12 @@ export default class ArticlesList extends Component {
     return (
       <FlatGrid
         style={styles.gridView}
-        itemDimension={160}
         data={this.props.items}
         renderItem={({item}) => (
           <ArticleCard info={item} detail={this.props.detail} />
         )}
-        itemContainerStyle={{alignItems: 'center'}}
-        spacing={30}
+        itemContainerStyle={{alignItems: 'flex-end'}}
+        spacing={10}
       />
     );
   }

@@ -7,6 +7,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Image,
+  ActivityIndicator,
   ScrollView,
 } from 'react-native';
 import ArticleCard from './ArticleCard';
@@ -18,23 +19,28 @@ import Drawer from 'react-native-drawer';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {FlatGrid} from 'react-native-super-grid';
 
-
 export default class ArticlesView extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isLoading: true,
       filter: '',
       query: '',
-      items: [] , 
+      items: [],
     };
   }
-  async  componentDidMount(){
-    const response = await fetch('https://cse-inventory-api.herokuapp.com/items/all')
-  const results = await response.json()
-  console.log(results)
-  this.setState({
-    items: results 
-  })
+  async componentDidMount() {
+    const response = await fetch(
+      'https://cse-inventory-api.herokuapp.com/items/all',
+    )
+      .then((response) => response.json())
+      .then((json) => {
+        this.setState({items: json});
+      })
+      .catch((error) => console.error(error))
+      .finally(() => {
+        this.setState({isLoading: false});
+      });
   }
 
   setQuery = (query) => {
@@ -64,7 +70,7 @@ export default class ArticlesView extends Component {
                     flexDirection: 'row',
                   }}>
                   <Text>
-                    <Icon name="menu" size={24} color="#3498DB" />
+                    <Icon name="menu" size={24} color="#5AFFFF" />
                   </Text>
                 </TouchableOpacity>
                 <Text
@@ -72,7 +78,7 @@ export default class ArticlesView extends Component {
                     flexDirection: 'row',
                     fontWeight: 'bold',
                     fontSize: 16,
-                    color: '#3498DB',
+                    color: '#5AFFFF',
                   }}>
                   Articles
                 </Text>
@@ -83,18 +89,34 @@ export default class ArticlesView extends Component {
               changeHandler={this.setQuery.bind(this)}
             />
             <Filters changeHandler={this.setFilter.bind(this)} />
-            <ScrollView>
-                    <FlatGrid
-                style={styles.gridView}
-                itemDimension={160}
-                data={this.state.items}
-                renderItem={({item}) => (
-                  <ArticleCard info={item} detail={() => this.props.navigation.push('Item' , {display: item })} />
-                )}
-                itemContainerStyle={{alignItems: 'center'}}
-                spacing={30}
+            {this.state.isLoading ? (
+              <ActivityIndicator
+                style={{marginTop: 20}}
+                size="large"
+                color="#5AFFFF"
               />
-            </ScrollView>
+            ) : (
+              <ScrollView>
+                <FlatGrid
+                  style={styles.gridView}
+                  itemDimension={170}
+                  data={this.state.items}
+                  renderItem={({item}) => (
+                    <ArticleCard
+                      info={item}
+                      detail={() =>
+                        this.props.navigation.push('Item', {display: item})
+                      }
+                    />
+                  )}
+                  itemContainerStyle={{
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                  spacing={15}
+                />
+              </ScrollView>
+            )}
           </View>
         </View>
       </SafeAreaView>
@@ -104,16 +126,14 @@ export default class ArticlesView extends Component {
 
 const styles = {
   gridView: {
-    marginHorizontal: 20,
-    marginTop:-20
-  }, 
+    marginTop: 20,
+  },
   mainContainer: {
     flex: 1.0,
-    backgroundColor: '#E8F1F5',
+    backgroundColor: '#070809',
   },
   safeAreaStyle: {
     flex: 1.0,
-    backgroundColor: '#E8F1F5',
   },
   headerContainer: {
     height: 44,
