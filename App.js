@@ -27,7 +27,8 @@ import DrawerContent from './src/scenes/DrawerContent/DrawerContent';
 import ActionDetail from './src/scenes/ActionDetails/ActionDetail';
 import AddAnomaly from './src/scenes/AddAnomaly/AddAnomaly';
 import AnomaliesView from './src/scenes/AnomalyList/AnomaliesView';
-import ReserveScreen from './src/scenes/ReserveScreen/ReserveScreen';
+//import ReserveScreen from './src/scenes/ReserveScreen/ReserveScreen';
+import ReserveView from './src/scenes/ReserveScreen/index';
 
 import {
   SafeAreaView,
@@ -180,7 +181,7 @@ export default class App extends React.Component {
     //    <Stack.Screen name="OnboardingScreen" component={OnboardingScreen}></Stack.Screen>
     //  </Stack.Navigator>
     //</NavigationContainer>
-      <ReserveScreen />
+      <ReserveView />
     );
   }
 }

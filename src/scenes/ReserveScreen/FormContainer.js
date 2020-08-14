@@ -4,8 +4,8 @@ import {screenWidth, screenHeight} from './Dimensions';
 
 const FormContainer = ({scrollY, imageHeight, ...props}) => {
   const animateBorderRadius = scrollY.interpolate({
-    inputeRange: [0, 450],
-    ourputRange: [40, 20],
+    inputRange: [0, 450],
+    outputRange: [40, 20],
   });
   return (
     <Animated.ScrollView
@@ -14,9 +14,13 @@ const FormContainer = ({scrollY, imageHeight, ...props}) => {
         backgroundColor: 'transparent',
         marginTop: -100,
       }}
-      onScroll={Animated.event([{nativeEvent: {contentOffset: {y: scrollY}}}], {
-        useNativeDriver: true,
-      })}
+      onScroll={Animated.event(
+        [{nativeEvent: {contentOffset: {y: scrollY}}}],
+        {
+          useNativeDriver: true,
+        },
+        () => {},
+      )}
       style={{paddingTop: imageHeight}}>
       <Animated.View
         style={
@@ -26,7 +30,7 @@ const FormContainer = ({scrollY, imageHeight, ...props}) => {
             borderTopLeftRadius: animateBorderRadius,
           })
         }>
-        {props.form}
+        {props.children}
       </Animated.View>
     </Animated.ScrollView>
   );
@@ -35,8 +39,8 @@ const FormContainer = ({scrollY, imageHeight, ...props}) => {
 const styles = StyleSheet.create({
   block: {
     backgroundColor: '#fff',
-    width: deviceWidth,
-    height: deviceHeight,
+    width: screenWidth,
+    height: screenHeight,
   },
 });
 
