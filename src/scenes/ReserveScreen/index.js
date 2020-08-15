@@ -72,6 +72,9 @@ export default class ReserveScreen extends Component {
         <KeyboardAvoidingView
           behavior="height"
           style={{paddingTop: 5, padding: 30}}>
+            <Text style={styles.Title}>
+              Title
+            </Text>
           <TextInput
             style={styles.input}
             value={this.state.title}
@@ -148,7 +151,7 @@ const styles = StyleSheet.create({
   },
   appBar: {
     flexDirection: 'row',
-    height: 40,
+    height: 20,
     marginTop: 15,
     marginHorizontal: 30,
     marginBottom: 10,
@@ -157,4 +160,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
   },
+  Title: {
+    fontSize:30,
+    marginBottom:10
+  }
 });
