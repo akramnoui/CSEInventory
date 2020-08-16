@@ -34,6 +34,7 @@ import {Drawer} from 'react-native-paper';
 import ItemPage from './src/scenes/ItemPage/ItemPage';
 import AddOP from './src/scenes/AddOP/AddOP';
 import LostObject from './src/scenes/AnomalyList/LostObject';
+import OnBoarding from './src/scenes/OnBoarding.js/OnBoarding';
 
 const DrawerNav = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -166,6 +167,9 @@ export default class App extends React.Component {
          <Stack.Screen
            name="NewPassword"
            component={NewPassword}></Stack.Screen>
+         <Stack.Screen
+           name="OnBoarding"
+           component={OnBoarding}></Stack.Screen>
        </Stack.Navigator>
      </NavigationContainer>
     );
