@@ -8,19 +8,28 @@ import {
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
-
+import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import PushNotification from 'react-native-push-notification';
-import {pushNotificationConfig} from '../../NotificationSystem';
-// Notifications will be in another file
-PushNotification.configure(pushNotificationConfig);
-const PushNotificationFunc = () => {
-  // Perform a request to backend every 24 hours with setInterval
-  // if there is any reminders, push them 
-  PushNotification.localNotification({
-    message: 'You have an item to return',
-    title: 'Reminder',
-  });
-};
+
+PushNotification.configure({
+  // (optional) Called when Token is generated (iOS and Android)
+  onRegister: function (token) {
+    console.log('TOKEN:', token);
+  },
+  // (required) Called when a remote or local notification is opened or received
+  onNotification: function (notification) {
+    console.log('REMOTE NOTIFICATION ==>', notification);
+    PushNotification.localNotification({
+      title: notification.title,
+      message: notification.message,
+    });
+    notification.finish(PushNotificationIOS.FetchResult.NoData);
+  },
+
+  senderID: '256218572662',
+  popInitialNotification: true,
+  requestPermissions: true,
+});
 
 class LoginScreen extends React.Component {
   state = {
@@ -44,6 +53,7 @@ class LoginScreen extends React.Component {
     this.setState({password});
   };
   _login = () => {
+    //Add logic of sending notifications token to db 
     this.props.navigation.navigate('OnBoarding');
   };
   _forgotPassword = () => {
@@ -76,9 +86,7 @@ class LoginScreen extends React.Component {
           <TouchableOpacity onPress={this._forgotPassword}>
             <Text style={styles.forgotPassword}> Forgot Password? </Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.LoginButton}
-            onPress={this._login}>
+          <TouchableOpacity style={styles.LoginButton} onPress={this._login}>
             <Text style={styles.loginText}>LOG IN</Text>
           </TouchableOpacity>
         </View>
