@@ -51,36 +51,39 @@ class ItemPage extends React.Component {
               style={{height: '100%', width: '100%', resizeMode: 'cover'}}
               source={{uri: this.state.item.objectImage}}
             />
-          </View>
-        </View>
-        <View style={styles.bottomView}>
+            
           <Text
             style={{
               fontSize: 27,
               fontWeight: 'bold',
-              position: 'absolute',
-              marginTop: -40,
               alignSelf: 'flex-start',
-              marginLeft: 20,
+              marginLeft: 30,
               color: 'white',
               textShadowColor: 'rgba(0, 0, 0, 1)',
               textShadowOffset: {width: -1, height: 1},
               textShadowRadius: 15,
+              zIndex: 25,
+              position: 'absolute',
+              bottom:30,
             }}>
             {this.state.item.objectName}
           </Text>
+          </View>
+          
+        </View>
+        <View style={styles.bottomView}>
           <Disponible disponible={true}></Disponible>
           <View
             style={{
               height: 55,
-              width: '100%',
+              marginHorizontal: 30,
               flexDirection: 'row',
               justifyContent: 'space-evenly',
-              marginTop: 50,
             }}>
             <TouchableOpacity style={styles.Button}>
               <Text style={{color: '#000000', fontSize: 18}}> Take Now </Text>
             </TouchableOpacity>
+            <View style={{flex:0.1}}></View>
             <TouchableOpacity
               style={styles.Button1}
               onPress={() => {
@@ -99,15 +102,11 @@ class ItemPage extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  fab: {
-    position: 'absolute',
-    alignSelf: 'flex-start',
-    margin: 10,
-  },
   Button1: {
     borderRadius: 15,
     height: 50,
-    width: 160,
+    flex:1,
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 2,
@@ -118,7 +117,8 @@ const styles = StyleSheet.create({
   Button: {
     borderRadius: 15,
     height: 50,
-    width: 160,
+    flex:1,
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#5AFFFF',
@@ -135,16 +135,14 @@ const styles = StyleSheet.create({
   },
 
   topView: {
-    height: 320,
+    flex:1,
     width: '100%',
   },
   bottomView: {
     flexDirection: 'column',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-evenly',
     alignItems: 'center',
-    paddingTop: 36.5,
-
-    height: 400,
+    flex:0.6,
     backgroundColor: '#000000',
   },
 });

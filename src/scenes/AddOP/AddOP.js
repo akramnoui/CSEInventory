@@ -100,7 +100,7 @@ export default class AddOP extends Component {
           style={{
             flex: 1,
             justifyContent: 'flex-end',
-            backgroundColor: '#E8F1F5',
+            backgroundColor: '#000',
             paddingTop: 5,
             padding: 30,
           }}>
@@ -114,7 +114,7 @@ export default class AddOP extends Component {
                   flexDirection: 'row',
                 }}>
                 <Text>
-                  <Icon name="keyboard-backspace" size={24} color="#3498DB" />
+                  <Icon name="keyboard-backspace" size={24} color="#5AFFFF" />
                 </Text>
               </TouchableOpacity>
               <Text
@@ -122,13 +122,13 @@ export default class AddOP extends Component {
                   flexDirection: 'row',
                   fontWeight: 'bold',
                   fontSize: 16,
-                  color: '#3498DB',
+                  color: '#5AFFFF',
                 }}>
                 Add Missing Object
               </Text>
             </View>
           </View>
-          <View>
+          <View style={{flex:1}}>
             <Image
               source={
                 this.state.objectImage != null
@@ -139,15 +139,14 @@ export default class AddOP extends Component {
                     }
               }
               style={{
-                height: 190,
+                height: '100%',
                 resizeMode: 'cover',
                 alignSelf: 'stretch',
                 borderRadius: 10,
-                marginVertical: 5,
               }}
             />
             <IconButton
-              color="#fff"
+              color="#5AFFFF"
               size={25}
               icon="camera"
               style={{
@@ -161,6 +160,7 @@ export default class AddOP extends Component {
           <TextInput
             style={styles.input}
             value={this.state.reportTitle}
+            placeholderTextColor='#5AFFFF'
             placeholder="Title..."
             onChangeText={(text) => {
               this.setState({reportTitle: text});
@@ -168,22 +168,23 @@ export default class AddOP extends Component {
           />
           <TextInput
             multiline
+            placeholderTextColor='#5AFFFF'
             numberOfLines={6}
             style={styles.inputMulti}
-            placeholder="Description"
+            placeholder="Description..."
             editable
             onChangeText={(text) => {
               this.setState({reportBody: text});
             }}
             value={this.state.reportBody}
           />
-          <View style={{flex: 1}}></View>
+          <View style={{flex: 0.25}}></View>
           <TouchableOpacity
             style={styles.Button}
             onPress={() => {
               this.onSubmit(this.state.objectImage);
             }}>
-            <Text style={{color: '#FFF'}}> Add missing object </Text>
+            <Text style={{color: '#000'}}> Add missing object </Text>
           </TouchableOpacity>
         </SafeAreaView>
       </KeyboardAvoidingView>
@@ -197,25 +198,30 @@ const styles = StyleSheet.create({
     height: 50,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#3498DB',
+    backgroundColor: '#5AFFFF',
     fontWeight: 'bold',
   },
   input: {
-    height: 40,
+    height: 60,
     borderRadius: 5,
-    padding: 10,
-    color: '#000',
-    marginTop: 10,
+    marginTop:15,
+    padding: 20,
+    color: '#5AFFFF',
     marginBottom: 5,
-    backgroundColor: '#EEE',
+    backgroundColor: '#000',
+    borderWidth: 1,
+    borderColor: '#5AFFFF',
   },
   inputMulti: {
     textAlignVertical: 'top',
+    marginTop:10,
     borderRadius: 5,
-    padding: 10,
-    color: '#000',
+    padding: 20,
+    color: '#5AFFFF',
     marginVertical: 5,
-    backgroundColor: '#EEE',
+    backgroundColor: '#000',
+    borderWidth: 1,
+    borderColor: '#5AFFFF',
   },
   appBar: {
     flexDirection: 'row',

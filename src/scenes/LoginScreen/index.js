@@ -7,15 +7,18 @@ import {
   TextInput,
   TouchableOpacity,
   ScrollView,
+  KeyboardAvoidingView,
 } from 'react-native';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 import PushNotification from 'react-native-push-notification';
 import {pushNotificationConfig} from '../../NotificationSystem';
+import {screenWidth, screenHeight} from '../ReserveScreen/Dimensions.js';
 // Notifications will be in another file
 PushNotification.configure(pushNotificationConfig);
 const PushNotificationFunc = () => {
   // Perform a request to backend every 24 hours with setInterval
-  // if there is any reminders, push them 
+  // if there is any reminders, push them
   PushNotification.localNotification({
     message: 'You have an item to return',
     title: 'Reminder',
@@ -51,7 +54,11 @@ class LoginScreen extends React.Component {
   };
   render() {
     return (
-      <ScrollView behavior="height" style={{backgroundColor: '#000'}}>
+      <KeyboardAwareScrollView
+        style={{backgroundColor: '#000'}}
+        resetScrollToCoords={{x: 0, y: 0}}
+        contentContainerStyle={{height: screenHeight}}
+        scrollEnabled={false}>
         <TopView />
         <View style={styles.Form}>
           <View style={styles.formText}>
@@ -76,13 +83,11 @@ class LoginScreen extends React.Component {
           <TouchableOpacity onPress={this._forgotPassword}>
             <Text style={styles.forgotPassword}> Forgot Password? </Text>
           </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.LoginButton}
-            onPress={this._login}>
+          <TouchableOpacity style={styles.LoginButton} onPress={this._login}>
             <Text style={styles.loginText}>LOG IN</Text>
           </TouchableOpacity>
         </View>
-      </ScrollView>
+      </KeyboardAwareScrollView>
     );
   }
 }
@@ -118,20 +123,18 @@ const styles = StyleSheet.create({
   },
 
   MainView: {
-    marginTop: 70,
-    height: 100,
-    flex: 1,
+    marginTop:20,
+    flex: 0.8,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#000000',
+    backgroundColor: '#000',
   },
 
   Form: {
-    paddingTop: 48,
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-end',
-    flex: 1,
+    justifyContent: 'space-evenly',
+    flex: 1.2,
     marginVertical: 30,
   },
   TextInput: {
@@ -139,17 +142,19 @@ const styles = StyleSheet.create({
     borderColor: '#5AFFFF',
     width: '85%',
     height: 50,
-    marginBottom: 25,
+    marginBottom: 20,
     borderRadius: 5,
     padding: 16,
     color: '#5AFFFF',
+    backgroundColor: '#000',
   },
 
   LoginButton: {
     height: 48,
     width: '85%',
     backgroundColor: '#5AFFFF',
-    marginTop: 50,
+    marginTop: 30,
+    marginBottom: 20,
     justifyContent: 'center',
     alignItems: 'center',
     shadowOffset: {

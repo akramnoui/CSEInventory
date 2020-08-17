@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Image, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
+import {screenHeight, screenWidth} from '../ReserveScreen/Dimensions';
 
 export default class AnomalyCard extends Component {
   componentDidMount(){
@@ -13,7 +14,6 @@ export default class AnomalyCard extends Component {
             source={{uri: this.props.info.reportImage}}
             style={{
               height: 126,
-              width: 300,
               resizeMode: 'cover',
               borderTopRightRadius: 4,
               borderTopLeftRadius: 4,
@@ -42,7 +42,7 @@ export default class AnomalyCard extends Component {
 const styles = StyleSheet.create({
   container: {
     height: 206,
-    width: 300,
+    width: screenWidth -60,
     backgroundColor: '#FFF',
     shadowColor: '#000',
     shadowOffset: {

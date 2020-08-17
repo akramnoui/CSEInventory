@@ -78,7 +78,7 @@ export default class LostObject extends Component {
             <ScrollView style={{marginTop: 30}}>
                     <FlatGrid
                 style={styles.gridView}
-                itemDimension={160}
+                itemDimension={8000}
                 data={this.state.items}
                 renderItem={({item}) => (
                   <LostCard info={item} detail={this.state.detail} />

@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {Button} from 'react-native-elements';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import {screenHeight, screenWidth} from '../ReserveScreen/Dimensions';
 
 class ItemPage extends React.Component {
   state = {};
@@ -39,9 +40,10 @@ class ItemPage extends React.Component {
 const styles = StyleSheet.create({
   container: {
     height: 70,
-    width: '86%',
+    width: screenWidth-60,
+    flexDirection:'row',
+    marginHorizontal: 30,
     backgroundColor: '#111111',
-    flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingLeft: 15,

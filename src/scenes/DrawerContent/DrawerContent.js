@@ -30,7 +30,7 @@ export default class drawerContentComponents extends Component {
 
   render() {
     return (
-      <View style={{flex: 1.0}}>
+      <View style={{flex: 1}}>
         <LinearGradient
           colors={['#3498DB', '#243448', '#102236']}
           style={styles.linearGradient}>
@@ -66,7 +66,6 @@ export default class drawerContentComponents extends Component {
               </Text>
               <View
                 style={{
-                  flex: 1,
                   flexDirection: 'row',
                   alignItems: 'center',
                 }}>

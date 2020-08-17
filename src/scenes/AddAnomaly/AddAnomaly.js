@@ -113,7 +113,7 @@ export default class AddAnomaly extends Component {
     return (
       <KeyboardAvoidingView
         behavior="height"
-        style={{backgroundColor: '#000000', flex: 1}}>
+        style={{backgroundColor: '#000000', flex: 1, flexDirection:'column'}}>
         <SafeAreaView
           style={{
             flex: 1,
@@ -121,6 +121,7 @@ export default class AddAnomaly extends Component {
             backgroundColor: '#000000',
             paddingTop: 5,
             padding: 30,
+            flexDirection:'column'
           }}>
           <View style={{flexDirection: 'row'}}>
             <View style={styles.appBar}>
@@ -142,11 +143,11 @@ export default class AddAnomaly extends Component {
                   fontSize: 16,
                   color: '#5AFFFF',
                 }}>
-                Add Anomaly
+                Add damaged item
               </Text>
             </View>
           </View>
-          <View>
+          <View style={{flex:1}}>
             <Image
               source={
                 this.state.anomalyPic != null
@@ -157,15 +158,14 @@ export default class AddAnomaly extends Component {
                     }
               }
               style={{
-                height: 170,
+                height: '100%',
                 resizeMode: 'cover',
                 alignSelf: 'stretch',
                 borderRadius: 10,
-                marginVertical: 5,
               }}
             />
             <IconButton
-              color="#fff"
+              color="#5AFFFF"
               size={25}
               icon="camera"
               style={{
@@ -179,6 +179,7 @@ export default class AddAnomaly extends Component {
           <TextInput
             style={styles.input}
             value={this.state.title}
+            placeholderTextColor='#5AFFFF'
             placeholder="Title..."
             onChangeText={(text) => {
               this.setState({title: text});
@@ -188,7 +189,8 @@ export default class AddAnomaly extends Component {
             multiline
             numberOfLines={5}
             style={styles.inputMulti}
-            placeholder="Description"
+            placeholderTextColor='#5AFFFF'
+            placeholder="Description..."
             editable
             onChangeText={(text) => {
               this.setState({description: text});
@@ -198,12 +200,19 @@ export default class AddAnomaly extends Component {
           <Dropdown
             containerStyle={styles.dropDown}
             placeholder="State"
+            style={{color:'#5AFFFF'}}
             data={states}
+            labelTextStyle={{color:'#5AFFFF'}}
+            itemTextStyle={{color:'#5AFFFF'}}
+            baseColor='#5AFFFF'
+            placeholderTextColor='#5AFFFF'
+            overlayStyle={{padding: 10}}
+            dropdownMargins={{ min: 30, max: 30 }}
             onChangeText={(value) => {
               this.setState({objectState: value});
             }}
           />
-          <View style={{flex: 1}}></View>
+          <View style={{flex: 0.25}}></View>
           <TouchableOpacity
             style={styles.Button}
             onPress={() => {
@@ -227,35 +236,43 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   input: {
-    height: 50,
+    height: 60,
     borderRadius: 5,
-    padding: 10,
-    color: '#000',
-    marginTop: 10,
+    marginTop:15,
+    padding: 20,
+    color: '#5AFFFF',
     marginBottom: 5,
-    backgroundColor: '#FFF',
+    backgroundColor: '#000',
+    borderWidth: 1,
+    borderColor: '#5AFFFF',
   },
   inputMulti: {
     textAlignVertical: 'top',
+    marginTop:10,
     borderRadius: 5,
-    padding: 10,
-    color: '#000000',
+    padding: 20,
+    color: '#5AFFFF',
     marginVertical: 5,
-    backgroundColor: '#FFF',
+    backgroundColor: '#000',
+    borderWidth: 1,
+    borderColor: '#5AFFFF',
   },
   dropDown: {
-    height: 50,
+    height: 60,
     borderRadius: 5,
-    color: '#000',
+    backgroundColor: '#000',
+    borderWidth: 1,
+    borderColor: '#5AFFFF',
+    color: '#5AFFFF',
     marginTop: 10,
     marginBottom: 5,
-    backgroundColor: '#FFF',
     justifyContent:'flex-end',
-    paddingLeft: 10,    
+    paddingHorizontal: 10, 
+    paddingBottom:3   
   },
   appBar: {
     flexDirection: 'row',
-    height: 40,
+    height: 50,
     marginTop: 15,
     marginBottom: 10,
     flex: 1,

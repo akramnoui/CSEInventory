@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import {Image, StyleSheet, View, Text, TouchableOpacity} from 'react-native';
 import {Button} from 'react-native-paper';
+import {screenHeight, screenWidth} from '../ReserveScreen/Dimensions';
 
 export default class ArendreCard extends Component {
   render() {
     return (
-      <View style={{backgroundColor: '#fff', borderRadius: 4}}>
+      <View style={{backgroundColor: '#fff', borderRadius: 4, width: screenWidth-60}}>
         <Image
           source={{uri: this.props.info.uri}}
           style={{
             height: 126,
-            width: 300,
             resizeMode: 'cover',
             borderTopRightRadius: 4,
             borderTopLeftRadius: 4,
@@ -32,7 +32,7 @@ export default class ArendreCard extends Component {
             </Text>
           </View>
           
-          <Button onPress={()=>{alert("rendu")}}>Rendre</Button>
+          <Button onPress={()=>{alert("rendu")}} color='#3498DB' style={{marginVertical:10}}>Rendre</Button>
         </View>
       </View>
     );

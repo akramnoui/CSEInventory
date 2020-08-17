@@ -71,7 +71,6 @@ const styles = StyleSheet.create({
   container: {
     bottom: 0,
     zIndex: 20,
-    marginTop: 30,
     position: 'absolute',
     alignSelf: 'center',
     alignItems: 'center',

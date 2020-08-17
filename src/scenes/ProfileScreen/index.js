@@ -80,7 +80,7 @@ class ProfileScreen extends React.Component {
           <ScrollView style={{flex: 1}}>
             <FlatGrid
               style={styles.gridView}
-              itemDimension={160}
+              itemDimension={300}
               data={this.state.items}
               renderItem={({item}) => <ArendreCard info={item} />}
               itemContainerStyle={{alignItems: 'center'}}
