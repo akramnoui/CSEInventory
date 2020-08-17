@@ -10,20 +10,29 @@ import {
   KeyboardAvoidingView,
 } from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
-
-import PushNotification from 'react-native-push-notification';
-import {pushNotificationConfig} from '../../NotificationSystem';
 import {screenWidth, screenHeight} from '../ReserveScreen/Dimensions.js';
-// Notifications will be in another file
-PushNotification.configure(pushNotificationConfig);
-const PushNotificationFunc = () => {
-  // Perform a request to backend every 24 hours with setInterval
-  // if there is any reminders, push them
-  PushNotification.localNotification({
-    message: 'You have an item to return',
-    title: 'Reminder',
-  });
-};
+import PushNotificationIOS from '@react-native-community/push-notification-ios';
+import PushNotification from 'react-native-push-notification';
+
+PushNotification.configure({
+  // (optional) Called when Token is generated (iOS and Android)
+  onRegister: function (token) {
+    console.log('TOKEN:', token);
+  },
+  // (required) Called when a remote or local notification is opened or received
+  onNotification: function (notification) {
+    console.log('REMOTE NOTIFICATION ==>', notification);
+    PushNotification.localNotification({
+      title: notification.title,
+      message: notification.message,
+    });
+    notification.finish(PushNotificationIOS.FetchResult.NoData);
+  },
+
+  senderID: '256218572662',
+  popInitialNotification: true,
+  requestPermissions: true,
+});
 
 class LoginScreen extends React.Component {
   state = {
@@ -47,6 +56,7 @@ class LoginScreen extends React.Component {
     this.setState({password});
   };
   _login = () => {
+    //Add logic of sending notifications token to db 
     this.props.navigation.navigate('OnBoarding');
   };
   _forgotPassword = () => {
