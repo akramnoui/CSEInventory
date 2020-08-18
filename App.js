@@ -28,6 +28,7 @@ import ActionDetail from './src/scenes/ActionDetails/ActionDetail';
 import AddAnomaly from './src/scenes/AddAnomaly/AddAnomaly';
 import AnomaliesView from './src/scenes/AnomalyList/AnomaliesView';
 import ReserveScreen from './src/scenes/ReserveScreen/index';
+import UsersInput from './src/scenes/ReserveScreen/UsersInput';
 
 import {Platform} from 'react-native';
 import {Drawer} from 'react-native-paper';
@@ -153,25 +154,26 @@ export default class App extends React.Component {
 
     return (
       //main Stack
-     <NavigationContainer>
-       <Stack.Navigator
-         initialRouteName="Login"
-         screenOptions={{
-           headerShown: false,
-         }}>
-         <Stack.Screen name="Main" children={createHomeStack}></Stack.Screen>
-         <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
-         <Stack.Screen
-           name="ForgotPassword"
-           component={ForgotPassword}></Stack.Screen>
-         <Stack.Screen
-           name="NewPassword"
-           component={NewPassword}></Stack.Screen>
-         <Stack.Screen
-           name="OnBoarding"
-           component={OnBoarding}></Stack.Screen>
-       </Stack.Navigator>
-     </NavigationContainer>
+     //<NavigationContainer>
+     //  <Stack.Navigator
+     //    initialRouteName="Login"
+     //    screenOptions={{
+     //      headerShown: false,
+     //    }}>
+     //    <Stack.Screen name="Main" children={createHomeStack}></Stack.Screen>
+     //    <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
+     //    <Stack.Screen
+     //      name="ForgotPassword"
+     //      component={ForgotPassword}></Stack.Screen>
+     //    <Stack.Screen
+     //      name="NewPassword"
+     //      component={NewPassword}></Stack.Screen>
+     //    <Stack.Screen
+     //      name="OnBoarding"
+     //      component={OnBoarding}></Stack.Screen>
+     //  </Stack.Navigator>
+     //</NavigationContainer>
+     <UsersInput />
     );
   }
 }
