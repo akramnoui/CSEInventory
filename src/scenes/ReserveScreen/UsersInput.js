@@ -34,7 +34,7 @@ export class UsersInput extends Component {
 
   render() {
     return (
-      <View style={{justifyContent: 'center', alignItems: 'center', flex: 1}}>
+      <View style={{flex: 1}}>
         <View
           style={{
             alignSelf: 'center',
@@ -52,7 +52,7 @@ export class UsersInput extends Component {
               borderRadius: 45,
               justifyContent: 'center',
               padding: 6,
-              width: 190,
+              width: 180,
               margin: 5,
             }}>
             Broken Item
@@ -66,7 +66,7 @@ export class UsersInput extends Component {
               borderRadius: 45,
               justifyContent: 'center',
               padding: 6,
-              width: 140,
+              width: 100,
               margin: 5,
             }}>
             Broken Item
