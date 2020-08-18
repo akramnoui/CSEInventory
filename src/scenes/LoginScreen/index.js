@@ -13,6 +13,8 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {screenWidth, screenHeight} from '../ReserveScreen/Dimensions.js';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import PushNotification from 'react-native-push-notification';
+//import qs from 'querystring';
+//import AsyncStorage from '@react-native-community/async-storage';
 
 PushNotification.configure({
   // (optional) Called when Token is generated (iOS and Android)
@@ -35,11 +37,17 @@ PushNotification.configure({
 });
 
 class LoginScreen extends React.Component {
-  state = {
-    name: '',
-    password: '',
-    isFormValid: false,
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      password: '',
+      isFormValid: false,
+      //token: null,
+    };
+    //    this.storeToken = this.storeToken.bind(this);
+    //    this.getToken = this.getToken.bind(this);
+  }
 
   getHandler = (key) => (val) => {
     this.setState({[key]: val});
@@ -56,12 +64,67 @@ class LoginScreen extends React.Component {
     this.setState({password});
   };
   _login = () => {
-    //Add logic of sending notifications token to db 
+    //Add logic of sending notifications token to db
     this.props.navigation.navigate('OnBoarding');
   };
   _forgotPassword = () => {
     this.props.navigation.navigate('ForgotPassword');
   };
+
+  //storeToken = async (value) => {
+  //  try {
+  //    await AsyncStorage.setItem('token', value);
+  //  } catch (e) {
+  //    console.log(e);
+  //  }
+  //};
+
+  //getToken = async () => {
+  //  try {
+  //    const response = await AsyncStorage.getItem('token');
+  //    this.setState({token: response});
+  //  } catch (e) {
+  //    console.log(e);
+  //  }
+  //};
+
+  //_login = () => {
+  //  if (this.state.name == '' || this.state.name == '') {
+  //    alert('Fill in the form !');
+  //    return;
+  //  }
+
+  //  const user = {
+  //    email: this.state.name,
+  //    password: this.state.password,
+  //  };
+
+  //  fetch('https://cse-inventory-api.herokuapp.com/users/login', {
+  //    method: 'POST',
+  //    headers: {
+  //      'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+  //    },
+  //    body: qs.stringify(user),
+  //  })
+  //    .then((response) => response.json()) // returns promise
+  //    .then((responseJson) => {
+  //      if (responseJson.token == undefined) {
+  //        alert('Wrong credentials');
+  //        return;
+  //      }
+  //      this.storeToken(responseJson.token);
+  //      this.getToken();
+  //      console.log(this.state.token);
+  //    })
+  //    .catch((e) => {
+  //      console.log(e);
+  //    });
+
+  //  if (this.state.token != null) {
+  //    this.props.navigation.navigate('Main');
+  //  }
+  //};
+
   render() {
     return (
       <KeyboardAwareScrollView
@@ -133,7 +196,7 @@ const styles = StyleSheet.create({
   },
 
   MainView: {
-    marginTop:20,
+    marginTop: 20,
     flex: 0.8,
     justifyContent: 'center',
     alignItems: 'center',
