@@ -12,22 +12,22 @@ export default class ReservationInput extends Component {
   state = {
     list: [
       {
-        userFirstName: '7med',
+        userFirstName: 'benbakh',
         profileImage:
           'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
+        id: 1
       },
       {
-        userFirstName: 'Amir',
+        userFirstName: 'Benbakhta',
         profileImage:
           'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 2,
+        id: 2
       },
       {
-        userFirstName: 'Majid',
+        userFirstName: 'Benbakhtout',
         profileImage:
           'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 3,
+        id: 3
       },
     ],
     query: '',
@@ -45,16 +45,14 @@ export default class ReservationInput extends Component {
 
   updateResults = () => {
     let toShow_inter = [];
-    console.log(this.state.query);
     if (this.state.query.length > 1) {
       this.state.list.map((user) => {
-        if (user.userFirstName.indexOf(this.state.query.toLowerCase()) > -1) {
-          toShow_inter.push({user});
+        console.log(user.userFirstName);
+        console.log(user.userFirstName.indexOf(this.state.query.toLowerCase()) > -1)
+        if (user.userFirstName.toLowerCase().indexOf(this.state.query.toLowerCase()) > -1) {
+          toShow_inter.push(user);
         }
       });
-      console.log(
-        JSON.stringify(toShow_inter) + '\n' + JSON.stringify(this.state.toShow),
-      );
       if (JSON.stringify(toShow_inter) != JSON.stringify(this.state.toShow)) {
         this.setState({toShow: toShow_inter});
         console.log('Update');
@@ -103,14 +101,14 @@ export default class ReservationInput extends Component {
                   : 0,
             },
           ]}>
-          {this.state.toShow.map((toshow) => (
+          {this.state.toShow.map((toshow, index) =>
             <TouchableOpacity
-              key={toshow.id}
+              key={index}
               style={{
                 flexDirection: 'row',
                 justifyContent: 'flex-start',
                 alignItems: 'center',
-                height: 60,
+                height: 40,
                 width: '100%',
               }}>
               <Image
@@ -124,7 +122,7 @@ export default class ReservationInput extends Component {
               />
               <Text>{toshow.userFirstName}</Text>
             </TouchableOpacity>
-          ))}
+          )}
         </View>
       </View>
     );
@@ -134,7 +132,6 @@ export default class ReservationInput extends Component {
 const styles = StyleSheet.create({
   list: {
     width: '100%',
-    backgroundColor: '#ccc',
     color: '#000',
     position: 'absolute',
     top: 45,

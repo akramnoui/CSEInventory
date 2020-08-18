@@ -9,7 +9,38 @@ export class UsersInput extends Component {
     list: ['7med', 'ali', 'benbakhta', 'benbakhtat', 'salima'],
     query: '',
     toShow: [''],
-    listedUsers: [''],
+    listedUsers: [
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'Benbakhta',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 2,
+      },
+      {
+        userFirstName: 'Benbakhta',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 2,
+      },
+      {
+        userFirstName: 'Benbakhta',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 2,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+    ],
   };
 
   changeQuery = (text) => {
@@ -43,34 +74,48 @@ export class UsersInput extends Component {
             flexWrap: 'wrap',
             alignItems: 'flex-start',
           }}>
-          <Chip
-            avatar={<Image source={require('../../assets/Articles/1.png')} />}
-            onPress={() => console.log('Pressed')}
-            mode="outlined"
-            style={{
-              height: 45,
-              borderRadius: 45,
-              justifyContent: 'center',
-              padding: 6,
-              width: 180,
-              margin: 5,
-            }}>
-            Broken Item
-          </Chip>
-          <Chip
-            avatar={<Image source={require('../../assets/Articles/1.png')} />}
-            onPress={() => console.log('Pressed')}
-            mode="outlined"
-            style={{
-              height: 45,
-              borderRadius: 45,
-              justifyContent: 'center',
-              padding: 6,
-              width: 100,
-              margin: 5,
-            }}>
-            Broken Item
-          </Chip>
+          {
+            this.state.listedUsers.map((user, index) => {
+            let alternate = index <2 ? index%2 ==0 : (index +1)%2 ==0;
+            const length =((screenWidth - 40) / 2 - 40)
+            {
+              return alternate ? (
+                <Chip
+                  avatar={
+                    <Image source={{uri:user.profileImage}} />
+                  }
+                  onPress={() => console.log('Pressed')}
+                  mode="outlined"
+                  style={{
+                    height: 45,
+                    borderRadius: 45,
+                    justifyContent: 'center',
+                    padding: 6,
+                    width: length,
+                    margin: 5,
+                  }}>
+                  {user.userFirstName}
+                </Chip>
+              ) : (
+                <Chip
+                  avatar={
+                    <Image source={{uri:user.profileImage}} />
+                  }
+                  onPress={() => console.log('Pressed')}
+                  mode="outlined"
+                  style={{
+                    height: 45,
+                    borderRadius: 45,
+                    justifyContent: 'center',
+                    padding: 6,
+                    width: length + 40,
+                    margin: 5,
+                  }}>
+                  {user.userFirstName}
+                </Chip>
+              );
+            }
+          })}
           <ReservationInput />
         </View>
       </View>
@@ -97,9 +142,7 @@ const User = (user) => {
 };
 
 const styles = StyleSheet.create({
-  visible:{
-    
-  }
-})
+  visible: {},
+});
 
 export default UsersInput;
