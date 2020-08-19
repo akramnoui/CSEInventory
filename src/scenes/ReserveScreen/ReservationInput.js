@@ -6,6 +6,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Image,
+  ScrollView,
 } from 'react-native';
 
 export default class ReservationInput extends Component {
@@ -15,24 +16,163 @@ export default class ReservationInput extends Component {
         userFirstName: 'benbakh',
         profileImage:
           'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1
+        id: 1,
       },
       {
         userFirstName: 'Benbakhta',
         profileImage:
           'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 2
+        id: 2,
       },
       {
-        userFirstName: 'Benbakhtout',
+        userFirstName: 'Benbakhta',
         profileImage:
           'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 3
+        id: 2,
+      },
+      {
+        userFirstName: 'Benbakhta',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 2,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
       },
     ],
     query: '',
     toShow: [],
-    listedUsers: [],
+    listedUsers: [
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'Benbakhta',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 2,
+      },
+      {
+        userFirstName: 'Benbakhta',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 2,
+      },
+      {
+        userFirstName: 'Benbakhta',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 2,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+    ],
   };
 
   changeQuery = (text) => {
@@ -43,19 +183,26 @@ export default class ReservationInput extends Component {
     this.updateResults();
   }
 
+  handleChange = (index) => {
+    this.props.updateListed(index);
+  };
+
   updateResults = () => {
     let toShow_inter = [];
     if (this.state.query.length > 1) {
       this.state.list.map((user) => {
-        console.log(user.userFirstName);
-        console.log(user.userFirstName.indexOf(this.state.query.toLowerCase()) > -1)
-        if (user.userFirstName.toLowerCase().indexOf(this.state.query.toLowerCase()) > -1) {
+        console.log(!this.state.listedUsers.includes(user));
+        if (
+          user.userFirstName
+            .toLowerCase()
+            .indexOf(this.state.query.toLowerCase()) > -1 &&
+          !this.state.listedUsers.includes(user)
+        ) {
           toShow_inter.push(user);
         }
       });
       if (JSON.stringify(toShow_inter) != JSON.stringify(this.state.toShow)) {
         this.setState({toShow: toShow_inter});
-        console.log('Update');
       } else if (this.state.query.length < 1) {
         this.setState({toShow: []});
       }
@@ -91,7 +238,7 @@ export default class ReservationInput extends Component {
             this.changeQuery(text);
           }}
         />
-        <View
+        <ScrollView
           style={[
             styles.list,
             {
@@ -101,7 +248,7 @@ export default class ReservationInput extends Component {
                   : 0,
             },
           ]}>
-          {this.state.toShow.map((toshow, index) =>
+          {this.state.toShow.map((toshow, index) => (
             <TouchableOpacity
               key={index}
               style={{
@@ -122,8 +269,8 @@ export default class ReservationInput extends Component {
               />
               <Text>{toshow.userFirstName}</Text>
             </TouchableOpacity>
-          )}
-        </View>
+          ))}
+        </ScrollView>
       </View>
     );
   }
@@ -135,5 +282,6 @@ const styles = StyleSheet.create({
     color: '#000',
     position: 'absolute',
     top: 45,
+    maxHeight: 200,
   },
 });

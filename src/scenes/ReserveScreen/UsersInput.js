@@ -40,27 +40,90 @@ export class UsersInput extends Component {
           'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
         id: 1,
       },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
     ],
   };
+
+  deleteUser = (index) => {
+    let array = this.state.listedUsers;
+    array.splice(array[index],1);
+    this.setState({listedUsers: array});
+  }
+
+  addUser = (index) => {
+    let array = this.state.listedUsers;
+    array.push(this.state.list[index]);
+    this.setState({listedUsers: array});
+  }
 
   changeQuery = (text) => {
     this.setState({query: text});
     this.updateResults();
-  };
-
-  updateResults = () => {
-    let toShow_inter = [''];
-    if (this.state.query.length > 1) {
-      this.state.list.map((user) => {
-        if (user.indexOf(this.state.query.toLowerCase()) > -1) {
-          toShow_inter.push(user);
-        }
-      });
-      if (JSON.stringify(toShow_inter) != JSON.stringify(this.state.toShow)) {
-        this.setState({toShow: toShow_inter});
-        console.log('Update');
-      }
-    }
   };
 
   render() {
@@ -74,49 +137,33 @@ export class UsersInput extends Component {
             flexWrap: 'wrap',
             alignItems: 'flex-start',
           }}>
-          {
-            this.state.listedUsers.map((user, index) => {
-            let alternate = index <2 ? index%2 ==0 : (index +1)%2 ==0;
-            const length =((screenWidth - 40) / 2 - 40)
-            {
-              return alternate ? (
-                <Chip
-                  avatar={
-                    <Image source={{uri:user.profileImage}} />
-                  }
-                  onPress={() => console.log('Pressed')}
-                  mode="outlined"
-                  style={{
-                    height: 45,
-                    borderRadius: 45,
-                    justifyContent: 'center',
-                    padding: 6,
-                    width: length,
-                    margin: 5,
-                  }}>
-                  {user.userFirstName}
-                </Chip>
-              ) : (
-                <Chip
-                  avatar={
-                    <Image source={{uri:user.profileImage}} />
-                  }
-                  onPress={() => console.log('Pressed')}
-                  mode="outlined"
-                  style={{
-                    height: 45,
-                    borderRadius: 45,
-                    justifyContent: 'center',
-                    padding: 6,
-                    width: length + 40,
-                    margin: 5,
-                  }}>
-                  {user.userFirstName}
-                </Chip>
-              );
-            }
+          {this.state.listedUsers.map((user, index) => {
+            let alternate = Math.pow(-1, Math.round(index / 2)) == -1; //(index+3) % 3 == 0 ? alternate : !alternate;
+            const length = (screenWidth - 40) / 2 - 40;
+            return (
+              <Chip
+                key={index}
+                avatar={
+                  <Image
+                    source={{uri: user.profileImage}}
+                    style={{height: 35, width: 35, borderRadius: 40}}
+                  />
+                }
+                onPress={() => this.deleteUser(index)}
+                mode="outlined"
+                accessibilityLabel="test"
+                style={{
+                  height: 45,
+                  borderRadius: 45,
+                  justifyContent: 'center',
+                  width: alternate ? length : length + 40,
+                  margin: 5,
+                }}>
+                {user.userFirstName}
+              </Chip>
+            );
           })}
-          <ReservationInput />
+          <ReservationInput list={this.state.list} listedUsers={this.state.listedUsers} />
         </View>
       </View>
     );

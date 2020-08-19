@@ -20,27 +20,6 @@ export default class InputField extends Component {
   executeSearch = () => {
     this.props.changeHandler(this.state.query);
   };
-
-
-  changeQuery = (text) => {
-    this.setState({query: text});
-    this.updateResults();
-  };
-
-  updateResults = () => {
-    let toShow_inter = [''];
-    if (this.state.query.length > 1) {
-      this.state.list.map((user) => {
-        if (user.indexOf(this.state.query.toLowerCase()) > -1) {
-          toShow_inter.push(user);
-        }
-      });
-      if (JSON.stringify(toShow_inter) != JSON.stringify(this.state.toShow)) {
-        this.setState({toShow: toShow_inter});
-        console.log('Update');
-      }
-    }
-  };
   
   render() {
     return (
