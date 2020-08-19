@@ -13,7 +13,7 @@ export default class ReservationInput extends Component {
   state = {
     list: [
       {
-        userFirstName: 'benbakh',
+        userFirstName: '7med',
         profileImage:
           'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
         id: 1,
@@ -28,151 +28,11 @@ export default class ReservationInput extends Component {
         userFirstName: 'Benbakhta',
         profileImage:
           'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 2,
-      },
-      {
-        userFirstName: 'Benbakhta',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 2,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-    ],
+        id: 3,
+      }],
     query: '',
     toShow: [],
-    listedUsers: [
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'Benbakhta',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 2,
-      },
-      {
-        userFirstName: 'Benbakhta',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 2,
-      },
-      {
-        userFirstName: 'Benbakhta',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 2,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-    ],
+    listedUsers: [],
   };
 
   changeQuery = (text) => {
@@ -189,14 +49,18 @@ export default class ReservationInput extends Component {
 
   updateResults = () => {
     let toShow_inter = [];
+    let exists = false;
     if (this.state.query.length > 1) {
-      this.state.list.map((user) => {
-        console.log(!this.state.listedUsers.includes(user));
+      this.state.list.map((user, index) => {
+      this.state.listedUsers.map((listed) => {
+        if(JSON.stringify(listed) == JSON.stringify(user)){
+          exists = true;
+        }
+      })
         if (
           user.userFirstName
             .toLowerCase()
-            .indexOf(this.state.query.toLowerCase()) > -1 &&
-          !this.state.listedUsers.includes(user)
+            .indexOf(this.state.query.toLowerCase()) > -1 && !exists
         ) {
           toShow_inter.push(user);
         }

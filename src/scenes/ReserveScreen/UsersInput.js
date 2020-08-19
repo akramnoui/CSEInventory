@@ -6,10 +6,7 @@ import ReservationInput from './ReservationInput';
 
 export class UsersInput extends Component {
   state = {
-    list: ['7med', 'ali', 'benbakhta', 'benbakhtat', 'salima'],
-    query: '',
-    toShow: [''],
-    listedUsers: [
+    list: [
       {
         userFirstName: 'benbakh',
         profileImage:
@@ -107,6 +104,27 @@ export class UsersInput extends Component {
         id: 1,
       },
     ],
+    query: '',
+    toShow: [''],
+    listedUsers: [
+      {
+        userFirstName: 'benbakh',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 1,
+      },
+      {
+        userFirstName: 'Benbakhta',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 2,
+      },
+      {
+        userFirstName: 'Benbakhta',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 3,
+      }],
   };
 
   deleteUser = (index) => {

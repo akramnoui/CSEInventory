@@ -154,25 +154,26 @@ export default class App extends React.Component {
 
     return (
       //main Stack
-     <NavigationContainer>
-       <Stack.Navigator
-         initialRouteName="Login"
-         screenOptions={{
-           headerShown: false,
-         }}>
-         <Stack.Screen name="Main" children={createHomeStack}></Stack.Screen>
-         <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
-         <Stack.Screen
-           name="ForgotPassword"
-           component={ForgotPassword}></Stack.Screen>
-         <Stack.Screen
-           name="NewPassword"
-           component={NewPassword}></Stack.Screen>
-         <Stack.Screen
-           name="OnBoarding"
-           component={OnBoarding}></Stack.Screen>
-       </Stack.Navigator>
-     </NavigationContainer>
+     //<NavigationContainer>
+     //  <Stack.Navigator
+     //    initialRouteName="Login"
+     //    screenOptions={{
+     //      headerShown: false,
+     //    }}>
+     //    <Stack.Screen name="Main" children={createHomeStack}></Stack.Screen>
+     //    <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
+     //    <Stack.Screen
+     //      name="ForgotPassword"
+     //      component={ForgotPassword}></Stack.Screen>
+     //    <Stack.Screen
+     //      name="NewPassword"
+     //      component={NewPassword}></Stack.Screen>
+     //    <Stack.Screen
+     //      name="OnBoarding"
+     //      component={OnBoarding}></Stack.Screen>
+     //  </Stack.Navigator>
+     //</NavigationContainer>
+     <UsersInput />
     );
   }
 }
