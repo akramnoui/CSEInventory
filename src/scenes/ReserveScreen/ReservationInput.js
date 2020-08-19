@@ -111,7 +111,7 @@ export default class ReservationInput extends Component {
                   flexDirection: 'row',
                   justifyContent: 'flex-start',
                   alignItems: 'center',
-                  height: '100%',
+                  height: 40,
                   width: '100%',
                 }}>
                 <Image
