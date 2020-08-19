@@ -5,10 +5,20 @@ import {Chip} from 'react-native-paper';
 import ReservationInput from './ReservationInput';
 
 export class UsersInput extends Component {
+  constructor(props) {
+    super(props);
+    this.addUser = this.addUser.bind(this);
+  }
   state = {
     list: [
       {
-        userFirstName: 'benbakh',
+        userFirstName: '7med',
+        profileImage:
+          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
+        id: 0,
+      },
+      {
+        userFirstName: 'Benbakhtat',
         profileImage:
           'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
         id: 1,
@@ -18,126 +28,23 @@ export class UsersInput extends Component {
         profileImage:
           'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
         id: 2,
-      },
-      {
-        userFirstName: 'Benbakhta',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 2,
-      },
-      {
-        userFirstName: 'Benbakhta',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 2,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
       },
     ],
-    query: '',
     toShow: [''],
-    listedUsers: [
-      {
-        userFirstName: 'benbakh',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'Benbakhta',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 2,
-      },
-      {
-        userFirstName: 'Benbakhta',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 3,
-      }],
+    listedUsers: [],
   };
 
   deleteUser = (index) => {
     let array = this.state.listedUsers;
-    array.splice(array[index],1);
+    array.splice(array[index], 1);
     this.setState({listedUsers: array});
-  }
+  };
 
   addUser = (index) => {
     let array = this.state.listedUsers;
     array.push(this.state.list[index]);
     this.setState({listedUsers: array});
-  }
+  };
 
   changeQuery = (text) => {
     this.setState({query: text});
@@ -146,7 +53,7 @@ export class UsersInput extends Component {
 
   render() {
     return (
-      <View style={{flex: 1}}>
+      <View>
         <View
           style={{
             alignSelf: 'center',
@@ -181,7 +88,13 @@ export class UsersInput extends Component {
               </Chip>
             );
           })}
-          <ReservationInput list={this.state.list} listedUsers={this.state.listedUsers} />
+          <ReservationInput
+            list={this.state.list}
+            listedUsers={this.state.listedUsers}
+            addHandler={(id) => {
+              this.addUser(id);
+            }}
+          />
         </View>
       </View>
     );

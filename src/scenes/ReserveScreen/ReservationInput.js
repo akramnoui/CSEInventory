@@ -11,28 +11,10 @@ import {
 
 export default class ReservationInput extends Component {
   state = {
-    list: [
-      {
-        userFirstName: '7med',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 1,
-      },
-      {
-        userFirstName: 'Benbakhta',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 2,
-      },
-      {
-        userFirstName: 'Benbakhta',
-        profileImage:
-          'https://www.pngitem.com/pimgs/m/150-1503945_transparent-user-png-default-user-image-png-png.png',
-        id: 3,
-      }],
+    list: this.props.list,
     query: '',
     toShow: [],
-    listedUsers: [],
+    listedUsers: this.props.listedUsers,
   };
 
   changeQuery = (text) => {
@@ -48,19 +30,24 @@ export default class ReservationInput extends Component {
   };
 
   updateResults = () => {
+    //To optimize soon
     let toShow_inter = [];
-    let exists = false;
+    let listUsers = [];
+    this.state.list.map((item1) => {
+      if (
+        this.state.listedUsers.find((item2) => {
+          return JSON.stringify(item1) == JSON.stringify(item2);
+        }) == undefined
+      ) {
+        listUsers.push(item1);
+      }
+    });
     if (this.state.query.length > 1) {
-      this.state.list.map((user, index) => {
-      this.state.listedUsers.map((listed) => {
-        if(JSON.stringify(listed) == JSON.stringify(user)){
-          exists = true;
-        }
-      })
+      listUsers.map((user, index) => {
         if (
           user.userFirstName
             .toLowerCase()
-            .indexOf(this.state.query.toLowerCase()) > -1 && !exists
+            .indexOf(this.state.query.toLowerCase()) > -1
         ) {
           toShow_inter.push(user);
         }
@@ -103,6 +90,7 @@ export default class ReservationInput extends Component {
           }}
         />
         <ScrollView
+          keyboardShouldPersistTaps={'always'}
           style={[
             styles.list,
             {
@@ -113,26 +101,30 @@ export default class ReservationInput extends Component {
             },
           ]}>
           {this.state.toShow.map((toshow, index) => (
-            <TouchableOpacity
-              key={index}
-              style={{
-                flexDirection: 'row',
-                justifyContent: 'flex-start',
-                alignItems: 'center',
-                height: 40,
-                width: '100%',
-              }}>
-              <Image
-                source={{uri: toshow.profileImage}}
-                style={{
-                  height: 35,
-                  width: 35,
-                  marginRight: 10,
-                  borderRadius: 35,
+              <TouchableOpacity
+                key={index}
+                onPress={() => {
+                  this.props.addHandler(toshow.id);
+                  this.setState({query: ''});
                 }}
-              />
-              <Text>{toshow.userFirstName}</Text>
-            </TouchableOpacity>
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'flex-start',
+                  alignItems: 'center',
+                  height: '100%',
+                  width: '100%',
+                }}>
+                <Image
+                  source={{uri: toshow.profileImage}}
+                  style={{
+                    height: 35,
+                    width: 35,
+                    marginRight: 10,
+                    borderRadius: 35,
+                  }}
+                />
+                <Text>{toshow.userFirstName}</Text>
+              </TouchableOpacity>
           ))}
         </ScrollView>
       </View>
