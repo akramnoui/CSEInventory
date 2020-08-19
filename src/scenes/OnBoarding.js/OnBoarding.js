@@ -10,7 +10,7 @@ import {
 import Swiper from 'react-native-swiper';
 import {TouchableHighlight} from 'react-native-gesture-handler';
 
-// const {width, height} = Dimensions.get('window');
+const {width, height} = Dimensions.get('window');
 class OnBoarding extends Component {
   _GoToHome = () => {
     this.props.navigation.navigate('Main');
@@ -24,26 +24,52 @@ class OnBoarding extends Component {
           loop={false}
           activeDotColor={'#5AFFFF'}>
           <View style={styles.slide}>
-            <Text style={styles.OnBoardingTitle}> Title One </Text>
-            <Text style={styles.OnBoardingP}> Slide 1</Text>
-            <SkipBtn goToHome={this._GoToHome} />
-          </View>
-          <View style={styles.slide}>
-            <Text style={styles.OnBoardingTitle}> Title Two </Text>
-            <Text style={styles.OnBoardingP}> Slide 2</Text>
-            <SkipBtn goToHome={this._GoToHome} />
-          </View>
-          <View style={styles.slide}>
-            <View style={{flex: 1, justifyContent: 'flex-end'}}>
-              <Text style={styles.OnBoardingTitle}> Title Three </Text>
-              <Text style={styles.OnBoardingP}> Slide 3</Text>
+            <View style={{flex: 2, justifyContent: 'flex-end'}}>
+              <Image
+                source={require('../../assets/onBoarding/1.png')}
+                style={{...styles.image}}
+              />
             </View>
             <View style={{flex: 1}}>
+              <Text style={styles.OnBoardingTitle}>Explore CSE Inventory</Text>
+              <Text style={styles.OnBoardingP}>
+                Check all CSE Belongings and their availability
+              </Text>
+            </View>
+            <SkipBtn goToHome={this._GoToHome} />
+          </View>
+          <View style={styles.slide}>
+            <View style={{flex: 2, justifyContent: 'flex-end'}}>
+              <Image
+                source={require('../../assets/onBoarding/2.png')}
+                style={styles.image}
+              />
+            </View>
+            <View style={{flex: 1}}>
+              <Text style={styles.OnBoardingTitle}>Book Items </Text>
+              <Text style={styles.OnBoardingP}>
+                {`Book the things you need for later \n& check other members activity`}
+              </Text>
+            </View>
+            <SkipBtn goToHome={this._GoToHome} />
+          </View>
+          <View style={styles.slide}>
+            <View style={{flex: 2, justifyContent: 'flex-end'}}>
+              <Image
+                source={require('../../assets/onBoarding/3.png')}
+                style={styles.image}
+              />
+            </View>
+            <View style={{flex: 1}}>
+              <Text style={styles.OnBoardingTitle}>Lost Object & Damages </Text>
+              <Text style={styles.OnBoardingP}>
+                Post about lost objects and declare demages
+              </Text>
               <TouchableHighlight
                 style={styles.homeBtn}
                 onPress={this._GoToHome}
                 underlayColor={'#5AFFFF80'}>
-                <Text style={styles.homeBtnText}>Start</Text>
+                <Text style={styles.homeBtnText}>Let's Start</Text>
               </TouchableHighlight>
             </View>
           </View>
@@ -65,13 +91,20 @@ const SkipBtn = (props) => {
   );
 };
 const styles = StyleSheet.create({
+  image: {
+    marginBottom: 30,
+  },
   OnBoardingTitle: {
     color: '#FFFFFF',
     fontSize: 23,
+    fontFamily: 'Gotham',
+    fontWeight: 'bold',
   },
   OnBoardingP: {
     color: '#FFFFFF',
     fontSize: 17,
+    marginVertical: 10,
+    lineHeight:25
   },
   positionSkip: {
     position: 'absolute',
@@ -87,26 +120,26 @@ const styles = StyleSheet.create({
     backgroundColor: '#111111',
   },
   homeBtnText: {
-      color:'#111111',
-    fontSize: 16,
+    color: '#111111',
+    fontSize: 19,
     fontWeight: 'bold',
     fontFamily: 'Gotham',
   },
   homeBtn: {
-    height: 45,
-    width: 140,
+    height: 50,
+    width: 200,
     backgroundColor: '#5AFFFF',
     justifyContent: 'center',
     alignItems: 'center',
     borderRadius: 7,
-    marginTop: 90,
+    marginTop: 35,
     shadowOffset: {
-        width: 0,
-        height: 3,
-      },
-      shadowOpacity: 0.2,
-      shadowRadius: 4.65,
-      elevation: 2,
+      width: 0,
+      height: 3,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 4.65,
+    elevation: 2,
   },
   skipBtn: {
     height: 30,
