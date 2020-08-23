@@ -30,20 +30,21 @@ export class UsersInput extends Component {
         id: 2,
       },
     ],
-    toShow: [''],
-    listedUsers: [],
+    listedUsers: this.props.toList,
   };
 
   deleteUser = (index) => {
     let array = this.state.listedUsers;
     array.splice(array[index], 1);
-    this.setState({listedUsers: array});
+    this.setState({listedUsers : array});
+    this.props.listHandler(array);
   };
 
   addUser = (index) => {
     let array = this.state.listedUsers;
     array.push(this.state.list[index]);
-    this.setState({listedUsers: array});
+    this.setState({listedUsers : array});
+    this.props.listHandler(array);
   };
 
   changeQuery = (text) => {
@@ -53,11 +54,10 @@ export class UsersInput extends Component {
 
   render() {
     return (
-      <View>
         <View
           style={{
             alignSelf: 'center',
-            width: screenWidth - 60,
+            width: screenWidth - 2*this.props.marginH,
             flexDirection: 'row',
             flexWrap: 'wrap',
             alignItems: 'flex-start',
@@ -96,7 +96,6 @@ export class UsersInput extends Component {
             }}
           />
         </View>
-      </View>
     );
   }
 }

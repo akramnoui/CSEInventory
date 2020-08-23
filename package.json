@@ -32,6 +32,7 @@
     "react-native-keyboard-aware-scroll-view": "^0.9.2",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-material-dropdown": "git+https://github.com/noway/react-native-material-dropdown.git",
+    "react-native-modal": "^11.5.6",
     "react-native-paper": "^4.0.1",
     "react-native-push-notification": "^5.0.1",
     "react-native-reanimated": "^1.10.1",

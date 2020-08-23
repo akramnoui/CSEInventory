@@ -1,19 +1,18 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import {
   View,
-  Image,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  KeyboardAvoidingView,
+  Image,
 } from 'react-native';
-import {SafeAreaView} from 'react-native-safe-area-context';
 import DateRangePicker from './DateRangePicker';
-import {IconButton} from 'react-native-paper';
-import {ScrollView} from 'react-native-gesture-handler';
-import Icon from 'react-native-vector-icons/MaterialIcons';
 import ReserveView from './ReserveView';
+import UsersInput from './UsersInput';
+import Modal from 'react-native-modal';
+import {screenHeight} from './Dimensions';
+import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 
 export default class ReserveScreen extends Component {
   constructor(props) {
@@ -69,50 +68,143 @@ export default class ReserveScreen extends Component {
   render() {
     return (
       <ReserveView>
-        <KeyboardAvoidingView
-          behavior="height"
-          style={{paddingTop: 5, padding: 30}}>
-            <Text style={styles.Title}>
-              Title
-            </Text>
-          <TextInput
-            style={styles.input}
-            value={this.state.title}
-            placeholder="Title..."
-            onChangeText={(text) => {
-              this.setState({title: text});
-            }}
-          />
-          <TextInput
-            multiline
-            numberOfLines={4}
-            style={styles.inputMulti}
-            placeholder="Description"
-            editable
-            onChangeText={(text) => {
-              this.setState({description: text});
-            }}
-            value={this.state.description}
-          />
-          <DateRangePicker
-            initialRange={['2018-04-01', '2018-04-10']}
-            onSuccess={(s, e) => {
-              this.setState({startDate: s, endDate: e});
-            }}
-            theme={{markColor: '#3498DB', markTextColor: 'white'}}
-          />
-          <TouchableOpacity
-            style={styles.Button}
-            onPress={() => {
-              this.onSubmit();
-            }}>
-            <Text style={{color: '#FFF'}}> Borrow ! </Text>
-          </TouchableOpacity>
-        </KeyboardAvoidingView>
+        <Text style={styles.Title}>Title</Text>
+        <TextInput
+          style={styles.input}
+          value={this.state.title}
+          placeholder="Title..."
+          onChangeText={(text) => {
+            this.setState({title: text});
+          }}
+        />
+        <TextInput
+          multiline
+          numberOfLines={4}
+          style={styles.inputMulti}
+          placeholder="Description"
+          editable
+          onChangeText={(text) => {
+            this.setState({description: text});
+          }}
+          value={this.state.description}
+        />
+        <UsersInputModal />
+        <DateRangePicker
+          initialRange={['2018-04-01', '2018-04-10']}
+          onSuccess={(s, e) => {
+            this.setState({startDate: s, endDate: e});
+          }}
+          theme={{markColor: '#3498DB', markTextColor: 'white'}}
+        />
+        <TouchableOpacity
+          style={styles.Button}
+          onPress={() => {
+            this.onSubmit();
+          }}>
+          <Text style={{color: '#FFF'}}> Borrow ! </Text>
+        </TouchableOpacity>
       </ReserveView>
     );
   }
 }
+
+const UsersInputModal = () => {
+  const [visible, setVisible] = useState(false);
+  const [ToList, setToList] = useState([]);
+
+  dismiss = () => {
+    setVisible(false);
+  };
+
+  setSelectedList = (list) => {
+    setToList(list);
+  };
+
+  const short = ToList;
+
+  return (
+    <View>
+      <TouchableOpacity
+        style={{
+          backgroundColor: '#5AFFFF',
+          height: 50,
+          borderRadius: 50,
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'row',
+        }}
+        onPress={() => {
+          setVisible(!visible);
+        }}>
+        <Text style={{marginRight: 15}}>Allowed Users</Text>
+        {short.map((list) => (
+          <Image
+            source={{uri: list.profileImage}}
+            style={{
+              height: 35,
+              width: 35,
+              marginRight: -15,
+              borderRadius: 35,
+            }}
+          />
+        ))}
+      </TouchableOpacity>
+      <Modal
+        avoidKeyboard={true}
+        useNativeDriver={false}
+        isVisible={visible}
+        onSwipeComplete={dismiss}
+        swipeDirection="right"
+        onBackdropPress={dismiss}>
+        <View
+          style={{
+            backgroundColor: '#fff',
+            height: screenHeight / 2,
+            borderRadius: 30,
+          }}>
+          <Text
+            style={{
+              fontFamily: 'gotham',
+              fontSize: 28,
+              fontWeight: 'normal',
+              marginLeft: 30,
+              marginTop: 30,
+            }}>
+            Allowed Users
+          </Text>
+
+          <KeyboardAwareScrollView
+            resetScrollToCoords={{x: 0, y: 0}}
+            contentContainerStyle={{height: '100%'}}
+            keyboardShouldPersistTaps={'always'}
+            scrollEnabled={true}>
+            <UsersInput
+              marginH={40}
+              listHandler={(array) => {
+                setSelectedList(array);
+              }}
+              toList={ToList}
+            />
+          </KeyboardAwareScrollView>
+          <TouchableOpacity
+            onPress={dismiss}
+            style={{
+              margin: 30,
+              width: 100,
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: 30,
+              height: 40,
+              alignSelf: 'flex-end',
+              backgroundColor: '#5aafff',
+            }}>
+            <Text style={{color: '#fff'}}>Validate</Text>
+          </TouchableOpacity>
+        </View>
+      </Modal>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   imageTitle: {
@@ -161,7 +253,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   Title: {
-    fontSize:30,
-    marginBottom:10
-  }
+    fontSize: 30,
+    marginBottom: 10,
+  },
 });

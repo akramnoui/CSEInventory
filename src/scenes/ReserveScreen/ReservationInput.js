@@ -30,7 +30,7 @@ export default class ReservationInput extends Component {
   };
 
   updateResults = () => {
-    //To optimize soon
+    //To optimize
     let toShow_inter = [];
     let listUsers = [];
     this.state.list.map((item1) => {
@@ -70,7 +70,6 @@ export default class ReservationInput extends Component {
           flexDirection: 'row',
           justifyContent: 'flex-start',
           height: 50,
-          width: '100%',
         }}>
         <Image source={{uri: pic}} />
         <Text>{name}</Text>
@@ -101,30 +100,31 @@ export default class ReservationInput extends Component {
             },
           ]}>
           {this.state.toShow.map((toshow, index) => (
-              <TouchableOpacity
-                key={index}
-                onPress={() => {
-                  this.props.addHandler(toshow.id);
-                  this.setState({query: ''});
-                }}
+            <TouchableOpacity
+              key={index}
+              onPress={() => {
+                this.props.addHandler(toshow.id);
+                this.setState({query: ''});
+              }}
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'flex-start',
+                alignItems: 'center',
+                height: 40,
+                width: '100%',
+                zIndex: 100,
+              }}>
+              <Image
+                source={{uri: toshow.profileImage}}
                 style={{
-                  flexDirection: 'row',
-                  justifyContent: 'flex-start',
-                  alignItems: 'center',
-                  height: 40,
-                  width: '100%',
-                }}>
-                <Image
-                  source={{uri: toshow.profileImage}}
-                  style={{
-                    height: 35,
-                    width: 35,
-                    marginRight: 10,
-                    borderRadius: 35,
-                  }}
-                />
-                <Text>{toshow.userFirstName}</Text>
-              </TouchableOpacity>
+                  height: 35,
+                  width: 35,
+                  marginRight: 10,
+                  borderRadius: 35,
+                }}
+              />
+              <Text>{toshow.userFirstName}</Text>
+            </TouchableOpacity>
           ))}
         </ScrollView>
       </View>
@@ -139,5 +139,6 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 45,
     maxHeight: 200,
+    backgroundColor: '#fff',
   },
 });
