@@ -9,14 +9,14 @@ export default class AnomalyCard extends Component {
   render() {
     return (
       <TouchableOpacity style={styles.container} onPress={this.props.detail}>
-        <View>
+        <View >
           <Image
             source={{uri: this.props.info.reportImage}}
             style={{
               height: 126,
               resizeMode: 'cover',
-              borderTopRightRadius: 4,
-              borderTopLeftRadius: 4,
+              borderTopRightRadius: 20,
+              borderTopLeftRadius: 20,
             }}
           />
           <View
@@ -25,6 +25,9 @@ export default class AnomalyCard extends Component {
               paddingVertical: 3,
               flexDirection: 'column',
               justifyContent: 'center',
+              backgroundColor: '#FCFFED' , 
+              height:
+             
             }}>
             <Text numberOfLines={1} style={styles.title}>
               {this.props.info.reportTitle}
@@ -41,8 +44,8 @@ export default class AnomalyCard extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: 206,
-    width: screenWidth -60,
+    height: 217,
+    width: 158 , 
     backgroundColor: '#FFF',
     shadowColor: '#000',
     shadowOffset: {
@@ -52,7 +55,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.29,
     shadowRadius: 4.65,
     elevation: 3,
-    borderRadius: 8,
+    borderRadius: 10,
   },
   title: {
     fontSize: 16,

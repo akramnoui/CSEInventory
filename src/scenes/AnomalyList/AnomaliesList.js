@@ -10,12 +10,11 @@ export default class AnomaliesList extends Component {
       <FlatGrid
         style={styles.gridView}
         itemDimension={160}
+        numColumns={1}
         data={this.props.items}
         renderItem={({item}) => (
           <AnomalyCard info={item} detail={this.props.detail} />
         )}
-        itemContainerStyle={{alignItems: 'center'}}
-        spacing={20}
       />
     );
   }
@@ -25,5 +24,6 @@ const styles = StyleSheet.create({
   gridView: {
     marginHorizontal: 20,
     marginTop: -20,
+    paddingTop: 20
   },
 });
