@@ -154,8 +154,8 @@ export default class App extends React.Component {
     );
 
     return (
-     // main Stack
-      // <NavigationContainer>
+      //main Stack
+      //<NavigationContainer>
       //  <Stack.Navigator
       //    initialRouteName="Login"
       //    screenOptions={{
@@ -171,9 +171,8 @@ export default class App extends React.Component {
       //      component={NewPassword}></Stack.Screen>
       //    <Stack.Screen name="OnBoarding" component={OnBoarding}></Stack.Screen>
       //  </Stack.Navigator>
-      // </NavigationContainer>
-      // <ReserveView />
-      <AnomaliesView></AnomaliesView>
+      //</NavigationContainer>
+      <ReserveView />
     );
   }
 }

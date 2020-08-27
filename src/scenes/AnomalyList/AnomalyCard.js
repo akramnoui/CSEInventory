@@ -26,14 +26,14 @@ export default class AnomalyCard extends Component {
               flexDirection: 'column',
               justifyContent: 'center',
               backgroundColor: '#FCFFED' , 
-              height:
+              height: 83 
              
             }}>
             <Text numberOfLines={1} style={styles.title}>
               {this.props.info.reportTitle}
             </Text>
             <Text numberOfLines={2} style={styles.description}>
-             
+             description description 
             </Text>
           </View>
         </View>
@@ -62,10 +62,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     flexWrap: 'wrap',
     marginBottom: 3,
-    marginTop: 5,
+   
   },
   description: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: 'normal',
     flexWrap: 'wrap',
   },
