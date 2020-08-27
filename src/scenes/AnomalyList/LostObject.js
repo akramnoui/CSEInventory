@@ -16,7 +16,7 @@ import AnomaliesList from './AnomaliesList';
 import Drawer from 'react-native-drawer';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {FAB} from 'react-native-paper';
-import LostCard from './AnomalyCard';
+import LostCard from './LostCard';
 import {FlatGrid} from 'react-native-super-grid';
 
 export default class LostObject extends Component {
@@ -78,7 +78,8 @@ export default class LostObject extends Component {
             <ScrollView style={{marginTop: 30}}>
                     <FlatGrid
                 style={styles.gridView}
-                itemDimension={8000}
+                numColumns={1}
+
                 data={this.state.items}
                 renderItem={({item}) => (
                   <LostCard info={item} detail={this.state.detail} />
@@ -119,6 +120,7 @@ const styles = {
   safeAreaStyle: {
     flex: 1.0,
     backgroundColor: '#3B5998',
+    paddingTop: 10 , 
   },
   headerContainer: {
     height: 44,

@@ -13,10 +13,9 @@ export default class LostCard extends Component {
             source={{uri: this.props.info.objectImage}}
             style={{
               height: 126,
-              width: 300,
               resizeMode: 'cover',
-              borderTopRightRadius: 4,
-              borderTopLeftRadius: 4,
+              borderTopRightRadius: 20,
+              borderTopLeftRadius: 20,
             }}
           />
           <View
@@ -41,8 +40,8 @@ export default class LostCard extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    height: 206,
-    width: 300,
+    height: 217,
+    width: 158 , 
     backgroundColor: '#FFF',
     shadowColor: '#000',
     shadowOffset: {
@@ -52,10 +51,10 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.29,
     shadowRadius: 4.65,
     elevation: 3,
-    borderRadius: 8,
+    borderRadius: 10,
   },
   title: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
     flexWrap: 'wrap',
     marginBottom: 3,

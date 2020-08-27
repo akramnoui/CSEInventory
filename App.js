@@ -172,7 +172,7 @@ export default class App extends React.Component {
       //    <Stack.Screen name="OnBoarding" component={OnBoarding}></Stack.Screen>
       //  </Stack.Navigator>
       //</NavigationContainer>
-      <ReserveView />
+      <LostObject />
     );
   }
 }
