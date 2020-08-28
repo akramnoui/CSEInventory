@@ -24,7 +24,7 @@ class ProfileScreen extends React.Component {
             'https://images.unsplash.com/photo-1521405617584-1d9867aecad3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80',
           title: 'Object Name 1',
           description:
-            'loob lcccccccccccccccccccccccccccccccccccccccccccccccccccccccccsssssssssoob loob',
+            'a banner for the HACKIT event',
           occurence: 2,
           state: 'Broken',
         },
@@ -44,7 +44,7 @@ class ProfileScreen extends React.Component {
     return (
       <SafeAreaView style={styles.container}>
         <LinearGradient
-          colors={['#3498DB', '#102236']}
+           colors={['#030925' , '#030927']}
           style={styles.linearGradient}>
           <View style={styles.topView}>
             <View style={{flexDirection: 'row'}}>
@@ -77,7 +77,8 @@ class ProfileScreen extends React.Component {
               </Text>
             </View>
           </View>
-          <ScrollView style={{flex: 1}}>
+          </LinearGradient>
+          <ScrollView style={{flex: 1 , backgroundColor:'black'}}>
             <FlatGrid
               style={styles.gridView}
               itemDimension={300}
@@ -87,13 +88,16 @@ class ProfileScreen extends React.Component {
               spacing={30}
             />
           </ScrollView>
-        </LinearGradient>
+        
       </SafeAreaView>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  gridView:{
+backgroundColor: '#e0e1e3' , 
+  } , 
   bottomBtn: {
     margin: 10,
     paddingBottom: 10,

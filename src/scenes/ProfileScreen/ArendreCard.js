@@ -6,21 +6,22 @@ import {screenHeight, screenWidth} from '../ReserveScreen/Dimensions';
 export default class ArendreCard extends Component {
   render() {
     return (
-      <View style={{backgroundColor: '#fff', borderRadius: 4, width: screenWidth-60}}>
+      <View style={styles.container}>
         <Image
           source={{uri: this.props.info.uri}}
           style={{
-            height: 126,
+            height: 90,
+            width: 90 , 
+            margin: 15 ,  
             resizeMode: 'cover',
-            borderTopRightRadius: 4,
-            borderTopLeftRadius: 4,
+            borderRadius: 10
           }}
         />
         <View style={{flexDirectionn: 'row'}}>
           <View
             style={{
-              paddingHorizontal: 10,
-              paddingVertical: 3,
+              marginLeft: 10 , 
+              marginTop: 20 , 
               flexDirection: 'column',
               justifyContent: 'center',
             }}>
@@ -30,9 +31,12 @@ export default class ArendreCard extends Component {
             <Text numberOfLines={2} style={styles.description}>
               {this.props.info.description}
             </Text>
+            <Text numberOfLines={1} style={styles.date}>
+              When: 23/06/2020
+            </Text>
           </View>
           
-          <Button onPress={()=>{alert("rendu")}} color='#3498DB' style={{marginVertical:10}}>Rendre</Button>
+          <Button onPress={()=>{alert("rendu")}} color='#3498DB' style={{marginTop:15 , marginRight: 25}}>Rendre</Button>
         </View>
       </View>
     );
@@ -40,6 +44,11 @@ export default class ArendreCard extends Component {
 }
 
 const styles = StyleSheet.create({
+  container : {
+    backgroundColor: '#FFF', borderRadius: 15, width: screenWidth-60 , flexDirection: "row" , height : 150 , 
+ 
+  } , 
+
   title: {
     fontSize: 16,
     fontWeight: 'bold',
@@ -52,4 +61,10 @@ const styles = StyleSheet.create({
     fontWeight: 'normal',
     flexWrap: 'wrap',
   },
+  date : {
+    fontSize: 14 , 
+    fontWeight: "bold" , 
+    marginTop: 5
+
+  }
 });
