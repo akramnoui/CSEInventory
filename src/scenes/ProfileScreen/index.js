@@ -43,9 +43,6 @@ class ProfileScreen extends React.Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
-        <LinearGradient
-           colors={['#030925' , '#030927']}
-          style={styles.linearGradient}>
           <View style={styles.topView}>
             <View style={{flexDirection: 'row'}}>
               <View style={styles.appBar}>
@@ -54,7 +51,7 @@ class ProfileScreen extends React.Component {
                     flexDirection: 'row',
                     fontWeight: 'bold',
                     fontSize: 16,
-                    color: '#fff',
+                    color: 'black',
                   }}>
                   Welcome to your profile
                 </Text>
@@ -64,20 +61,21 @@ class ProfileScreen extends React.Component {
               <Avatar
                 size={120}
                 rounded
-                source={{
-                  uri:
-                    'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-                }}
+                source={require('../../assets/UIFaces/UI.jpg')}
               />
               <Text style={styles.userName}>John Doe</Text>
             </View>
-            <View style={{flexDirection: 'row'}}>
-              <Text style={{color: '#fff', fontSize: 16}}>
+            <View style={{flexDirection: 'row' , justifyContent: 'space-between'  , width: '100%'}}>
+              <Text style={{color: '#4D4C47', fontSize: 18  , marginLeft: '8%'}}>
                 Article à rendre
               </Text>
+              <View style={styles.number}>
+              <Text style={{color: 'black', fontSize: 20 , fontWeight: 'bold' }}>
+                4
+              </Text>
+              </View>
             </View>
           </View>
-          </LinearGradient>
           <ScrollView style={{flex: 1 , backgroundColor:'black'}}>
             <FlatGrid
               style={styles.gridView}
@@ -95,6 +93,10 @@ class ProfileScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  number: {
+    width: 30 , height: 30 , backgroundColor: 'black' , marginRight: '10%' ,
+     borderRadius: 10  , flexDirection: 'row'
+  } , 
   gridView:{
 backgroundColor: '#e0e1e3' , 
   } , 
@@ -120,7 +122,7 @@ backgroundColor: '#e0e1e3' ,
     marginBottom: 30,
   },
   userName: {
-    color: 'white',
+    color: 'black',
     padding: 20,
     fontSize: 25,
     fontWeight: 'bold',
@@ -130,7 +132,7 @@ backgroundColor: '#e0e1e3' ,
     alignItems: 'center',
   },
   articles: {
-    color: 'white',
+    color: 'black',
     fontSize: 18,
   },
   button: {
@@ -179,6 +181,7 @@ backgroundColor: '#e0e1e3' ,
     alignItems: 'center',
     justifyContent: 'center',
     flex: 1,
+    paddingBottom: 20
   },
 });
 

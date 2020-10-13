@@ -46,18 +46,28 @@ export default class ArendreCard extends Component {
 const styles = StyleSheet.create({
   container : {
     backgroundColor: '#FFF', borderRadius: 15, width: screenWidth-60 , flexDirection: "row" , height : 150 , 
+    shadowColor: "#000",
+shadowOffset: {
+	width: 0,
+	height: 4,
+},
+shadowOpacity: 0.30,
+shadowRadius: 4.65,
+
+elevation: 8,
  
   } , 
 
   title: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
     flexWrap: 'wrap',
     marginBottom: 3,
     marginTop: 5,
   },
   description: {
-    fontSize: 14,
+    fontSize: 15,
+    color: "#828179" ,
     fontWeight: 'normal',
     flexWrap: 'wrap',
   },

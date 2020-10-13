@@ -95,6 +95,7 @@ class HomeScreen extends React.Component {
       .then((response) => response.json())
       .then((json) => {
         this.setState({items: json.allReservations});
+        console.log(json.allReservations);
       })
       .catch((error) => console.error(error))
       .finally(() => {
@@ -164,7 +165,7 @@ class HomeScreen extends React.Component {
                 }>
                 <Card
                   objectName={item.reservationTitle}
-                  user={`${item.reservationBy.userFirstName} ${item.reservationBy.userLastName}`}
+                  user = {"John Doe"}  /* `${item.reservationBy.userFirstName} ${item.reservationBy.userLastName}` */
                   startsAt={item.startsAt}
                   status={'Booked'}
                   imageSrc={item.objectsNeeded[0].objectImage}></Card>
