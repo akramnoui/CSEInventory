@@ -43,12 +43,26 @@ class ProfileScreen extends React.Component {
   render() {
     return (
       <SafeAreaView style={styles.container}>
+         <IconButton
+          color="#5AFFFF"
+          size={35}
+          icon="keyboard-backspace"
+          style={{
+            backgroundColor: '#00000040',
+            alignSelf: 'flex-start',
+            position: 'absolute',
+            zIndex: 10,
+          }}
+          onPress={() => {
+            this.props.navigation.goBack(null);
+          }}
+        />
           <View style={styles.topView}>
             <View style={{flexDirection: 'row'}}>
               <View style={styles.appBar}>
                 <Text
                   style={{
-                    flexDirection: 'row',
+                    alignSelf: 'center', 
                     fontWeight: 'bold',
                     fontSize: 16,
                     color: 'black',
@@ -67,9 +81,9 @@ class ProfileScreen extends React.Component {
             </View>
             <View style={{flexDirection: 'row' , justifyContent: 'space-between'  , width: '100%'}}>
               <Text style={{color: '#4D4C47', fontSize: 18  , marginLeft: '8%'}}>
-                Article à rendre
+                Articles à rendre
               </Text>
-              <View style={styles.number}>
+              <View style={styles.Number}>
               <Text style={{color: 'black', fontSize: 20 , fontWeight: 'bold' }}>
                 4
               </Text>
@@ -93,12 +107,13 @@ class ProfileScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  number: {
-    width: 30 , height: 30 , backgroundColor: 'black' , marginRight: '10%' ,
-     borderRadius: 10  , flexDirection: 'row'
+  Number: {
+    backgroundColor: '#5AFFFF' , 
+    width: 30 , height: 30  , marginRight: '10%' ,
+     borderRadius: 30  , flexDirection: 'row' , alignItems: 'center' , justifyContent: 'center' ,
   } , 
   gridView:{
-backgroundColor: '#e0e1e3' , 
+backgroundColor: '#CFD4D0' , 
   } , 
   bottomBtn: {
     margin: 10,
@@ -175,7 +190,7 @@ backgroundColor: '#e0e1e3' ,
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
+    justifyContent: 'center',
   },
   linearGradient: {
     alignItems: 'center',
