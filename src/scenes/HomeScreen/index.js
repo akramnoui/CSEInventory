@@ -181,7 +181,8 @@ class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   FlatList: {
     marginTop: 10,
-    backgroundColor: 'black',
+    backgroundColor: '#101010',
+   
   },
   MainView: {
     flex: 1,
@@ -189,7 +190,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#070809',
+    backgroundColor: '#101010', //#171216
   },
   Header: {
     display: 'flex',
