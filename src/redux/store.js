@@ -1,35 +1,12 @@
-import {createStore } from 'redux'
+import {createStore , applyMiddleware } from 'redux'
 import {provider} from 'react-redux'
-
- 
-
-
-
-const reducer = combineReducers({
-
-})
+import reducer from './reducer'
+import thunk from 'redux-thunk'
 
 
-const DEFAULT_STATE = {
-    
-    
-    actions: { 
+const initialState = {
+   
+  };
 
-    } ,
-    reservations : {
-
-    } , 
-    damages : {
-
-    }
- , 
-
-
-    react:{
-        isFetching: false , 
-    }
-}
-
-
-const store = createStore(reducer , DEFAULT_STATE) ; 
+const store = createStore(reducer ,{},  applyMiddleware(thunk)) ; 
 export default store ; 

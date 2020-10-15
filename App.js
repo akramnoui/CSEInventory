@@ -36,6 +36,9 @@ import ItemPage from './src/scenes/ItemPage/ItemPage';
 import AddOP from './src/scenes/AddOP/AddOP';
 import LostObject from './src/scenes/AnomalyList/LostObject';
 import OnBoarding from './src/scenes/OnBoarding.js/OnBoarding';
+import store from './src/redux/store'
+import {Provider} from 'react-redux'
+
 import ReserveView from './src/scenes/ReserveScreen/index';
 
 const DrawerNav = createDrawerNavigator();
@@ -155,6 +158,7 @@ export default class App extends React.Component {
 
     return (
       // main Stack
+      <Provider store={store}>
       <NavigationContainer>
        <Stack.Navigator
          initialRouteName="Login"
@@ -172,7 +176,7 @@ export default class App extends React.Component {
          <Stack.Screen name="OnBoarding" component={OnBoarding}></Stack.Screen>
        </Stack.Navigator>
       </NavigationContainer>
-      // <ProfileScreen />
+       </Provider>
     );
   }
 }

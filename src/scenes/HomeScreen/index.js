@@ -14,6 +14,8 @@ import Card from './Card';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import InputField from '../GoodsList/InputField';
 import HomeFilters from './HomeFilters';
+import {FetchActions} from '../../redux/actions'
+import {connect} from 'react-redux'
 
 const Items = [
   {
@@ -88,19 +90,11 @@ class HomeScreen extends React.Component {
     //Execute filtering request
   };
 
-  async componentWillMount() {
-    const response = await fetch(
-      'https://cse-inventory-api.herokuapp.com/reservations/all',
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        this.setState({items: json.allReservations});
-        console.log(json.allReservations);
-      })
-      .catch((error) => console.error(error))
-      .finally(() => {
-        this.setState({isLoading: false});
-      });
+
+      componentDidMount() {
+      this.props.FetchActions();
+      console.log();
+
   }
 
   updateSearch = (search) => {
@@ -157,7 +151,7 @@ class HomeScreen extends React.Component {
         ) : (
           <FlatList
             style={styles.FlatList}
-            data={this.state.items}
+            data={this.props.Actions}
             renderItem={({item}) => (
               <TouchableOpacity
                 onPress={() =>
@@ -221,4 +215,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+const mapStateToProps = state => ({
+  Actions : state.Actions
+})
+
+export default connect(mapStateToProps, {FetchActions})(HomeScreen);
