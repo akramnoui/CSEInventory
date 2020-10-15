@@ -8,4 +8,28 @@ import {provider} from 'react-redux'
 const reducer = combineReducers({
 
 })
-const store = createStore(reducer , DEFAULT_STATE)
+
+
+const DEFAULT_STATE = {
+    
+    
+    actions: { 
+
+    } ,
+    reservations : {
+
+    } , 
+    damages : {
+
+    }
+ , 
+
+
+    react:{
+        isFetching: false , 
+    }
+}
+
+
+const store = createStore(reducer , DEFAULT_STATE) ; 
+export default store ; 
