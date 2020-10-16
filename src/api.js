@@ -9,3 +9,17 @@ export const fetchActions = async () => {
       
       
   }
+
+export const fetchItems = async () => {
+
+    const response = await fetch(
+        'https://cse-inventory-api.herokuapp.com/items/all'
+    )
+
+    const results = await response.json()
+    console.log(results);
+    return results
+
+
+
+}

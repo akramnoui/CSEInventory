@@ -18,8 +18,10 @@ import ArticlesList from './ArticlesList';
 import Drawer from 'react-native-drawer';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {FlatGrid} from 'react-native-super-grid';
+import {connect} from 'react-redux';
+import {FetchItems} from '../../redux/actions'
 
-export default class ArticlesView extends Component {
+ class ArticlesView extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,17 +32,7 @@ export default class ArticlesView extends Component {
     };
   }
   async componentDidMount() {
-    const response = await fetch(
-      'https://cse-inventory-api.herokuapp.com/items/all',
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        this.setState({items: json});
-      })
-      .catch((error) => console.error(error))
-      .finally(() => {
-        this.setState({isLoading: false});
-      });
+   this.props.FetchItems();
   }
 
   setQuery = (query) => {
@@ -89,7 +81,7 @@ export default class ArticlesView extends Component {
               changeHandler={this.setQuery.bind(this)}
             />
             <Filters changeHandler={this.setFilter.bind(this)} />
-            {this.state.isLoading ? (
+            {this.props.isFetchingItems? (
               <ActivityIndicator
                 style={{marginTop: 20}}
                 size="large"
@@ -100,7 +92,7 @@ export default class ArticlesView extends Component {
                 <FlatGrid
                   style={styles.gridView}
                   itemDimension={170}
-                  data={this.state.items}
+                  data={this.props.Items}
                   renderItem={({item}) => (
                     <ArticleCard
                       info={item}
@@ -183,3 +175,9 @@ const styles = {
     justifyContent: 'space-between',
   },
 };
+const mapStateToProps = state => {
+  return {Items : state.Item.Items , isFetchingItems : state.Item.isFetchingItems};
+};
+
+export default connect(mapStateToProps, {FetchItems})(ArticlesView);
+

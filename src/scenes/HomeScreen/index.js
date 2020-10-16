@@ -86,15 +86,14 @@ class HomeScreen extends React.Component {
   }
   setFilter = (filter) => {
     this.setState({filter: filter});
+    console.log(this.props.Actions);
 
     //Execute filtering request
   };
 
 
       componentDidMount() {
-      this.props.FetchActions();
-      console.log();
-
+      this.props.FetchActions()
   }
 
   updateSearch = (search) => {
@@ -142,7 +141,7 @@ class HomeScreen extends React.Component {
           changeHandler={this.updateSearch.bind(this)}
         />
         <HomeFilters changeHandler={this.setFilter.bind(this)} />
-        {this.state.isLoading ? (
+        {this.props.isFetching ? (
           <ActivityIndicator
             style={{marginTop: 20}}
             size="large"
@@ -215,8 +214,8 @@ const styles = StyleSheet.create({
   },
 });
 
-const mapStateToProps = state => ({
-  Actions : state.Actions
-})
+const mapStateToProps = state => {
+  return {Actions : state.Action.Actions , isFetching: state.Action.isFetching};
+};
 
 export default connect(mapStateToProps, {FetchActions})(HomeScreen);

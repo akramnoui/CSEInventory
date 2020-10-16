@@ -1,9 +1,11 @@
 // action types
-import {fetchActions} from '../api'
+import {fetchActions , fetchItems} from '../api'
 export const BOOK_ITEM = 'BOOK_ITEM';
 export const FETCH_ACTIONS_SENT = 'FETCH_ACTIONS_SENT';
-export const RECEIVED_ACTIONS = 'RECEIVED_ACTIONS';
 export const REQUEST_REJECTED = ' REQUEST_REJECTED';
+export const RECEIVED_ACTIONS = 'RECEIVED_ACTIONS';
+export const RECEIVED_ITEMS = 'RECEIVED_ITEMS';
+
 
 
  //action creators 
@@ -31,16 +33,22 @@ export const RequestRejected = (message) => ({
     payload : message
 })
 
+
+
+
+
+
+
+
 // async action creator 
 export const FetchActions = () => async dispatch => {
     dispatch({type: FETCH_ACTIONS_SENT})
-    try {
       const Actions = await fetchActions();
       dispatch(ReceiveActions(Actions))
-      console.log(' the following are action ' + Actions)
-
-    } catch (err) {
-      dispatch(RequestRejected(err.message))
-    }
+  }
+  export const FetchItems = () => async dispatch => {
+      dispatch({type: FETCH_ACTIONS_SENT})
+      const Items = await fetchItems();
+      dispatch({type : RECEIVED_ITEMS , payload : Items})
   }
   

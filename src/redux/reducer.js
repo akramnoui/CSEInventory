@@ -1,19 +1,19 @@
 import  {combineReducers} from 'redux'
-import {BOOK_ITEM , FETCH_ACTIONS_SENT   , RECEIVED_ACTIONS, REQUEST_REJECTED } from './actions'
+import {BOOK_ITEM , FETCH_ACTIONS_SENT   , RECEIVED_ACTIONS, REQUEST_REJECTED , RECEIVED_ITEMS } from './actions'
 
 const merge = (prev, next) =>  Object.assign({}, prev, next)
 
-const initialState = {
-    Actions: [],
-   
-  };
-const ActionReducer = ( state = initialState , action) => {
 
+
+
+const Actionreducer = ( state = {} , action) => {
     switch(action.type){
-        case BOOK_ITEM : 
-            return null ;
+        case FETCH_ACTIONS_SENT : 
+            return merge(state, {isFetching : true})
         case RECEIVED_ACTIONS :
-            return merge(state, {Actions: action.payload})
+            return  merge(state, {Actions: action.payload  , isFetching : false})
+            case RECEIVED_ITEMS:
+                return  merge(state, {Items: action.payload  , isFetchingItems : false})
         case REQUEST_REJECTED:
               return merge(state, {loginErr: action.payload})
         default:
@@ -23,31 +23,30 @@ const ActionReducer = ( state = initialState , action) => {
 
     }
 
-
 }
 
 
 
-// const userReducer = (state = {}, action) => {
-//     switch (action.type) {
-//       case UPDATE_USER:
-//         return merge(state, action.payload)
-//       case UPDATE_CONTACT:
-//         return merge(state, {prevContact: action.payload})
-//       case LOG_IN_FULFILLED:
-//         return merge(state, {token: action.payload})
-//       case LOG_IN_REJECTED:
-//         return merge(state, {loginErr: action.payload})
-//       default:
-//         return state
-//     }
-//   }
+const ItemsReducer = ( state = [] , action) => {
+    switch(action.type){
+        case FETCH_ACTIONS_SENT : 
+            return merge(state, {isFetchingItems : true})
+        case RECEIVED_ITEMS:
+            return  merge(state, {Items: action.payload  , isFetchingItems : false})
+        case REQUEST_REJECTED:
+              return merge(state, {loginErr: action.payload})
+        default:
+              return state
 
 
 
+    }
 
+}
 
 const reducer = combineReducers({
-    actions : ActionReducer,
+    Item : ItemsReducer ,
+    Action :  Actionreducer,
+   
   })
   export default reducer;
