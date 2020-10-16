@@ -36,6 +36,12 @@ import ItemPage from './src/scenes/ItemPage/ItemPage';
 import AddOP from './src/scenes/AddOP/AddOP';
 import LostObject from './src/scenes/AnomalyList/LostObject';
 import OnBoarding from './src/scenes/OnBoarding.js/OnBoarding';
+// redux imports
+import {store , persistor} from './src/redux/store'
+import {Provider} from 'react-redux'
+import {PersistGate}  from 'redux-persist/es/integration/react'
+
+
 import ReserveView from './src/scenes/ReserveScreen/index';
 
 const DrawerNav = createDrawerNavigator();
@@ -154,25 +160,28 @@ export default class App extends React.Component {
     );
 
     return (
-      //main Stack
-      //<NavigationContainer>
-      //  <Stack.Navigator
-      //    initialRouteName="Login"
-      //    screenOptions={{
-      //      headerShown: false,
-      //    }}>
-      //    <Stack.Screen name="Main" children={createHomeStack}></Stack.Screen>
-      //    <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
-      //    <Stack.Screen
-      //      name="ForgotPassword"
-      //      component={ForgotPassword}></Stack.Screen>
-      //    <Stack.Screen
-      //      name="NewPassword"
-      //      component={NewPassword}></Stack.Screen>
-      //    <Stack.Screen name="OnBoarding" component={OnBoarding}></Stack.Screen>
-      //  </Stack.Navigator>
-      //</NavigationContainer>
-      <ProfileScreen />
+      // main Stack
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <NavigationContainer>
+          <Stack.Navigator
+            initialRouteName="Login"
+            screenOptions={{
+              headerShown: false,
+            }}>
+            <Stack.Screen name="Main" children={createHomeStack}></Stack.Screen>
+            <Stack.Screen name="Login" component={LoginScreen}></Stack.Screen>
+            <Stack.Screen
+              name="ForgotPassword"
+              component={ForgotPassword}></Stack.Screen>
+            <Stack.Screen
+              name="NewPassword"
+              component={NewPassword}></Stack.Screen>
+            <Stack.Screen name="OnBoarding" component={OnBoarding}></Stack.Screen>
+          </Stack.Navigator>
+          </NavigationContainer>
+        </PersistGate>
+       </Provider>
     );
   }
 }

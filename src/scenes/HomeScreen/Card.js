@@ -44,7 +44,7 @@ class Card extends React.Component {
             style={{
               height: '100%',
               width: '100%',
-              marginLeft: 9 , 
+              
               resizeMode: 'cover',
               
             }}
@@ -79,19 +79,26 @@ const styles = StyleSheet.create({
   } , 
 
   container: {
-    borderWidth: 1 , 
-    borderColor: '#E8F3FF' , 
     height: 172,
     overflow: 'hidden' , 
     width: 330,
-    backgroundColor: '#F8F8F8',
+    backgroundColor: '#323231',
     display: 'flex',
     flexDirection: 'row',
-    backgroundColor:'black' , 
+    alignItems: 'center',
+    justifyContent: 'space-between' , 
     marginVertical: 10,
-    marginHorizontal: 10,
+   shadowColor: "#121212",
+shadowOffset: {
+	width: 4,
+	height: 2,
+},
+shadowOpacity: 0.1,
+shadowRadius: 4 ,
+
+elevation: 3,
+    
     borderRadius: 10,
-    elevation: 0.5,
   },
   infos: {
     display: 'flex',

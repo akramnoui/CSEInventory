@@ -6,6 +6,7 @@ import {screenHeight, screenWidth} from '../ReserveScreen/Dimensions';
 export default class ArendreCard extends Component {
   render() {
     return (
+      <View style={styles.main} >
       <View style={styles.container}>
         <Image
           source={{uri: this.props.info.uri}}
@@ -17,7 +18,7 @@ export default class ArendreCard extends Component {
             borderRadius: 10
           }}
         />
-        <View style={{flexDirectionn: 'row'}}>
+        <View style={{flexDirection: 'column'}}>
           <View
             style={{
               marginLeft: 10 , 
@@ -34,10 +35,15 @@ export default class ArendreCard extends Component {
             <Text numberOfLines={1} style={styles.date}>
               When: 23/06/2020
             </Text>
+
           </View>
+         
+
           
-          <Button onPress={()=>{alert("rendu")}} color='#3498DB' style={{marginTop:15 , marginRight: 25}}>Rendre</Button>
         </View>
+
+      </View>
+      <Button onPress={()=>{alert("rendu")}} color='#3498DB' style={{marginTop:13 , alignSelf: "center" }}>Rendre</Button>
       </View>
     );
   }
@@ -45,19 +51,39 @@ export default class ArendreCard extends Component {
 
 const styles = StyleSheet.create({
   container : {
-    backgroundColor: '#FFF', borderRadius: 15, width: screenWidth-60 , flexDirection: "row" , height : 150 , 
- 
+    backgroundColor: '#FFF', width: screenWidth-70   , height: 90 , paddingTop: 2, flexDirection: "row" ,
   } , 
+  main : {
+    width: screenWidth-60  ,
+    height : 150 , 
+    backgroundColor: '#FFF' , 
+    justifyContent: 'space-around' , 
+    alignItems: 'center' , 
+   flexDirection : 'column', 
+    borderRadius: 15 , 
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.30,
+    shadowRadius: 4.65,
+    
+    elevation: 8,
+     
+      } , 
+
 
   title: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: 'bold',
     flexWrap: 'wrap',
     marginBottom: 3,
     marginTop: 5,
   },
   description: {
-    fontSize: 14,
+    fontSize: 15,
+    color: "#828179" ,
     fontWeight: 'normal',
     flexWrap: 'wrap',
   },

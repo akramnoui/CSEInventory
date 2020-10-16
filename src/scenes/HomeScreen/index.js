@@ -14,6 +14,8 @@ import Card from './Card';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import InputField from '../GoodsList/InputField';
 import HomeFilters from './HomeFilters';
+import {FetchActions} from '../../redux/actions'
+import {connect} from 'react-redux'
 
 const Items = [
   {
@@ -78,29 +80,22 @@ const Items = [
 class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      isLoading: true,
     };
   }
   setFilter = (filter) => {
     this.setState({filter: filter});
+    console.log(this.props.Actions);
 
     //Execute filtering request
   };
 
-  async componentWillMount() {
-    const response = await fetch(
-      'https://cse-inventory-api.herokuapp.com/reservations/all',
-    )
-      .then((response) => response.json())
-      .then((json) => {
-        this.setState({items: json.allReservations});
-      })
-      .catch((error) => console.error(error))
-      .finally(() => {
-        this.setState({isLoading: false});
-      });
-  }
+
+     async componentDidMount() {
+            this.props.FetchActions()
+
+     }
 
   updateSearch = (search) => {
     this.setState({search});
@@ -147,7 +142,7 @@ class HomeScreen extends React.Component {
           changeHandler={this.updateSearch.bind(this)}
         />
         <HomeFilters changeHandler={this.setFilter.bind(this)} />
-        {this.state.isLoading ? (
+        {this.props.isFetching ? (
           <ActivityIndicator
             style={{marginTop: 20}}
             size="large"
@@ -156,7 +151,7 @@ class HomeScreen extends React.Component {
         ) : (
           <FlatList
             style={styles.FlatList}
-            data={this.state.items}
+            data={this.props.Actions}
             renderItem={({item}) => (
               <TouchableOpacity
                 onPress={() =>
@@ -164,7 +159,7 @@ class HomeScreen extends React.Component {
                 }>
                 <Card
                   objectName={item.reservationTitle}
-                  user={`${item.reservationBy.userFirstName} ${item.reservationBy.userLastName}`}
+                  user = {"John Doe"}  /* `${item.reservationBy.userFirstName} ${item.reservationBy.userLastName}` */
                   startsAt={item.startsAt}
                   status={'Booked'}
                   imageSrc={item.objectsNeeded[0].objectImage}></Card>
@@ -180,7 +175,8 @@ class HomeScreen extends React.Component {
 const styles = StyleSheet.create({
   FlatList: {
     marginTop: 10,
-    backgroundColor: 'black',
+    backgroundColor: '#101010',
+   
   },
   MainView: {
     flex: 1,
@@ -188,7 +184,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',
-    backgroundColor: '#070809',
+    backgroundColor: '#101010', //#171216
   },
   Header: {
     display: 'flex',
@@ -219,4 +215,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+const mapStateToProps = state => {
+  return {Actions : state.Action.Actions , isFetching: state.Action.isFetching};
+};
+
+export default connect(mapStateToProps, {FetchActions})(HomeScreen);
