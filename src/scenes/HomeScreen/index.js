@@ -80,8 +80,8 @@ const Items = [
 class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      isLoading: true,
     };
   }
   setFilter = (filter) => {
@@ -92,9 +92,10 @@ class HomeScreen extends React.Component {
   };
 
 
-      componentDidMount() {
-      this.props.FetchActions()
-  }
+     async componentDidMount() {
+            this.props.FetchActions()
+
+     }
 
   updateSearch = (search) => {
     this.setState({search});

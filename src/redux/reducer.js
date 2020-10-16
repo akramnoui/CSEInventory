@@ -12,8 +12,7 @@ const Actionreducer = ( state = {} , action) => {
             return merge(state, {isFetching : true})
         case RECEIVED_ACTIONS :
             return  merge(state, {Actions: action.payload  , isFetching : false})
-            case RECEIVED_ITEMS:
-                return  merge(state, {Items: action.payload  , isFetchingItems : false})
+            
         case REQUEST_REJECTED:
               return merge(state, {loginErr: action.payload})
         default:
@@ -29,8 +28,8 @@ const Actionreducer = ( state = {} , action) => {
 
 const ItemsReducer = ( state = [] , action) => {
     switch(action.type){
-        case FETCH_ACTIONS_SENT : 
-            return merge(state, {isFetchingItems : true})
+        // case FETCH_ACTIONS_SENT : 
+        //     return merge(state, {isFetchingItems : true})
         case RECEIVED_ITEMS:
             return  merge(state, {Items: action.payload  , isFetchingItems : false})
         case REQUEST_REJECTED:
