@@ -8,8 +8,8 @@ const merge = (prev, next) =>  Object.assign({}, prev, next)
 
 const Actionreducer = ( state = {} , action) => {
     switch(action.type){
-        case FETCH_ACTIONS_SENT : 
-            return merge(state, {isFetching : true})
+        // case FETCH_ACTIONS_SENT : 
+        //     return merge(state, {isFetching : true})
         case RECEIVED_ACTIONS :
             return  merge(state, {Actions: action.payload  , isFetching : false})
             

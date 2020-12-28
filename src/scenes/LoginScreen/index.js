@@ -36,6 +36,7 @@ PushNotification.configure({
   requestPermissions: true,
 });
 
+
 class LoginScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -63,9 +64,48 @@ class LoginScreen extends React.Component {
   handlePhoneChange = (password) => {
     this.setState({password});
   };
-  _login = () => {
+  validateForm = () => {
+    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const pass = /^.{8,32}$/;
+    const valid = re.test(this.state.name) && pass.test(this.state.password);
+    console.log(valid);
+    this.setState({
+      isFormValid : valid
+    })
+    if (!valid){
+      throw {message: "invalid creditentials"};
+
+    }
+  }
+  
+  _login = async () => {
+    
+    try{
+      this.validateForm();
+       
+    const response = await fetch('https://cse-inventory.herokuapp.com/users/login' , 
+      {
+        headers: {
+               'Content-Type': 'application/json',
+             },
+        method : 'POST' , 
+        body: JSON.stringify({email : this.state.name , password : this.state.password })
+      } );
+       const jsonResponse = await response.json();
+      if (!response.ok) {  throw jsonResponse }
+      const accessToken = jsonResponse;
+      
+      this.props.navigation.navigate('OnBoarding');
+      console.log(accessToken);
+
+    }catch(error){
+      alert(error.message);
+
+    }
+
+    
     //Add logic of sending notifications token to db
-    this.props.navigation.navigate('OnBoarding');
+   
   };
   _forgotPassword = () => {
     this.props.navigation.navigate('ForgotPassword');
