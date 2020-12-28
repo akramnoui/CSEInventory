@@ -13,6 +13,9 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view';
 import {screenWidth, screenHeight} from '../ReserveScreen/Dimensions.js';
 import PushNotificationIOS from '@react-native-community/push-notification-ios';
 import PushNotification from 'react-native-push-notification';
+import { Login } from '../../redux/actions.js';
+import {connect} from 'react-redux'
+
 //import qs from 'querystring';
 //import AsyncStorage from '@react-native-community/async-storage';
 
@@ -79,24 +82,17 @@ class LoginScreen extends React.Component {
   }
   
   _login = async () => {
-    
+    // login with im_n@esi.dz
+    //pw :12345678
     try{
       this.validateForm();
        
-    const response = await fetch('https://cse-inventory.herokuapp.com/users/login' , 
-      {
-        headers: {
-               'Content-Type': 'application/json',
-             },
-        method : 'POST' , 
-        body: JSON.stringify({email : this.state.name , password : this.state.password })
-      } );
-       const jsonResponse = await response.json();
-      if (!response.ok) {  throw jsonResponse }
-      const accessToken = jsonResponse;
-      
+      this.props.Login(this.state.name , this.state.password);
+      if(this.props.err !== null){
+        console.log('eror')
+        throw this.props.err
+      }
       this.props.navigation.navigate('OnBoarding');
-      console.log(accessToken);
 
     }catch(error){
       alert(error.message);
@@ -286,4 +282,9 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+const mapStateToProps = state => {
+  return {accessToken : state.Login.accessToken , isLogging: state.Login.isLogging , err: state.Login.err};
+};
+
+export default connect(mapStateToProps, {Login})(LoginScreen);
+

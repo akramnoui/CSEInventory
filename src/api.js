@@ -23,3 +23,19 @@ export const fetchItems = async () => {
 
 
 }
+export const login = async (email ,  password) => {
+
+    const response = await fetch('https://cse-inventory.herokuapp.com/users/login' , 
+    {
+      headers: {
+             'Content-Type': 'application/json',
+           },
+      method : 'POST' , 
+      body: JSON.stringify({email : email , password : password })
+    } );
+     const jsonResponse = await response.json();
+    if (!response.ok) {console.log('here');  throw jsonResponse; }
+    return jsonResponse;
+    
+
+}
